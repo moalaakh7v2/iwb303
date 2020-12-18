@@ -44,11 +44,11 @@ public class UserInfo {
         Password = password;
     }
 
-    public boolean isAdmin() {
+    public boolean getIsAdmin() {
         return IsAdmin;
     }
 
-    public void setAdmin(boolean admin) {
+    public void setIsAdmin(boolean admin) {
         IsAdmin = admin;
     }
 

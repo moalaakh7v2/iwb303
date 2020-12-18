@@ -5,8 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.time.LocalDateTime;
 
@@ -19,6 +21,7 @@ public class DBContext extends SQLiteOpenHelper {
         super(context, "SVUDB", null, 1);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(SQLiteDatabase db) {
         String Users =
@@ -28,7 +31,7 @@ public class DBContext extends SQLiteOpenHelper {
                 "Lastname Text not null," +
                 "RegYeer int," +
                 "Gender Text not null," +
-                "[Address] Text not null," +
+                "Address Text not null," +
                 "MobileNo Text not null " +
                 ") " ;
         db.execSQL(Users);
@@ -36,9 +39,9 @@ public class DBContext extends SQLiteOpenHelper {
                 "Create Table UsersInfo (" +
                 "UserId int Primary Key," +
                 "Username Text not null," +
-                "[Password] Text not null," +
+                "Password Text not null," +
                 "IsAdmin bit not null," +
-                "LastLoginDate Date," +
+                "LastLoginDate DateTime," +
                 "FOREIGN KEY(UserId) REFERENCES Users(Id)" +
                 ")";
         db.execSQL(UsersInfo);
@@ -82,13 +85,13 @@ public class DBContext extends SQLiteOpenHelper {
                 "FOREIGN KEY(StudentId) REFERENCES Users(Id)" +
                 ")" ;
         db.execSQL(Enrollments);
-        initAdmin();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void initAdmin(){
         User user =new User("Emad","Kh", 2020, Gender.Male.toString()
                 ,"Damas","0931640066" );
@@ -99,29 +102,34 @@ public class DBContext extends SQLiteOpenHelper {
         UserValues.put("Gender", user.getGender());
         UserValues.put("Address", user.getAddress());
         UserValues.put("mobileNo", user.getMobileNo());
-        database.insert("Student",null,UserValues);
-        UserInfo userInfo =new UserInfo(1,"Emad7","123456",true, LocalDateTime.now())
-        ContentValues userInfoValues = new ContentValues();
-        userInfoValues.put("Firstname", user.getFirstname());
-        userInfoValues.put("Lastname", user.getLastname());
-        userInfoValues.put("RegYeer", user.getRegYeer());
-        userInfoValues.put("Gender", user.getGender());
-        userInfoValues.put("Address", user.getAddress());
-        userInfoValues.put("mobileNo", user.getMobileNo());
-    }
-    public void ForAdd (User user,UserInfo userInfo)
-    {
-
+        database.insert("Users",null,UserValues);
+        UserInfo userInfo =new UserInfo(1,"Emad7","123456",true, LocalDateTime.now());
+       ContentValues userInfoValues = new ContentValues();
+        userInfoValues.put("UserId", userInfo.getUserId());
+        userInfoValues.put("Username", userInfo.getUsername());
+        userInfoValues.put("Password", userInfo.getPassword());
+        userInfoValues.put("isAdmin", userInfo.getIsAdmin());
+        userInfoValues.put("LastLoginDate", String.valueOf(userInfo.getLastLoginDate()));
+        database.insert("UsersInfo",null,userInfoValues);
+        database.close();
     }
 
-    public boolean Login(String username,String password){
-
-        String Query="Select * From Student" +
-                " Where UPPER(Username) = UPPER('"+username +"') And Password = "+password +" ;";
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public UserInfo Login(String username, String password){
+        initAdmin();
+        String Query="Select * From UsersInfo" +
+                " Where UPPER(Username) = UPPER('"+username +"') And Password = '"+password +"' ;";
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = database.rawQuery(Query,null);
-        if(cursor.moveToFirst())
-            return true;
-        return false;
+        if(cursor.moveToFirst()) {
+            UserInfo userInfo = new UserInfo();
+            userInfo.setUserId(cursor.getInt(0));
+            userInfo.setUsername(cursor.getString(1));
+            userInfo.setPassword(cursor.getString(2));
+            userInfo.setIsAdmin(Boolean.valueOf(cursor.getString(3)));
+            userInfo.setLastLoginDate(LocalDateTime.parse(cursor.getString(4)));
+            return userInfo;
+        }
+        return null;
     }
 }
