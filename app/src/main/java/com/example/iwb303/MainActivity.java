@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         md = MediaPlayer.create(this, R.raw.btn_sound);
         md.start();
         DBContext context = new DBContext(MainActivity.this);
+        context.g
         TextView txtUsername = findViewById(R.id.txtUserName);
         TextView txtPassword = findViewById(R.id.txtPassword);
         if(!txtUsername.getText().toString().isEmpty() && !txtPassword.getText().toString().isEmpty()) {
