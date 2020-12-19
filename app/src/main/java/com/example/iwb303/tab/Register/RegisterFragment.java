@@ -1,5 +1,6 @@
 package com.example.iwb303.tab.Register;
 
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     private RegisterViewModel registerViewModel;
     Button btnRegister;
+    TextView lblSubjects;
     MediaPlayer md;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,7 +37,6 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onClick(View v) {
-        Log.d("MyError",v.getId() + " hi " + R.id.btnRegister);
         switch (v.getId()) {
             case R.id.btnRegister:
                 md = MediaPlayer.create(getContext(), R.raw.tab_move);

@@ -1,5 +1,6 @@
 package com.example.iwb303.tab.MySubjects;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -20,13 +21,16 @@ import com.example.iwb303.R;
 public class MySubjectsFragment extends Fragment {
 
     private MySubjectsViewModel homeViewModel;
+    TextView lblUname;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        homeViewModel =
-                ViewModelProviders.of(this).get(MySubjectsViewModel.class);
+        homeViewModel = ViewModelProviders.of(this).get(MySubjectsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_my_subjects, container, false);
+        lblUname = root.findViewById(R.id.lblSubjects);
+        SharedPreferences settings = getActivity().getSharedPreferences("UserInfo", 0);
+        lblUname.setText(settings.getString("Username", "").toString());
         //final TextView textView = root.findViewById(R.id.txtUserName);
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -35,7 +39,6 @@ public class MySubjectsFragment extends Fragment {
             }
         });
         return root;
-
     }
 
 }

@@ -3,10 +3,12 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string-array name="lstArray">
-        <item>Android</item>
-        <item>iPhone</item>
-        <item>Max OS X</item>
+    <string-array name="lstTheme">
+        <item>Blue</item>
+        <item>Purple</item>
+        <item>Pink</item>
+        <item>Pastel</item>
+        <item>Green</item>
     </string-array>
     <string name="title_activity_manage_student">MainActivity</string>
     <string name="title_my_subjects">My Subjects</string>

@@ -9,11 +9,13 @@
         android:roundIcon="@drawable/svu_logo"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
+        <activity android:name=".ChooseTheme"></activity>
         <activity
             android:name=".ManageStudent"
-            android:label="@string/title_activity_manage_student"></activity>
-        <activity android:name=".MainActivity"
-            android:configChanges="orientation|screenSize" >
+            android:label="@string/title_activity_manage_student" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
