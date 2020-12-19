@@ -1,5 +1,6 @@
 package Models;
 
+//التسجيل
 public class Enrollment {
     int Id;
     int StudentId;

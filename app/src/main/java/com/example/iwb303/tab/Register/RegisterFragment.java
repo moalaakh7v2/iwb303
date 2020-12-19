@@ -18,7 +18,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.iwb303.MainActivity;
-import com.example.iwb303.ManageStudent;
 import com.example.iwb303.R;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
@@ -33,6 +32,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         btnRegister.setOnClickListener(this);
         return root;
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

@@ -7,12 +7,11 @@ import android.os.Bundle;
 
 import com.example.iwb303.R;
 
-public class GetStudentActivity extends AppCompatActivity {
+public class AddNewStudentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         SharedPreferences prefs = getSharedPreferences("themeFile", MODE_PRIVATE);
         String themeName = prefs.getString("themeName", "Blue");
         switch (themeName) {
@@ -32,6 +31,6 @@ public class GetStudentActivity extends AppCompatActivity {
                 setTheme(R.style.AppTheme5);
                 break;
         }
-        setContentView(R.layout.activity_get_student);
+        setContentView(R.layout.activity_add_new_student);
     }
 }

@@ -6,5 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".ui.dept.DeptFragment">
 
+    <Spinner
+        android:id="@+id/depAllDepts"
+        android:layout_width="182dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="49dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="183dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="140dp"
+        android:text="All Depts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnEditDept"
+        android:layout_width="114dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="60dp"
+        android:text="Edit Dept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/depAllDepts" />
+
+    <Button
+        android:id="@+id/btnAddDept"
+        android:layout_width="115dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="42dp"
+        android:text="Add Dept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditDept" />
 </androidx.constraintlayout.widget.ConstraintLayout>

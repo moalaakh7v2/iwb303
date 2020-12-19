@@ -1,5 +1,6 @@
 package Models;
 
+//الكورس
 public class Course {
     int Id;
     String Title;

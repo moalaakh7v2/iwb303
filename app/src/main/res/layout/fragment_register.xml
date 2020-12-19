@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/drpTheme"
+        android:id="@+id/drpTeacherGender"
         android:layout_width="205dp"
         android:layout_height="47dp"
         android:layout_marginTop="52dp"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.71"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drpTheme" />
+        app:layout_constraintTop_toBottomOf="@+id/drpTeacherGender" />
 
     <TextView
         android:id="@+id/txtRegTeacher"

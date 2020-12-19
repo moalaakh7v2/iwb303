@@ -2,14 +2,10 @@ package com.example.iwb303;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class ChooseTheme extends AppCompatActivity {
 
@@ -38,8 +34,7 @@ public class ChooseTheme extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_choose_theme);
-        setTheme(R.style.AppTheme3);
-        spinner = (Spinner) findViewById(R.id.drpTheme);
+        spinner = (Spinner) findViewById(R.id.drpTeacherGender);
 
     }
 

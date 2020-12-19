@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.iwb303.ChooseTheme;
 import com.example.iwb303.MainActivity;
-import com.example.iwb303.ManageStudent;
 import com.example.iwb303.R;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {

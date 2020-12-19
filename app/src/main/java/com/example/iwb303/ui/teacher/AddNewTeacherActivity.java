@@ -1,4 +1,4 @@
-package com.example.iwb303.ui.student;
+package com.example.iwb303.ui.teacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.example.iwb303.R;
 
-public class GetStudentActivity extends AppCompatActivity {
+public class AddNewTeacherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,6 @@ public class GetStudentActivity extends AppCompatActivity {
                 setTheme(R.style.AppTheme5);
                 break;
         }
-        setContentView(R.layout.activity_get_student);
+        setContentView(R.layout.activity_add_new_teacher);
     }
 }
