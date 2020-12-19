@@ -1,10 +1,12 @@
 package com.example.iwb303;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.media.RatingCompat;
 import android.text.TextUtils;
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         txtUserName = findViewById(R.id.txtUserName);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void btnLogIn_Click(View view){
         md = MediaPlayer.create(this, R.raw.btn_sound);
         md.start();
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         TextView txtUsername = findViewById(R.id.txtUserName);
         TextView txtPassword = findViewById(R.id.txtPassword);
         if(!txtUsername.getText().toString().isEmpty() && !txtPassword.getText().toString().isEmpty()) {
-            if (context.Login(txtUsername.getText().toString(), txtPassword.getText().toString())) {
+            if (null != context.Login(txtUsername.getText().toString(), txtPassword.getText().toString())) {
                 SharedPreferences settings = getSharedPreferences("UserInfo", 0);
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putString("Username",txtUsername.getText().toString());
