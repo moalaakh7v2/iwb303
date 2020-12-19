@@ -15,13 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.iwb303.tab.MySubjects.MySubjectsFragment;
-
 import Controller.DBContext;
-import Controller.UserController;
-import Models.UserInfo;
-
-import java.time.Instant;
+import Controller.StudentsController;
+import Models.LoginInfo;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         TextView txtUsername = findViewById(R.id.txtUserName);
         TextView txtPassword = findViewById(R.id.txtPassword);
         if(!txtUsername.getText().toString().isEmpty() && !txtPassword.getText().toString().isEmpty()) {
-           UserInfo userInfo = UserController.Login(context,txtUsername.getText().toString(), txtPassword.getText().toString());
+           LoginInfo userInfo = StudentsController.Login(context,txtUsername.getText().toString(), txtPassword.getText().toString());
             if (userInfo != null) {
                 SharedPreferences prefs = getPreferences(MODE_PRIVATE);
                 SharedPreferences.Editor prefsEditor = prefs.edit();

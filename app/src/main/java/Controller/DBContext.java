@@ -1,20 +1,12 @@
 package Controller;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-
-import java.time.LocalDateTime;
-
-import Models.Enums.Gender;
-import Models.User;
-import Models.UserInfo;
 
 public class DBContext extends SQLiteOpenHelper {
     public DBContext(@Nullable Context context) {
@@ -24,8 +16,8 @@ public class DBContext extends SQLiteOpenHelper {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String Users =
-                "Create Table Users (" +
+        String Students =
+                "Create Table Students (" +
                 "Id int Primary Key," +
                 "Firstname Text not null," +
                 "Lastname Text not null," +
@@ -34,17 +26,26 @@ public class DBContext extends SQLiteOpenHelper {
                 "Address Text not null," +
                 "MobileNo Text not null " +
                 ") " ;
-        db.execSQL(Users);
-        String UsersInfo =
-                "Create Table UsersInfo (" +
-                "UserId int Primary Key," +
+        db.execSQL(Students);
+        String LoginInfos ="Create Table LoginInfos (" +
+                "Id int Primary Key," +
                 "Username Text not null," +
                 "Password Text not null," +
-                "IsAdmin bit not null," +
-                "LastLoginDate DateTime," +
-                "FOREIGN KEY(UserId) REFERENCES Users(Id)" +
+                "StudentId int," +
+                "LastLoginDate Datetime," +
+                "FOREIGN KEY(StudentId) REFERENCES Students(Id)" +
                 ")";
-        db.execSQL(UsersInfo);
+        db.execSQL(LoginInfos);
+               String Instructors =
+                "Create Table Instructors (" +
+                "Id int Primary Key," +
+                "Firstname Text not null," +
+                "Lastname Text not null," +
+                "Gender Text not null," +
+                "Address Text not null," +
+                "MobileNo Text not null" +
+                ")";
+        db.execSQL(Instructors);
         String Sections =
                 "Create Table Sections(" +
                 "SectionNo int Primary Key," +
@@ -70,7 +71,7 @@ public class DBContext extends SQLiteOpenHelper {
                 "PRIMARY KEY (SectionNo, CourseId)," +
                 "FOREIGN KEY(SectionNo) REFERENCES Sections(SectionNo)," +
                 "FOREIGN KEY(CourseId) REFERENCES Courses(Id)," +
-                "FOREIGN KEY(InstructorId) REFERENCES Users(Id)" +
+                "FOREIGN KEY(InstructorId) REFERENCES Instructors(Id)" +
                 ")" ;
         db.execSQL(CoursesinSections);
         String Enrollments =
@@ -82,7 +83,7 @@ public class DBContext extends SQLiteOpenHelper {
                 "Grade float," +
                 "FOREIGN KEY(SectionNo) REFERENCES Sections(SectionNo)," +
                 "FOREIGN KEY(CourseId) REFERENCES Courses(Id)," +
-                "FOREIGN KEY(StudentId) REFERENCES Users(Id)" +
+                "FOREIGN KEY(StudentId) REFERENCES Students(Id)" +
                 ")" ;
         db.execSQL(Enrollments);
     }

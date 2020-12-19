@@ -1,31 +1,31 @@
 package Models;
 
-public class User {
+public class Student {
    int Id ;
    String  Firstname;
    String Lastname;
    Integer RegYeer ;
    String Gender;
    String Address;
-   String mobileNo ;
+   String MobileNo;
 
-    public User() { }
+    public Student() { }
 
-    public User(String firstname, String lastname, String gender, String address, String mobileNo) {
+    public Student(String firstname, String lastname, String gender, String address, String mobileNo) {
         Firstname = firstname;
         Lastname = lastname;
         Gender = gender;
         Address = address;
-        this.mobileNo = mobileNo;
+        MobileNo = mobileNo;
     }
 
-    public User(String firstname, String lastname, Integer regYeer, String gender, String address, String mobileNo) {
+    public Student(String firstname, String lastname, Integer regYeer, String gender, String address, String mobileNo) {
         Firstname = firstname;
         Lastname = lastname;
         RegYeer = regYeer;
         Gender = gender;
         Address = address;
-        this.mobileNo = mobileNo;
+        MobileNo = mobileNo;
     }
 
     public int getId() {
@@ -77,10 +77,10 @@ public class User {
     }
 
     public String getMobileNo() {
-        return mobileNo;
+        return MobileNo;
     }
 
     public void setMobileNo(String mobileNo) {
-        this.mobileNo = mobileNo;
+        MobileNo = mobileNo;
     }
 }

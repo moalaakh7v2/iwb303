@@ -2,30 +2,30 @@ package Models;
 
 import java.time.LocalDateTime;
 
-public class UserInfo {
-   int UserId;
+public class LoginInfo {
+   int Id;
    String Username;
    String Password;
-   Boolean IsAdmin;
+   Integer StudentId;
    LocalDateTime LastLoginDate;
 
-    public UserInfo() {
+    public LoginInfo() {
     }
 
-    public UserInfo(int userId, String username, String password, Boolean isAdmin, LocalDateTime lastLoginDate) {
-        UserId = userId;
+    public LoginInfo(int userId, String username, String password, Integer studentId, LocalDateTime lastLoginDate) {
+        Id = userId;
         Username = username;
         Password = password;
-        IsAdmin = isAdmin;
+        StudentId = studentId;
         LastLoginDate = lastLoginDate;
     }
 
-    public int getUserId() {
-        return UserId;
+    public int getId() {
+        return Id;
     }
 
-    public void setUserId(int userId) {
-        UserId = userId;
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getUsername() {
@@ -44,12 +44,12 @@ public class UserInfo {
         Password = password;
     }
 
-    public Boolean getIsAdmin() {
-        return IsAdmin;
+    public Integer getStudentId() {
+        return StudentId;
     }
 
-    public void setIsAdmin(Boolean IsAdmin) {
-        IsAdmin = IsAdmin;
+    public void setStudentId(Integer studentId) {
+        StudentId = studentId;
     }
 
     public LocalDateTime getLastLoginDate() {
