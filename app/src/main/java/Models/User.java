@@ -4,15 +4,14 @@ public class User {
    int Id ;
    String  Firstname;
    String Lastname;
-   int RegYeer ;
+   Integer RegYeer ;
    String Gender;
    String Address;
    String mobileNo ;
 
     public User() { }
 
-    public User(int id, String firstname, String lastname, String gender, String address, String mobileNo) {
-        Id = id;
+    public User(String firstname, String lastname, String gender, String address, String mobileNo) {
         Firstname = firstname;
         Lastname = lastname;
         Gender = gender;
@@ -20,7 +19,7 @@ public class User {
         this.mobileNo = mobileNo;
     }
 
-    public User(String firstname, String lastname, int regYeer, String gender, String address, String mobileNo) {
+    public User(String firstname, String lastname, Integer regYeer, String gender, String address, String mobileNo) {
         Firstname = firstname;
         Lastname = lastname;
         RegYeer = regYeer;
@@ -53,11 +52,11 @@ public class User {
         Lastname = lastname;
     }
 
-    public int getRegYeer() {
+    public Integer getRegYeer() {
         return RegYeer;
     }
 
-    public void setRegYeer(int regYeer) {
+    public void setRegYeer(Integer regYeer) {
         RegYeer = regYeer;
     }
 

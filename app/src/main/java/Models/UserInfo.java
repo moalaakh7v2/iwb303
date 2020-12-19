@@ -6,13 +6,13 @@ public class UserInfo {
    int UserId;
    String Username;
    String Password;
-   boolean IsAdmin;
+   Boolean IsAdmin;
    LocalDateTime LastLoginDate;
 
     public UserInfo() {
     }
 
-    public UserInfo(int userId, String username, String password, boolean isAdmin, LocalDateTime lastLoginDate) {
+    public UserInfo(int userId, String username, String password, Boolean isAdmin, LocalDateTime lastLoginDate) {
         UserId = userId;
         Username = username;
         Password = password;
@@ -44,12 +44,12 @@ public class UserInfo {
         Password = password;
     }
 
-    public boolean getIsAdmin() {
+    public Boolean getIsAdmin() {
         return IsAdmin;
     }
 
-    public void setIsAdmin(boolean admin) {
-        IsAdmin = admin;
+    public void setIsAdmin(Boolean IsAdmin) {
+        IsAdmin = IsAdmin;
     }
 
     public LocalDateTime getLastLoginDate() {
