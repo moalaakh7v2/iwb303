@@ -1,28 +1,32 @@
 package Models;
 
-public class Student {
+public class User {
    int Id ;
    String  Firstname;
    String Lastname;
-   String  Username;
-   String Password ;
    int RegYeer ;
-   int Gender;
+   String Gender;
    String Address;
    String mobileNo ;
 
-    public Student(String firstname, String lastname, String username, String password, int regYeer, int gender, String address, String mobileNo) {
+    public User() { }
+
+    public User(int id, String firstname, String lastname, String gender, String address, String mobileNo) {
+        Id = id;
         Firstname = firstname;
         Lastname = lastname;
-        Username = username;
-        Password = password;
-        RegYeer = regYeer;
         Gender = gender;
         Address = address;
         this.mobileNo = mobileNo;
     }
 
-    public Student() {
+    public User(String firstname, String lastname, int regYeer, String gender, String address, String mobileNo) {
+        Firstname = firstname;
+        Lastname = lastname;
+        RegYeer = regYeer;
+        Gender = gender;
+        Address = address;
+        this.mobileNo = mobileNo;
     }
 
     public int getId() {
@@ -49,22 +53,6 @@ public class Student {
         Lastname = lastname;
     }
 
-    public String getUsername() {
-        return Username;
-    }
-
-    public void setUsername(String username) {
-        Username = username;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
     public int getRegYeer() {
         return RegYeer;
     }
@@ -73,11 +61,11 @@ public class Student {
         RegYeer = regYeer;
     }
 
-    public int getGender() {
+    public String getGender() {
         return Gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         Gender = gender;
     }
 
