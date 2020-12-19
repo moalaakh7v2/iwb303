@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Primary -->
     <color name="colorPrimary">#00afee</color>
     <color name="colorPrimaryDark">#0280ad</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent1">#03DAC5</color>
+    <!-- Purple -->
+    <color name="colorPurple">#52057b</color>
+    <color name="colorPurpleDark">#892cdc</color>
+    <color name="colorAccent2">#bc6ff1</color>
+    <!-- Pink -->
+    <color name="colorPink">#cc0e74</color>
+    <color name="colorPinkDark">#790c5a</color>
+    <color name="colorAccent3">#e6739f</color>
+    <!-- Pastel -->
+    <color name="colorPastel">#ffad87</color>
+    <color name="colorPastelDark">#bd574e</color>
+    <color name="colorAccent4">#fa877f</color>
+    <!-- Green -->
+    <color name="colorGreen">#adce74</color>
+    <color name="colorGreenDark">#61b15a</color>
+    <color name="colorAccent5">#fff76a</color>
 </resources>

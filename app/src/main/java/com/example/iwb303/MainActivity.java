@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v4.media.RatingCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -27,11 +28,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences prefs = getSharedPreferences("themeFile", MODE_PRIVATE);
+        String themeName = prefs.getString("themeName", "Blue");
+        switch (themeName) {
+            case "Blue":
+                setTheme(R.style.AppTheme);
+                break;
+            case "Purple":
+                setTheme(R.style.AppTheme2);
+                break;
+            case "Pink":
+                setTheme(R.style.AppTheme3);
+                break;
+            case "Pastel":
+                setTheme(R.style.AppTheme4);
+                break;
+            case "Green":
+                setTheme(R.style.AppTheme5);
+                break;
+        }
         setContentView(R.layout.activity_main);
-
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-        String s = prefs.getString("name","");
-        if (!TextUtils.isEmpty(s)){
+        SharedPreferences settings = getSharedPreferences("UserInfo", 0);
+        if (settings.getString("Username", "") != "")
+        {
             startActivity(new Intent(MainActivity.this, ManageStudent.class));
         }
         btnLogin = findViewById(R.id.btnLogin);
@@ -46,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
         TextView txtPassword = findViewById(R.id.txtPassword);
         if(!txtUsername.getText().toString().isEmpty() && !txtPassword.getText().toString().isEmpty()) {
             if (context.Login(txtUsername.getText().toString(), txtPassword.getText().toString())) {
-                SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-                SharedPreferences.Editor prefsEditor = prefs.edit();
-                prefsEditor.putString("name", txtUserName.getText().toString());
-                prefsEditor.apply();
+                SharedPreferences settings = getSharedPreferences("UserInfo", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("Username",txtUsername.getText().toString());
+                editor.commit();
                 startActivity(new Intent(MainActivity.this, ManageStudent.class));
             } else {
                 Toast.makeText(MainActivity.this, "UserName Or password Worng !", Toast.LENGTH_LONG).show();

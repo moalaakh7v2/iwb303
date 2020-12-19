@@ -10,12 +10,11 @@
         android:id="@+id/lblSubjects"
         android:layout_width="112dp"
         android:layout_height="0dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/lblUname" />
 
     <ListView
         android:id="@+id/lstMysubjects"
@@ -26,4 +25,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblSubjects" />
+
+    <TextView
+        android:id="@+id/lblUname"
+        android:layout_width="113dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="60dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

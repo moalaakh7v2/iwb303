@@ -7,22 +7,22 @@
     tools:context="tab.Settings.SettingsFragment">
 
     <TextView
-        android:id="@+id/txtChangeColor"
-        android:layout_width="121dp"
-        android:layout_height="36dp"
+        android:id="@+id/lblChangeTheme"
+        android:layout_width="124dp"
+        android:layout_height="44dp"
         android:layout_marginTop="80dp"
-        android:text="Change Color"
+        android:text="Change Theme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnDisplayColor"
+        android:id="@+id/btnDisplayTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Display Color"
+        android:text="Display Theme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,25 +30,25 @@
 
     <TextView
         android:id="@+id/txtSound"
-        android:layout_width="119dp"
-        android:layout_height="36dp"
+        android:layout_width="124dp"
+        android:layout_height="51dp"
         android:layout_marginTop="56dp"
         android:text="Sound Mode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtChangeColor" />
+        app:layout_constraintTop_toBottomOf="@+id/lblChangeTheme" />
 
     <Button
         android:id="@+id/btnSoundMode"
         android:layout_width="129dp"
         android:layout_height="45dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="52dp"
         android:text="Mute"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toEndOf="@+id/txtSound"
-        app:layout_constraintTop_toBottomOf="@+id/btnDisplayColor" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDisplayTheme" />
 
     <Button
         android:id="@+id/btnLogOut"
