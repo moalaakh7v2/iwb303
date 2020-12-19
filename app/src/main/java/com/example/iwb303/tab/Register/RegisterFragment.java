@@ -23,13 +23,11 @@ import com.example.iwb303.R;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
 
-    private RegisterViewModel registerViewModel;
     Button btnRegister;
     TextView lblSubjects;
     MediaPlayer md;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
         View root = inflater.inflate(R.layout.fragment_register, container, false);
         btnRegister = root.findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);

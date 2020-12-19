@@ -34,7 +34,7 @@ public class ManageStudent extends AppCompatActivity {
         String themeName = prefs.getString("themeName", "Blue");
         switch (themeName) {
             case "Blue":
-                setTheme(R.style.AppTheme);
+                setTheme(R.style.AppTheme1);
                 break;
             case "Purple":
                 setTheme(R.style.AppTheme2);

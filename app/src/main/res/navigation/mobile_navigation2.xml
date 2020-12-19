@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.iwb303.ui.search.SearchFragment"
+        android:label="@string/menu_search"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.iwb303.ui.student.StudentFragment"
+        android:label="@string/menu_student"
+        tools:layout="@layout/fragment_student" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.iwb303.ui.dept.DeptFragment"
+        android:label="@string/menu_dept"
+        tools:layout="@layout/fragment_dept" />
+
+    <fragment
+        android:id="@+id/nav_subject"
+        android:name="com.example.iwb303.ui.subject.SubjectFragment"
+        android:label="@string/menu_subject"
+        tools:layout="@layout/fragment_subject" />
+
+    <fragment
+        android:id="@+id/nav_teacher"
+        android:name="com.example.iwb303.ui.teacher.TeacherFragment"
+        android:label="@string/menu_teacher"
+        tools:layout="@layout/fragment_teacher" />
+</navigation>

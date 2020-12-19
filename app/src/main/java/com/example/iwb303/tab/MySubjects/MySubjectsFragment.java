@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,24 +21,13 @@ import com.example.iwb303.R;
 
 public class MySubjectsFragment extends Fragment {
 
-    private MySubjectsViewModel homeViewModel;
     TextView lblUname;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-        homeViewModel = ViewModelProviders.of(this).get(MySubjectsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_my_subjects, container, false);
         lblUname = root.findViewById(R.id.lblSubjects);
         SharedPreferences settings = getActivity().getSharedPreferences("UserInfo", 0);
         lblUname.setText(settings.getString("Username", "").toString());
-        //final TextView textView = root.findViewById(R.id.txtUserName);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                 //textView.setText(s);
-            }
-        });
         return root;
     }
 

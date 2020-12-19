@@ -19,7 +19,6 @@ import com.example.iwb303.R;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
 
-    private SettingsViewModel settingsViewModel;
     Button btnDisplayTheme;
     Button btnSoundMode;
     Button btnLogOut;
@@ -27,7 +26,6 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
         btnDisplayTheme = root.findViewById(R.id.btnDisplayTheme);
         btnDisplayTheme.setOnClickListener(this);
