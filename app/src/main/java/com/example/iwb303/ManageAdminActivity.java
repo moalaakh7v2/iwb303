@@ -54,6 +54,6 @@ public class ManageAdminActivity extends AppCompatActivity {
     }
 
     public void Add(View view){
-
+int x=0;
     }
 }
