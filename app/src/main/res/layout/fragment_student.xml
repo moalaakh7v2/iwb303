@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="@+id/btnEditStudent" />
 
     <Spinner
-        android:id="@+id/depAllDepts"
+        android:id="@+id/drpStudentGender"
         android:layout_width="220dp"
         android:layout_height="54dp"
         android:layout_marginTop="48dp"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/depAllDepts" />
+        app:layout_constraintTop_toTopOf="@+id/drpStudentGender" />
 
     <TextView
         android:id="@+id/textView2"

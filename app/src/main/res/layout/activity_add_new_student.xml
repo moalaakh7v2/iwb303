@@ -79,11 +79,11 @@
         android:id="@+id/lblAddPassword"
         android:layout_width="161dp"
         android:layout_height="35dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
         android:text="Password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drpAddGender" />
+        app:layout_constraintTop_toBottomOf="@+id/drpStudentGender" />
 
     <TextView
         android:id="@+id/lblAddFName"
@@ -140,7 +140,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtAddLName" />
 
     <Spinner
-        android:id="@+id/depAllDepts"
+        android:id="@+id/drpStudentGender"
         android:layout_width="182dp"
         android:layout_height="43dp"
         android:layout_marginTop="12dp"
@@ -152,6 +152,7 @@
         android:layout_width="123dp"
         android:layout_height="52dp"
         android:layout_marginTop="42dp"
+        android:onClick="btnAddStudent"
         android:text="Applay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

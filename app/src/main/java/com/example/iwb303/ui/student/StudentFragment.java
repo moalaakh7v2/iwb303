@@ -4,20 +4,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.example.iwb303.R;
 import com.example.iwb303.databinding.FragmentStudentBinding;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import Controller.DBContext;
+import Controller.StudentsController;
+import Models.ViewModels.StudentInfoVM;
 
 public class StudentFragment extends Fragment implements View.OnClickListener {
 
     private FragmentStudentBinding binding;
     View root;
     Button btnEditStudent;
+    Spinner drpAllStudent;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -26,6 +33,13 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         root = binding.getRoot();
         btnEditStudent = (Button) root.findViewById(R.id.btnEditStudent);
         btnEditStudent.setOnClickListener(this);
+        drpAllStudent = root.findViewById(R.id.drpStudentGender);
+        DBContext context =new DBContext(getActivity());
+        List<StudentInfoVM> studentsInfo = StudentsController.getStudents(context);
+        ArrayAdapter<StudentInfoVM> adapter = new ArrayAdapter<StudentInfoVM>(
+                getActivity(), android.R.layout.simple_spinner_item, studentsInfo);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        drpAllStudent.setAdapter(adapter);
         return root;
     }
 

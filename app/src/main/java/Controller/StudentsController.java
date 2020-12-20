@@ -23,11 +23,19 @@ public class StudentsController {
         SQLiteDatabase database = context.getReadableDatabase();
         Cursor cursor = database.rawQuery(Query,null);
         if(!cursor.moveToFirst()) {
-            Student user =new Student("Emad","Kh", Gender.Male.toString()
-                    ,"Damas","0931640066" );
-            LoginInfo userInfo =new LoginInfo(1,"Emad7","123456",1, LocalDateTime.now());
-            AddUser(context,user,userInfo);
+            LoginInfo userInfo =new LoginInfo(3,"Emad7","123456",null, LocalDateTime.now());
+            AddAdmin(context,userInfo);
         }
+    }
+    static void AddAdmin(DBContext context,LoginInfo loginInfo){
+        SQLiteDatabase database = context.getWritableDatabase();
+        ContentValues userInfoValues = new ContentValues();
+        userInfoValues.put("Id", loginInfo.getId());
+        userInfoValues.put("Username", loginInfo.getUsername());
+        userInfoValues.put("Password", loginInfo.getPassword());
+        userInfoValues.put("LastLoginDate", String.valueOf(LoginInfo.getLastLoginDate()));
+        database.insert("LoginInfos",null,userInfoValues);
+        database.close();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -48,7 +56,7 @@ public class StudentsController {
         }
         return null;
     }
-    public StudentInfoVM GetStudentInfo(DBContext context, int Id)
+    public static StudentInfoVM GetStudentInfo(DBContext context, int Id)
     {
         String Query="Select Student.* , Username From Student,LoginInfos" +
                 " Where Student.Id = StudentId And Id = "+Id+";";
@@ -69,7 +77,7 @@ public class StudentsController {
         return null;
     }
 
-    public List<StudentInfoVM> getStudents(DBContext context) {
+    public static List<StudentInfoVM> getStudents(DBContext context) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<StudentInfoVM> StudentsList = new ArrayList<>();
         String getAll = "Select Student.* , Username From Student,LoginInfos " +
@@ -93,10 +101,12 @@ public class StudentsController {
         return  StudentsList;
     }
 
-    public static void AddUser(DBContext context , Student user, LoginInfo LoginInfo)
+    public static void AddStudent(DBContext context , Student user, LoginInfo LoginInfo)
     {
         SQLiteDatabase database = context.getWritableDatabase();
+        int studentId =GetMaxId(context) + 1;
         ContentValues UserValues = new ContentValues();
+        UserValues.put("Id", studentId);
         UserValues.put("Firstname", user.getFirstname());
         UserValues.put("Lastname", user.getLastname());
         UserValues.put("Gender", user.getGender());
@@ -108,18 +118,18 @@ public class StudentsController {
         userInfoValues.put("Id", LoginInfo.getId());
         userInfoValues.put("Username", LoginInfo.getUsername());
         userInfoValues.put("Password", LoginInfo.getPassword());
-        userInfoValues.put("StudentId", LoginInfo.getStudentId());
+        userInfoValues.put("StudentId", studentId);
         userInfoValues.put("LastLoginDate", String.valueOf(LoginInfo.getLastLoginDate()));
         database.insert("LoginInfos",null,userInfoValues);
         database.close();
     }
-    public void UpdateStudent(DBContext context , Student user, LoginInfo userInfo)
+    public static void UpdateStudent(DBContext context , Student user, LoginInfo userInfo)
     {
         SQLiteDatabase database = context.getWritableDatabase();
         String Query = "Update Students set Firstname = '"+user.getFirstname()+"' , Lastname ='"+user.getLastname()+"' , Address = '"+user.getAddress()+"' ,Gender ='"+user.getGender()+"',RegYeer ="+user.getRegYeer()+",MobileNo='"+user.getMobileNo()+"'";
         database.execSQL(Query);
     }
-    public boolean deleteStudent(DBContext context ,int Id)
+    public static boolean deleteStudent(DBContext context ,int Id)
     {
         SQLiteDatabase database = context.getWritableDatabase();
         Boolean IsLDeleted = database.delete("LoginInfos", " StudentId =?", new String[]{String.valueOf(Id)}) > 0;
@@ -128,5 +138,16 @@ public class StudentsController {
             return true;
         else
             return false;
+    }
+    public static int GetMaxId(DBContext context)
+    {
+        int maxId = 0;
+        String Query = "Select Max(Id) From Students;";
+        SQLiteDatabase database = context.getReadableDatabase();
+        Cursor cursor = database.rawQuery(Query,null);
+        if(cursor.moveToFirst()) {
+            maxId = cursor.getInt(0);
+        }
+        return maxId;
     }
 }

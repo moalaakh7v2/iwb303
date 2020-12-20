@@ -53,6 +53,10 @@ public class ManageAdminActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void Add(View view){
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        moveTaskToBack(false);
     }
 }

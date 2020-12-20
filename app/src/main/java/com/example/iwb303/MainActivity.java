@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putInt("Id",loginInfo.getId());
                 editor.putString("Username",loginInfo.getUsername());
 
-                if(loginInfo.getStudentId() != null)
+                if(loginInfo.getStudentId() != 0)
                 {
                     editor.putString("Status","Student");
                     editor.commit();
