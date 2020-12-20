@@ -20,6 +20,7 @@ import com.example.iwb303.tab.MySubjects.MySubjectsFragment;
 
 import Controller.DBContext;
 import Controller.StudentsController;
+import Models.LoginInfo;
 
 import java.time.Instant;
 
@@ -52,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
         SharedPreferences settings = getSharedPreferences("UserInfo", 0);
-        if (settings.getString("Username", "") != "")
+        if (settings.getString("Status", "notUser") == "Student")
+        {
+            startActivity(new Intent(MainActivity.this, ManageStudent.class));
+        }
+        if (settings.getString("Status", "notUser") == "Admin")
         {
             startActivity(new Intent(MainActivity.this, ManageAdminActivity.class));
         }
@@ -68,12 +73,25 @@ public class MainActivity extends AppCompatActivity {
         TextView txtUsername = findViewById(R.id.txtUserName);
         TextView txtPassword = findViewById(R.id.txtPassword);
         if(!txtUsername.getText().toString().isEmpty() && !txtPassword.getText().toString().isEmpty()) {
-            if (null != StudentsController.Login(context,txtUsername.getText().toString(), txtPassword.getText().toString())) {
+           LoginInfo loginInfo = StudentsController.Login(context,txtUsername.getText().toString(), txtPassword.getText().toString());
+            if (loginInfo != null) {
                 SharedPreferences settings = getSharedPreferences("UserInfo", 0);
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putString("Username",txtUsername.getText().toString());
-                editor.commit();
-                startActivity(new Intent(MainActivity.this, ManageAdminActivity.class));
+                editor.putInt("Id",loginInfo.getId());
+                editor.putString("Username",loginInfo.getUsername());
+
+                if(loginInfo.getStudentId() != null)
+                {
+                    editor.putString("Status","Student");
+                    editor.commit();
+                    startActivity(new Intent(MainActivity.this, ManageStudent.class));
+                }
+                else
+                {
+                    editor.putString("Status","Admin");
+                    editor.commit();
+                    startActivity(new Intent(MainActivity.this, ManageAdminActivity.class));
+                }
             } else {
                 Toast.makeText(MainActivity.this, "UserName Or password Worng !", Toast.LENGTH_LONG).show();
             }
