@@ -53,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
         SharedPreferences settings = getSharedPreferences("UserInfo", 0);
-        if (settings.getString("Status", "notUser") == "Student")
+        if (settings.getString("Status", "notUser").equals("Student"))
         {
             startActivity(new Intent(MainActivity.this, ManageStudent.class));
         }
-        if (settings.getString("Status", "notUser") == "Admin")
+        if (settings.getString("Status", "notUser").equals("Admin"))
         {
             startActivity(new Intent(MainActivity.this, ManageAdminActivity.class));
         }

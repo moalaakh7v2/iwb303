@@ -18,7 +18,8 @@
         <activity
             android:name=".ManageAdminActivity"
             android:label="@string/title_activity_manage_admin"
-            android:theme="@style/AppTheme1.NoActionBar" />
+            android:theme="@style/AppTheme1.NoActionBar"
+            android:screenOrientation="landscape"/>
         <activity android:name=".ChooseTheme" />
         <activity
             android:name=".ManageStudent"
