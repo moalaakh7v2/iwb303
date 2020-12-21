@@ -28,17 +28,16 @@ public class DBContext extends SQLiteOpenHelper {
                 ") " ;
         db.execSQL(Students);
         String LoginInfos ="Create Table LoginInfos (" +
-                "Id int Primary Key," +
+                "Id INTEGER Primary Key AUTOINCREMENT NOT NULL," +
                 "Username Text not null," +
                 "Password Text not null," +
                 "StudentId int," +
-                "LastLoginDate Datetime," +
                 "FOREIGN KEY(StudentId) REFERENCES Students(Id)" +
                 ")";
         db.execSQL(LoginInfos);
                String Instructors =
                 "Create Table Instructors (" +
-                "Id int Primary Key," +
+                "Id INTEGER Primary Key AUTOINCREMENT NOT NULL," +
                 "Firstname Text not null," +
                 "Lastname Text not null," +
                 "Gender Text not null," +
@@ -48,13 +47,13 @@ public class DBContext extends SQLiteOpenHelper {
         db.execSQL(Instructors);
         String Sections =
                 "Create Table Sections(" +
-                "SectionNo int Primary Key," +
+                "SectionNo INTEGER Primary Key AUTOINCREMENT NOT NULL," +
                 "SectionName Text not null" +
                 ") ";
         db.execSQL(Sections);
         String Courses =
                 "Create Table Courses (" +
-                "Id int Primary Key," +
+                "Id INTEGER Primary Key AUTOINCREMENT NOT NULL," +
                 "Title Text not null," +
                 "[Hours] int not null ," +
                 "SectionNo int not null ," +
@@ -76,7 +75,7 @@ public class DBContext extends SQLiteOpenHelper {
         db.execSQL(CoursesinSections);
         String Enrollments =
                 "Create Table Enrollments (" +
-                "Id int Primary Key," +
+                "Id INTEGER Primary Key AUTOINCREMENT NOT NULL," +
                 "StudentId int not null," +
                 "SectionNo int not null," +
                 "CourseId int not null," +

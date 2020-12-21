@@ -24,7 +24,7 @@ public class StudentsController {
         SQLiteDatabase database = context.getReadableDatabase();
         Cursor cursor = database.rawQuery(Query,null);
         if(!cursor.moveToFirst()) {
-                LoginInfo userInfo = new LoginInfo("Emad7", "123456", null, LocalDateTime.now());
+                LoginInfo userInfo = new LoginInfo("Emad7", "123456", null);
                 AddAdmin(context,userInfo);
         }
     }
@@ -33,7 +33,6 @@ public class StudentsController {
         ContentValues userInfoValues = new ContentValues();
         userInfoValues.put("Username", loginInfo.getUsername());
         userInfoValues.put("Password", loginInfo.getPassword());
-        userInfoValues.put("LastLoginDate", String.valueOf(loginInfo.getLastLoginDate()));
         database.insert("LoginInfos",null,userInfoValues);
         database.close();
     }
@@ -51,7 +50,6 @@ public class StudentsController {
             userInfo.setUsername(cursor.getString(1));
             userInfo.setPassword(cursor.getString(2));
             userInfo.setStudentId(cursor.getInt(3));
-            userInfo.setLastLoginDate(LocalDateTime.parse(cursor.getString(4)));
             return userInfo;
         }
         return null;
@@ -119,14 +117,17 @@ public class StudentsController {
         userInfoValues.put("Username", loginInfo.getUsername());
         userInfoValues.put("Password", loginInfo.getPassword());
         userInfoValues.put("StudentId", studentId);
-        userInfoValues.put("LastLoginDate", String.valueOf(LocalDateTime.now()));
         database.insert("LoginInfos",null,userInfoValues);
         database.close();
     }
     public static void UpdateStudent(DBContext context , Student user, LoginInfo userInfo)
     {
         SQLiteDatabase database = context.getWritableDatabase();
-        String Query = "Update Students set Firstname = '"+user.getFirstname()+"' , Lastname ='"+user.getLastname()+"' , Address = '"+user.getAddress()+"' ,Gender ='"+user.getGender()+"',RegYeer ="+user.getRegYeer()+",MobileNo='"+user.getMobileNo()+"'";
+        String Query = "Update Students set Firstname = '"+user.getFirstname()+"' , Lastname ='"+user.getLastname()+"' , Address = '"+user.getAddress()+"' ,Gender ='"+user.getGender()+"',RegYeer ="+user.getRegYeer()+",MobileNo='"+user.getMobileNo()+"'" +
+                " Where Id = "+user.getId()+" ;";
+        database.execSQL(Query);
+        Query = "Update LoginInfos set Username = '"+userInfo.getUsername()+"' , Password ='"+userInfo.getPassword()+"'" +
+                " Where Id = "+userInfo.getId()+" ;";
         database.execSQL(Query);
     }
     public static boolean deleteStudent(DBContext context ,int Id)

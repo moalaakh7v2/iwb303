@@ -1,22 +1,19 @@
 package Models;
 
-import java.time.LocalDateTime;
 
 public class LoginInfo {
    int Id;
    String Username;
    String Password;
    Integer StudentId;
-   LocalDateTime LastLoginDate;
 
     public LoginInfo() {
     }
 
-    public LoginInfo(String username, String password, Integer studentId, LocalDateTime lastLoginDate) {
+    public LoginInfo(String username, String password, Integer studentId) {
         Username = username;
         Password = password;
         StudentId = studentId;
-        LastLoginDate = lastLoginDate;
     }
 
     public int getId() {
@@ -51,11 +48,4 @@ public class LoginInfo {
         StudentId = studentId;
     }
 
-    public  LocalDateTime getLastLoginDate() {
-        return LastLoginDate;
-    }
-
-    public void setLastLoginDate(LocalDateTime lastLoginDate) {
-        LastLoginDate = lastLoginDate;
-    }
 }
