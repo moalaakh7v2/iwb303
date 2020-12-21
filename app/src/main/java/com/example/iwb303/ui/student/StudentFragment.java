@@ -8,12 +8,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 import com.example.iwb303.databinding.FragmentStudentBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Controller.DBContext;
@@ -26,8 +30,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
     View root;
     Button btnEditStudent;
     Button btnAddNewStudent;
-    Spinner drpAllStudent;
-    GridView grdDisplayStudents;
+    TextView lblAllStudents;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -38,13 +41,20 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         btnEditStudent.setOnClickListener(this);
         btnAddNewStudent = (Button) root.findViewById(R.id.btnAddNewStudent);
         btnAddNewStudent.setOnClickListener(this);
-        grdDisplayStudents = root.findViewById(R.id.grdDisplayStudents);
-        DBContext context =new DBContext(getActivity());
-        List<StudentInfoVM> studentsInfo = StudentsController.getStudents(context);
-        ArrayAdapter<StudentInfoVM> adapter = new ArrayAdapter<StudentInfoVM>(
-                getActivity(), android.R.layout.simple_spinner_item, studentsInfo);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        grdDisplayStudents.setAdapter(adapter);
+        lblAllStudents = root.findViewById(R.id.lblAllStudents);
+        StringBuffer buffer=new StringBuffer();
+        DBContext context = new DBContext(getActivity());
+        List<StudentInfoVM> studentInfoVMS = StudentsController.getStudents(context);
+        for (StudentInfoVM u: studentInfoVMS)
+        {
+            buffer.append("Id: "+ u.getId() +"\n");
+            buffer.append("UserName: "+ u.getUsername() +"\n");
+            buffer.append("RegYear: "+ u.getMobileNo() +"\n");
+            buffer.append("Mobile: "+ u.getMobileNo() +"\n\n");
+            buffer.append("---------------------------\n");
+        }
+        lblAllStudents.setText(buffer.toString());
+
         return root;
     }
 

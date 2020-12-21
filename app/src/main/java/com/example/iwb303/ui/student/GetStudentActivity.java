@@ -4,11 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
 
 import com.example.iwb303.R;
 
+import Controller.DBContext;
+import Controller.StudentsController;
+import Models.ViewModels.StudentInfoVM;
+
 public class GetStudentActivity extends AppCompatActivity {
 
+    EditText txtStudentId ,txtEditFName,txtEditLName,txtEditPhone,txtEditUName,txtEditPass,txtEditAddress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +41,32 @@ public class GetStudentActivity extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_get_student);
+        txtStudentId = findViewById(R.id.txtStudentId);
+        txtEditFName = findViewById(R.id.txtEditFName);
+        txtEditPhone = findViewById(R.id.txtEditPhone);
+        txtEditUName = findViewById(R.id.txtEditUName);
+        txtEditPass = findViewById(R.id.txtEditPass);
+        txtEditLName = findViewById(R.id.txtEditLName);
+        txtEditAddress = findViewById(R.id.txtEditAddress);
+
+    }
+
+    public void btnGetStudentById_Click(View view){
+        if (TextUtils.isEmpty(txtStudentId.getText().toString())){
+            //write Error
+        }
+        DBContext context = new DBContext(GetStudentActivity.this);
+        StudentInfoVM studentInfoVM = StudentsController.GetStudentInfo(context,Integer.getInteger(txtStudentId.getText().toString()));
+        EnableButton(true);
+    }
+
+    void EnableButton(boolean IsEnable){
+        txtStudentId.setEnabled(IsEnable);
+        txtEditPhone.setEnabled(IsEnable);
+        txtEditUName.setEnabled(IsEnable);
+        txtEditPass.setEnabled(IsEnable);
+        txtEditLName.setEnabled(IsEnable);
+        txtEditAddress.setEnabled(IsEnable);
+
     }
 }

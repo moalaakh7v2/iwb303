@@ -1,8 +1,5 @@
 package com.example.iwb303.ui.student;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,10 +9,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.iwb303.MainActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.iwb303.R;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 
 import Controller.DBContext;
 import Controller.StudentsController;
@@ -67,7 +67,7 @@ public class AddNewStudentActivity extends AppCompatActivity {
         student.setMobileNo(txtAddPhone.getText().toString());
         student.setAddress(txtAddAddress.getText().toString());
         student.setGender(drpStudentGender.getSelectedItem().toString());
-        student.setRegYeer(LocalDate.now().getYear());
+        student.setRegYeer(Calendar.getInstance().get(Calendar.YEAR));
         LoginInfo loginInfo =new LoginInfo();
         loginInfo.setUsername(txtAddUName.getText().toString());
         loginInfo.setPassword(txtAddPassword.getText().toString());
