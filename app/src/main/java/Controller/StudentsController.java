@@ -7,6 +7,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,17 +24,16 @@ public class StudentsController {
         SQLiteDatabase database = context.getReadableDatabase();
         Cursor cursor = database.rawQuery(Query,null);
         if(!cursor.moveToFirst()) {
-            LoginInfo userInfo =new LoginInfo(3,"Emad7","123456",null, LocalDateTime.now());
-            AddAdmin(context,userInfo);
+                LoginInfo userInfo = new LoginInfo("Emad7", "123456", null, LocalDateTime.now());
+                AddAdmin(context,userInfo);
         }
     }
     static void AddAdmin(DBContext context,LoginInfo loginInfo){
         SQLiteDatabase database = context.getWritableDatabase();
         ContentValues userInfoValues = new ContentValues();
-        userInfoValues.put("Id", loginInfo.getId());
         userInfoValues.put("Username", loginInfo.getUsername());
         userInfoValues.put("Password", loginInfo.getPassword());
-        userInfoValues.put("LastLoginDate", String.valueOf(LoginInfo.getLastLoginDate()));
+        userInfoValues.put("LastLoginDate", String.valueOf(loginInfo.getLastLoginDate()));
         database.insert("LoginInfos",null,userInfoValues);
         database.close();
     }
@@ -58,8 +58,8 @@ public class StudentsController {
     }
     public static StudentInfoVM GetStudentInfo(DBContext context, int Id)
     {
-        String Query="Select Student.* , Username From Student,LoginInfos" +
-                " Where Student.Id = StudentId And Id = "+Id+";";
+        String Query="Select Students.* , Username From Students,LoginInfos" +
+                " Where Students.Id = StudentId And Id = "+Id+";";
         SQLiteDatabase database = context.getReadableDatabase();
         Cursor cursor = database.rawQuery(Query,null);
         if(cursor.moveToFirst()) {
@@ -80,8 +80,8 @@ public class StudentsController {
     public static List<StudentInfoVM> getStudents(DBContext context) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<StudentInfoVM> StudentsList = new ArrayList<>();
-        String getAll = "Select Student.* , Username From Student,LoginInfos " +
-                " Where Student.Id = StudentId  ";
+        String getAll = "Select Students.* , Username From Students,LoginInfos " +
+                " Where Students.Id = StudentId  ";
 
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())
@@ -101,7 +101,8 @@ public class StudentsController {
         return  StudentsList;
     }
 
-    public static void AddStudent(DBContext context , Student user, LoginInfo LoginInfo)
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static void AddStudent(DBContext context , Student user, LoginInfo loginInfo)
     {
         SQLiteDatabase database = context.getWritableDatabase();
         int studentId =GetMaxId(context) + 1;
@@ -115,11 +116,10 @@ public class StudentsController {
         UserValues.put("RegYeer", user.getRegYeer());
         database.insert("Students",null,UserValues);
         ContentValues userInfoValues = new ContentValues();
-        userInfoValues.put("Id", LoginInfo.getId());
-        userInfoValues.put("Username", LoginInfo.getUsername());
-        userInfoValues.put("Password", LoginInfo.getPassword());
+        userInfoValues.put("Username", loginInfo.getUsername());
+        userInfoValues.put("Password", loginInfo.getPassword());
         userInfoValues.put("StudentId", studentId);
-        userInfoValues.put("LastLoginDate", String.valueOf(LoginInfo.getLastLoginDate()));
+        userInfoValues.put("LastLoginDate", String.valueOf(LocalDateTime.now()));
         database.insert("LoginInfos",null,userInfoValues);
         database.close();
     }

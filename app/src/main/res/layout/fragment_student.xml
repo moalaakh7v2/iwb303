@@ -8,45 +8,44 @@
 
 
     <Button
-        android:id="@+id/btnEditStudent2"
+        android:id="@+id/btnEditStudent"
+        android:layout_width="114dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="36dp"
+        android:text="Edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grdDisplayStudents" />
+
+    <Button
+        android:id="@+id/btnAddNewStudent"
         android:layout_width="137dp"
         android:layout_height="43dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="104dp"
         android:text="Add Student"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnEditStudent" />
 
-    <Spinner
-        android:id="@+id/drpStudentGender"
-        android:layout_width="220dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/btnEditStudent"
-        android:layout_width="114dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="88dp"
-        android:text="Edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/drpStudentGender" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="98dp"
         android:layout_height="27dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="56dp"
         android:text="All Students"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <GridView
+        android:id="@+id/grdDisplayStudents"
+        android:layout_width="409dp"
+        android:layout_height="379dp"
+        android:layout_marginTop="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

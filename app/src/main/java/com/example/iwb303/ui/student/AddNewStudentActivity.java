@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 
 import java.time.LocalDate;
@@ -59,8 +61,6 @@ public class AddNewStudentActivity extends AppCompatActivity {
         EditText txtAddUName = findViewById(R.id.txtAddUName);
         EditText txtAddPassword = findViewById(R.id.txtAddPassword);
         EditText txtAddAddress = findViewById(R.id.txtAddAddress);
-
-
         Student student = new Student();
         student.setFirstname(txtAddFName.getText().toString());
         student.setLastname(txtAddLName.getText().toString());
@@ -72,5 +72,8 @@ public class AddNewStudentActivity extends AppCompatActivity {
         loginInfo.setUsername(txtAddUName.getText().toString());
         loginInfo.setPassword(txtAddPassword.getText().toString());
         StudentsController.AddStudent(new DBContext(AddNewStudentActivity.this),student,loginInfo);
+        Toast.makeText(AddNewStudentActivity.this, "Added Successfully", Toast.LENGTH_LONG).show();
+        finish();
+
     }
 }

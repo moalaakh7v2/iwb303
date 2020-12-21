@@ -7,13 +7,12 @@ public class LoginInfo {
    String Username;
    String Password;
    Integer StudentId;
-  static LocalDateTime LastLoginDate;
+   LocalDateTime LastLoginDate;
 
     public LoginInfo() {
     }
 
-    public LoginInfo(int Id, String username, String password, Integer studentId, LocalDateTime lastLoginDate) {
-        Id = Id;
+    public LoginInfo(String username, String password, Integer studentId, LocalDateTime lastLoginDate) {
         Username = username;
         Password = password;
         StudentId = studentId;
@@ -52,7 +51,7 @@ public class LoginInfo {
         StudentId = studentId;
     }
 
-    public static LocalDateTime getLastLoginDate() {
+    public  LocalDateTime getLastLoginDate() {
         return LastLoginDate;
     }
 
