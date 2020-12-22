@@ -56,7 +56,8 @@ public class GetStudentActivity extends AppCompatActivity {
             //write Error
         }
         DBContext context = new DBContext(GetStudentActivity.this);
-        StudentInfoVM studentInfoVM = StudentsController.GetStudentInfo(context,Integer.getInteger(txtStudentId.getText().toString()));
+        Integer x =Integer.parseInt(txtStudentId.getText().toString());
+        StudentInfoVM studentInfoVM = StudentsController.GetStudentInfo(context,x);
         EnableButton(true);
     }
 
