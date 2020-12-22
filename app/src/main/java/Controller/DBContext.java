@@ -55,17 +55,13 @@ public class DBContext extends SQLiteOpenHelper {
                 "Create Table Courses (" +
                 "Id INTEGER Primary Key AUTOINCREMENT NOT NULL," +
                 "Title Text not null," +
-                "[Hours] int not null ," +
-                "SectionNo int not null ," +
-                "FOREIGN KEY(SectionNo) REFERENCES Sections(SectionNo)" +
-                ")"  ;
+                "[Hours] int not null )" ;
         db.execSQL(Courses);
         String CoursesinSections =
                 "Create Table CoursesinSections(" +
                 "SectionNo int not null," +
                 "CourseId int not null," +
                 "InstructorId int not null," +
-                "[Time] Time not null, " +
                 "RoomNo int not null," +
                 "PRIMARY KEY (SectionNo, CourseId)," +
                 "FOREIGN KEY(SectionNo) REFERENCES Sections(SectionNo)," +

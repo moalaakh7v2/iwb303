@@ -12,11 +12,10 @@ public class CourseinSection {
     public CourseinSection() {
     }
 
-    public CourseinSection(int sectionNo, int courseId, int instructorId, Time time, String roomNo) {
+    public CourseinSection(int sectionNo, int courseId, int instructorId, String roomNo) {
         SectionNo = sectionNo;
         CourseId = courseId;
         InstructorId = instructorId;
-        Time = time;
         RoomNo = roomNo;
     }
 
@@ -42,14 +41,6 @@ public class CourseinSection {
 
     public void setInstructorId(int instructorId) {
         InstructorId = instructorId;
-    }
-
-    public java.sql.Time getTime() {
-        return Time;
-    }
-
-    public void setTime(Time time) {
-        Time = time;
     }
 
     public String getRoomNo() {
