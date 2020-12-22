@@ -3,10 +3,9 @@ package Models;
 import java.sql.Time;
 
 public class CourseinSection {
-   int SectionNo;
-   int CourseId;
-   int InstructorId;
-   Time Time;
+   Integer SectionNo;
+   Integer CourseId;
+   Integer InstructorId;
    String RoomNo;
 
     public CourseinSection() {

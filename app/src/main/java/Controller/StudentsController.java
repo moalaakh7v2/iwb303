@@ -99,7 +99,6 @@ public class StudentsController {
         return  StudentsList;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static void AddStudent(DBContext context , Student user, LoginInfo loginInfo)
     {
         SQLiteDatabase database = context.getWritableDatabase();

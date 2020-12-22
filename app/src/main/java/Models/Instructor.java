@@ -1,10 +1,9 @@
 package Models;
 
 public class Instructor {
-    int Id ;
+    Integer Id ;
     String  Firstname;
     String Lastname;
-    Integer RegYeer ;
     String Gender;
     String Address;
     String mobileNo ;
@@ -12,10 +11,9 @@ public class Instructor {
     public Instructor() {
     }
 
-    public Instructor(String firstname, String lastname, Integer regYeer, String gender, String address, String mobileNo) {
+    public Instructor(String firstname, String lastname, String gender, String address, String mobileNo) {
         Firstname = firstname;
         Lastname = lastname;
-        RegYeer = regYeer;
         Gender = gender;
         Address = address;
         this.mobileNo = mobileNo;
@@ -43,14 +41,6 @@ public class Instructor {
 
     public void setLastname(String lastname) {
         Lastname = lastname;
-    }
-
-    public Integer getRegYeer() {
-        return RegYeer;
-    }
-
-    public void setRegYeer(Integer regYeer) {
-        RegYeer = regYeer;
     }
 
     public String getGender() {
