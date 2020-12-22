@@ -11,15 +11,8 @@ public class Student {
 
     public Student() { }
 
-    public Student(String firstname, String lastname, String gender, String address, String mobileNo) {
-        Firstname = firstname;
-        Lastname = lastname;
-        Gender = gender;
-        Address = address;
-        MobileNo = mobileNo;
-    }
-
-    public Student(String firstname, String lastname, Integer regYeer, String gender, String address, String mobileNo) {
+    public Student(Integer id ,String firstname, String lastname, Integer regYeer, String gender, String address, String mobileNo) {
+        Id = id;
         Firstname = firstname;
         Lastname = lastname;
         RegYeer = regYeer;

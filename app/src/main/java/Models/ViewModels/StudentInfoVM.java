@@ -1,25 +1,24 @@
 package Models.ViewModels;
 
 public class StudentInfoVM {
-    int Id ;
+    Integer Id ;
     String  Firstname;
     String Lastname;
     String Username;
+    String Password;
     Integer RegYeer ;
-    String Gender;
     String Address;
     String MobileNo ;
 
     public StudentInfoVM() {
     }
 
-    public StudentInfoVM(int id, String firstname, String lastname, String username, Integer regYeer, String gender, String address, String mobileNo) {
+    public StudentInfoVM(Integer id, String firstname, String lastname, String username, Integer regYeer, String address, String mobileNo) {
         Id = id;
         Firstname = firstname;
         Lastname = lastname;
         Username = username;
         RegYeer = regYeer;
-        Gender = gender;
         Address = address;
         MobileNo = mobileNo;
     }
@@ -64,12 +63,10 @@ public class StudentInfoVM {
         RegYeer = regYeer;
     }
 
-    public String getGender() {
-        return Gender;
-    }
+    public String getPassword() { return Password; }
 
-    public void setGender(String gender) {
-        Gender = gender;
+    public void setPassword(String password) {
+        Password = password;
     }
 
     public String getAddress() {

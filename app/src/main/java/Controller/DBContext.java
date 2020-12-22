@@ -18,7 +18,7 @@ public class DBContext extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String Students =
                 "Create Table Students (" +
-                "Id INTEGER Primary Key AUTOINCREMENT NOT NULL," +
+                "Id INTEGER Primary Key ," +
                 "Firstname Text not null," +
                 "Lastname Text not null," +
                 "RegYeer int," +
