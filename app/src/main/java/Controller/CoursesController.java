@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.Course;
-import Models.LoginInfo;
-import Models.Student;
-import Models.ViewModels.StudentInfoVM;
 
 public class CoursesController {
     public static Course GetCourse(DBContext context, int Id)
@@ -23,7 +20,6 @@ public class CoursesController {
             course.setId(cursor.getInt(0));
             course.setTitle(cursor.getString(1));
             course.setHours(cursor.getInt(2));
-            course.setSectionNo(cursor.getInt(3));
             return course;
         }
         return null;
@@ -40,7 +36,6 @@ public class CoursesController {
                 course.setId(cursor.getInt(0));
                 course.setTitle(cursor.getString(1));
                 course.setHours(cursor.getInt(2));
-                course.setSectionNo(cursor.getInt(3));
                 CoursesList.add(course);
             }while (cursor.moveToNext());
         return  CoursesList;
@@ -52,15 +47,14 @@ public class CoursesController {
         ContentValues CourseValues = new ContentValues();
         CourseValues.put("Title", course.getTitle());
         CourseValues.put("Hours", course.getHours());
-        CourseValues.put("SectionNo", course.getSectionNo());
         database.insert("Courses",null,CourseValues);
         database.close();
     }
     public static void UpdateCourse(DBContext context ,Course course)
     {
         SQLiteDatabase database = context.getWritableDatabase();
-        String Query = "Update Courses set Title = '"+course.getTitle()+"' , Hours ="+course.getHours()+" , SectionNo = "+course.getSectionNo() +
-                "Where Id = "+course.getId()+" ;";
+        String Query = "Update Courses set Title = '"+course.getTitle()+"' , Hours ="+course.getHours()+
+                " Where Id = "+course.getId()+" ;";
         database.execSQL(Query);
     }
     public static boolean deleteCourse(DBContext context ,int Id)

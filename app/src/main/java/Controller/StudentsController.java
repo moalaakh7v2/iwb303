@@ -57,7 +57,7 @@ public class StudentsController {
     public static StudentInfoVM GetStudentInfo(DBContext context, int Id)
     {
         String Query="Select Students.* , Username,Password From Students,LoginInfos" +
-                " Where Students.Id = StudentId And Id = "+Id+";";
+                " Where Students.Id = StudentId And Students.Id = "+Id+";";
         SQLiteDatabase database = context.getReadableDatabase();
         Cursor cursor = database.rawQuery(Query,null);
         if(cursor.moveToFirst()) {
