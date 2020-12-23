@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.teacher.AddNewTeacherActivity">
+
     <TextView
         android:id="@+id/lblAddTeacherFName"
         android:layout_width="126dp"
         android:layout_height="27dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="72dp"
         android:text="First Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,11 +27,11 @@
         android:id="@+id/txtAddTeacherFName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.293"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblAddTeacherFName" />
 
@@ -32,10 +39,9 @@
         android:id="@+id/lblAddTeacherLName"
         android:layout_width="125dp"
         android:layout_height="31dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="Last Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.209"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAddTeacherFName" />
 
@@ -43,11 +49,11 @@
         android:id="@+id/txtAddTeacherLName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.298"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblAddTeacherLName" />
 
@@ -55,9 +61,9 @@
         android:id="@+id/drpTeacherGender"
         android:layout_width="205dp"
         android:layout_height="47dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAddTeacherPhone" />
 
@@ -69,7 +75,7 @@
         android:ems="10"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblAddTeacherPhone" />
 
@@ -77,10 +83,10 @@
         android:id="@+id/lblAddTeacherPhone"
         android:layout_width="121dp"
         android:layout_height="34dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="Phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAddTeacherLName" />
 
@@ -88,11 +94,11 @@
         android:id="@+id/txtAddTeacherAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblAddTeacherAddress" />
 
@@ -100,10 +106,10 @@
         android:id="@+id/lblAddTeacherAddress"
         android:layout_width="108dp"
         android:layout_height="29dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
         android:text="Address"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drpTeacherGender" />
 
@@ -117,3 +123,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAddTeacherAddress" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
