@@ -45,7 +45,7 @@ public class CoursesinSectionsController {
             }while (cursor.moveToNext());
         return  coursesinSectionsList;
     }
-    public static List<CourseinSection> GetCourseinSection(DBContext context, Student StudentId) {
+    public static List<CourseinSection> GetCourseinSection(DBContext context, Integer StudentId) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<CourseinSection> coursesinSectionsList = new ArrayList<>();
         String getAll = "Select * From CoursesinSections c " +
