@@ -34,7 +34,7 @@ public class DeptFragment extends Fragment implements View.OnClickListener {
         root = binding.getRoot();
         btnEditDept = (Button) root.findViewById(R.id.btnEditDept);
         btnEditDept.setOnClickListener(this);
-        btnAddDept = (Button) root.findViewById(R.id.btnAddNewStudent);
+        btnAddDept = (Button) root.findViewById(R.id.btnAddDept);
         btnAddDept.setOnClickListener(this);
         lblAllDepts = root.findViewById(R.id.lblAllDepts);
         StringBuffer buffer=new StringBuffer();

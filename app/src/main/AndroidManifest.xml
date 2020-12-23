@@ -8,7 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/svu_logo"
         android:supportsRtl="false">
-        <activity android:name=".ui.teacher.AddNewTeacherActivity"></activity>
+        <activity android:name=".ui.subject.AddNewCourseActivity"></activity>
+        <activity android:name=".ui.subject.GetCourseActivity" />
+        <activity android:name=".ui.subject.ManageCourseActivity" />
+        <activity android:name=".ui.teacher.AddNewTeacherActivity" />
         <activity android:name=".ui.teacher.GetTeacherActivity" />
         <activity android:name=".ui.dept.AddNewDeptActivity" />
         <activity android:name=".ui.dept.GetDeptActivity" />
@@ -17,7 +20,7 @@
         <activity
             android:name=".ManageAdminActivity"
             android:label="@string/title_activity_manage_admin"
-            android:theme="@style/AppTheme1.NoActionBar"/>
+            android:theme="@style/AppTheme1.NoActionBar" />
         <activity android:name=".ChooseTheme" />
         <activity
             android:name=".ManageStudent"

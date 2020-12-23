@@ -50,7 +50,6 @@ public class GetDeptActivity extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_get_dept);
-        setContentView(R.layout.activity_get_student);
         txtDeptId = findViewById(R.id.txtDeptId);
         txtEditSectionName = findViewById(R.id.txtEditSectionName);
         btnApplyEditSection = findViewById(R.id.btnApplyEditSection);
@@ -83,12 +82,11 @@ public class GetDeptActivity extends AppCompatActivity {
     public void btnApplyDeleteSection_Click(View view){
         DBContext context = new DBContext(GetDeptActivity.this);
         Integer sectionId =Integer.parseInt(txtDeptId.getText().toString());
-        CoursesController.deleteCourse(context,sectionId);
+        SectionsController.deleteSection(context,sectionId);
         Toast.makeText(GetDeptActivity.this, "Deleted Successfully", Toast.LENGTH_LONG).show();
         finish();
     }
     void EnableButton(boolean IsEnable){
-        txtDeptId.setEnabled(IsEnable);
         txtEditSectionName.setEnabled(IsEnable);
         btnApplyDeleteSection.setEnabled(IsEnable);
         btnApplyDeleteSection.setEnabled(IsEnable);

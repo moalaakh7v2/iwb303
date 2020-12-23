@@ -7,4 +7,25 @@
     tools:context=".ui.subject.SubjectFragment">
 
 
+    <Button
+        android:id="@+id/btnMngCourseInSection"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="44dp"
+        android:text="Manage Course In Section"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMngCourse" />
+
+    <Button
+        android:id="@+id/btnMngCourse"
+        android:layout_width="193dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="220dp"
+        android:text="Manage Course"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
