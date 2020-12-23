@@ -10,7 +10,6 @@
         android:supportsRtl="false">
         <activity android:name=".ui.SettingsActivity"></activity>
         <activity android:name=".ui.search.GetResultActivity" />
-        <activity android:name=".ui.search.SearchResultActivity" />
         <activity android:name=".ui.search.RaviewAllStudentsActivity" />
         <activity android:name=".ui.subject.AddNewCourseInSectionActivity" />
         <activity android:name=".ui.subject.AddNewCourseActivity" />
