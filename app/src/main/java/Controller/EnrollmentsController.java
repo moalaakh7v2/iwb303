@@ -26,19 +26,17 @@ public class EnrollmentsController {
                 enrollment.setStudentId(cursor.getInt(2));
                 enrollment.setGrade(cursor.getFloat(3));
                 EnrollmentsList.add(enrollment);
-
             }while (cursor.moveToNext());
         return  EnrollmentsList;
     }
-
     public static void AddEnrollment(DBContext context , Enrollment enrollment)
     {
         SQLiteDatabase database = context.getWritableDatabase();
         ContentValues enrollmentValues = new ContentValues();
-        enrollmentValues.put("Firstname", enrollment.getSectionNo());
-        enrollmentValues.put("Lastname", enrollment.getCourseId());
-        enrollmentValues.put("Gender", enrollment.getStudentId());
-        enrollmentValues.put("Address", enrollment.getGrade());
+        enrollmentValues.put("SectionNo", enrollment.getSectionNo());
+        enrollmentValues.put("CourseId", enrollment.getCourseId());
+        enrollmentValues.put("StudentId", enrollment.getStudentId());
+        enrollmentValues.put("Grade", enrollment.getGrade());
         database.insert("Enrollments",null,enrollmentValues);
         database.close();
     }
