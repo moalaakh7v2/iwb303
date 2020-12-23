@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -46,6 +47,11 @@ public class AddNewCourseActivity extends AppCompatActivity {
     public void btnAddCourse(View view){
         EditText txtAddCourseName = findViewById(R.id.txtAddCourseName);
         EditText txtAddCourseHours = findViewById(R.id.txtAddCourseHours);
+        if (TextUtils.isEmpty(txtAddCourseName.getText().toString()) ||
+                TextUtils.isEmpty(txtAddCourseHours.getText().toString())){
+            Toast.makeText(this, "Please enter all data", Toast.LENGTH_LONG).show();
+            return;
+        }
         Course course = new Course();
         course.setTitle(txtAddCourseName.getText().toString());
         course.setHours(Integer.parseInt(txtAddCourseHours.getText().toString()));

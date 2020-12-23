@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences settings = getSharedPreferences("UserInfo", 0);
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putInt("Id",loginInfo.getId());
+                if (loginInfo.getStudentId() != null)
+                    editor.putInt("StudentId",loginInfo.getStudentId());
                 editor.putString("Username",loginInfo.getUsername());
 
                 if(loginInfo.getStudentId() != 0)

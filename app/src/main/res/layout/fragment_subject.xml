@@ -13,15 +13,14 @@
 
         <Button
             android:id="@+id/btnEditCourses"
-            android:layout_width="106dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="21dp"
+            android:layout_width="119dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="48dp"
             android:text="Edit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.014"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAddNewCourses" />
+            app:layout_constraintHorizontal_bias="0.247"
+            app:layout_constraintStart_toEndOf="@+id/btnAddNewCourses"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btnAddNewCourses"
@@ -41,7 +40,7 @@
             android:text="All Courses"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnEditCourses" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAddNewCoursesInSection" />
 
         <TextView
             android:id="@+id/lblAllCourses"
@@ -57,13 +56,12 @@
             android:id="@+id/btnAddNewCoursesInSection"
             android:layout_width="177dp"
             android:layout_height="54dp"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="12dp"
             android:text="MNG Course In Section"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/btnAddNewCourses"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.136"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddNewCourses" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

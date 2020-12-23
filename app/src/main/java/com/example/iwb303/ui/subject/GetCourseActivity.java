@@ -54,22 +54,36 @@ public class GetCourseActivity extends AppCompatActivity {
         EnableButton(false);
     }
     public void btnGetCourseById_Click(View view){
-        if (TextUtils.isEmpty(txtCourseId.getText().toString())){
-            //write Error
+        if (TextUtils.isEmpty(txtCourseId.getText().toString())) {
+            Toast.makeText(this, "Please enter Course Id", Toast.LENGTH_LONG).show();
         }
         else{
             DBContext context = new DBContext(this);
             Integer courseId =Integer.parseInt(txtCourseId.getText().toString());
             Course course = CoursesController.GetCourse(context,courseId);
+            if (course == null){
+                Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
+                return;
+            }
             EnableButton(true);
             txtEditCourseTitle.setText(course.getTitle());
             txtEditCourseHours.setText(String.valueOf(course.getHours()));
         }
     }
     public void btnApplyEditCourse_Click(View view){
+        if (TextUtils.isEmpty(txtEditCourseTitle.getText().toString())||
+                TextUtils.isEmpty(txtEditCourseHours.getText().toString())||
+                TextUtils.isEmpty(txtCourseId.getText().toString())){
+            Toast.makeText(this, "Please enter All Data", Toast.LENGTH_LONG).show();
+            return;
+        }
         DBContext context = new DBContext(this);
         Integer courseId =Integer.parseInt(txtCourseId.getText().toString());
         Course course = CoursesController.GetCourse(context,courseId);
+        if (course == null){
+            Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
+            return;
+        }
         course.setId(courseId);
         course.setTitle(txtEditCourseTitle.getText().toString());
         course.setHours(Integer.parseInt(txtEditCourseHours.getText().toString()));
@@ -78,6 +92,10 @@ public class GetCourseActivity extends AppCompatActivity {
         finish();
     }
     public void btnApplyDeleteCourse_Click(View view){
+        if (TextUtils.isEmpty(txtCourseId.getText().toString())){
+            Toast.makeText(this, "Please enter Dept Id", Toast.LENGTH_LONG).show();
+            return;
+        }
         DBContext context = new DBContext(this);
         Integer courseId =Integer.parseInt(txtCourseId.getText().toString());
         CoursesController.deleteCourse(context,courseId);
