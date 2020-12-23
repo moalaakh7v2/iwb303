@@ -59,6 +59,10 @@ public class SectionsController {
     public static boolean deleteSection(DBContext context ,int sectionNo)
     {
         SQLiteDatabase database = context.getWritableDatabase();
-        return database.delete("Sections", " SectionNo =?", new String[]{String.valueOf(sectionNo)}) > 0;
+        Boolean IsCISDeleted = database.delete("CoursesinSections", " SectionNo =?", new String[]{String.valueOf(sectionNo)}) > 0;
+        Boolean IsSDeleted = database.delete("Sections", " SectionNo =?", new String[]{String.valueOf(sectionNo)}) > 0;
+        if(IsCISDeleted & IsSDeleted)
+            return true;
+        return false;
     }
 }

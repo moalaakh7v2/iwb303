@@ -70,6 +70,10 @@ public class InstructorsController {
     public static boolean deleteInstructor(DBContext context ,int Id)
     {
         SQLiteDatabase database = context.getWritableDatabase();
-        return database.delete("Instructors", " Id =?", new String[]{String.valueOf(Id)}) > 0;
+        Boolean IsCISDeleted = database.delete("CoursesinSections", " InstructorId =?", new String[]{String.valueOf(Id)}) > 0;
+        Boolean IsIDeleted = database.delete("Instructors", " Id =?", new String[]{String.valueOf(Id)}) > 0;
+        if(IsCISDeleted & IsIDeleted)
+            return true;
+        return false;
     }
 }
