@@ -1,31 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.subject.SubjectFragment">
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.subject.SubjectFragment">
 
-    <Button
-        android:id="@+id/btnMngCourseInSection"
-        android:layout_width="260dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="44dp"
-        android:text="Manage Course In Section"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMngCourse" />
+        <Button
+            android:id="@+id/btnEditCourses"
+            android:layout_width="106dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="21dp"
+            android:text="Edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.014"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddNewCourses" />
 
-    <Button
-        android:id="@+id/btnMngCourse"
-        android:layout_width="193dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="220dp"
-        android:text="Manage Course"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnAddNewCourses"
+            android:layout_width="163dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="48dp"
+            android:text="Add New Course"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="51dp"
+            android:text="All Courses"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnEditCourses" />
+
+        <TextView
+            android:id="@+id/lblAllCourses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <Button
+            android:id="@+id/btnAddNewCoursesInSection"
+            android:layout_width="177dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="44dp"
+            android:text="MNG Course In Section"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/btnAddNewCourses"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

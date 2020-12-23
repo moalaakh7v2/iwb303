@@ -19,21 +19,43 @@ import com.example.iwb303.databinding.FragmentSubjectBinding;
 import com.example.iwb303.ui.dept.AddNewDeptActivity;
 import com.example.iwb303.ui.dept.GetDeptActivity;
 
+import java.util.List;
+
+import Controller.CoursesController;
+import Controller.DBContext;
+import Models.Course;
+
 public class SubjectFragment extends Fragment implements View.OnClickListener {
 
     private FragmentSubjectBinding binding;
-    Button btnMngCourse;
-    Button btnMngCourseInSection;
+    Button btnAddNewCourses;
+    Button btnEditCourses;
+    Button btnAddNewCoursesInSection;
+    TextView lblAllCourses;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentSubjectBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        btnMngCourse = (Button) root.findViewById(R.id.btnMngCourse);
-        btnMngCourse.setOnClickListener(this);
-        btnMngCourseInSection = (Button) root.findViewById(R.id.btnMngCourseInSection);
-        btnMngCourseInSection.setOnClickListener(this);
+        btnEditCourses = (Button) root.findViewById(R.id.btnEditCourses);
+        btnEditCourses.setOnClickListener(this);
+        btnAddNewCourses = (Button)root.findViewById(R.id.btnAddNewCourses);
+        btnAddNewCourses.setOnClickListener(this);
+        btnAddNewCoursesInSection = (Button)root.findViewById(R.id.btnAddNewCoursesInSection);
+        btnAddNewCoursesInSection.setOnClickListener(this);
+        lblAllCourses = root.findViewById(R.id.lblAllCourses);
+        StringBuffer buffer=new StringBuffer();
+        DBContext context = new DBContext(getActivity());
+        List<Course> courses = CoursesController.GetِAllCourses(context);
+        for (Course u: courses)
+        {
+            buffer.append("Id: "+ u.getId() +"\n");
+            buffer.append("Title: "+ u.getTitle() +"\n");
+            buffer.append("Hours: "+ u.getHours() +"\n\n");
+            buffer.append("---------------------------\n");
+        }
+        lblAllCourses.setText(buffer.toString());
         return root;
     }
 
@@ -42,14 +64,18 @@ public class SubjectFragment extends Fragment implements View.OnClickListener {
         super.onDestroyView();
         binding = null;
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnMngCourse:
-                startActivity(new Intent(getActivity(), GetDeptActivity.class));
+            case R.id.btnEditCourses:
+                startActivity(new Intent(getActivity(), GetCourseActivity.class));
                 break;
-            case R.id.btnMngCourseInSection:
-                startActivity(new Intent(getActivity(), AddNewDeptActivity.class));
+            case R.id.btnAddNewCourses:
+                startActivity(new Intent(getActivity(), AddNewCourseActivity.class));
+                break;
+            case R.id.btnAddNewCoursesInSection:
+                startActivity(new Intent(getActivity(), AddNewCourseInSectionActivity.class));
                 break;
         }
     }
