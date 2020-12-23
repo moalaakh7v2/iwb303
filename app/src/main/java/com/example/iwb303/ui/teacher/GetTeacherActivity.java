@@ -4,11 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.iwb303.R;
+import com.example.iwb303.ui.student.GetStudentActivity;
+
+import Controller.DBContext;
+import Controller.InstructorsController;
+import Controller.StudentsController;
+import Models.Instructor;
+import Models.LoginInfo;
+import Models.Student;
+import Models.ViewModels.StudentInfoVM;
 
 public class GetTeacherActivity extends AppCompatActivity {
 
+    EditText txtTeacherId ,txtEditTeacherFName,txtEditTeacherLName,txtEditTeacherPhone,txtEditTeacherAddress;
+    Button btnGetTeacherById , btnApplyEditTeacher ,btnApplyDeleteTeacher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,5 +48,58 @@ public class GetTeacherActivity extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_get_teacher);
+        txtTeacherId = findViewById(R.id.txtTeacherId);
+        txtEditTeacherFName = findViewById(R.id.txtEditTeacherFName);
+        txtEditTeacherLName = findViewById(R.id.txtEditTeacherLName);
+        txtEditTeacherPhone = findViewById(R.id.txtEditTeacherPhone);
+        txtEditTeacherAddress = findViewById(R.id.txtEditTeacherAddress);
+        btnGetTeacherById = findViewById(R.id.btnGetTeacherById);
+        btnApplyEditTeacher = findViewById(R.id.btnApplyEditTeacher);
+        btnApplyDeleteTeacher = findViewById(R.id.btnApplyDeleteTeacher);
+        EnableButton(false);
+    }
+    public void btnGetTeacherById_Click(View view){
+        if (TextUtils.isEmpty(txtTeacherId.getText().toString())){
+            //write Error
+        }
+        else{
+            DBContext context = new DBContext(GetTeacherActivity.this);
+            Integer teacherId =Integer.parseInt(txtTeacherId.getText().toString());
+            Instructor teacher = InstructorsController.GetInstructor(context,teacherId);
+            EnableButton(true);
+            txtEditTeacherFName.setText(teacher.getFirstname());
+            txtEditTeacherLName.setText(teacher.getLastname());
+            txtEditTeacherPhone.setText(teacher.getMobileNo());
+            txtEditTeacherAddress.setText(teacher.getAddress());
+        }
+
+    }
+    public void btnApplyEditTeacher_Click(View view){
+        DBContext context = new DBContext(GetTeacherActivity.this);
+        Integer teacherId =Integer.parseInt(txtTeacherId.getText().toString());
+        Instructor teahcer = new Instructor();
+        teahcer.setId(teacherId);
+        teahcer.setFirstname(txtEditTeacherFName.getText().toString());
+        teahcer.setLastname(txtEditTeacherLName.getText().toString());
+        teahcer.setMobileNo(txtEditTeacherPhone.getText().toString());
+        teahcer.setAddress(txtEditTeacherAddress.getText().toString());
+        InstructorsController.UpdateInstructor(context,teahcer);
+        Toast.makeText(GetTeacherActivity.this, "Edit Successfully", Toast.LENGTH_LONG).show();
+        finish();
+    }
+    public void btnApplyDeleteTeacher_Click(View view){
+        DBContext context = new DBContext(GetTeacherActivity.this);
+        Integer teacherId =Integer.parseInt(txtTeacherId.getText().toString());
+        InstructorsController.deleteInstructor(context,teacherId);
+        Toast.makeText(GetTeacherActivity.this, "Deleted Successfully", Toast.LENGTH_LONG).show();
+        finish();
+    }
+    void EnableButton(boolean IsEnable){
+        txtEditTeacherFName.setEnabled(IsEnable);
+        txtEditTeacherLName.setEnabled(IsEnable);
+        txtEditTeacherPhone.setEnabled(IsEnable);
+        txtEditTeacherAddress.setEnabled(IsEnable);
+        btnApplyEditTeacher.setEnabled(IsEnable);
+        btnApplyDeleteTeacher.setEnabled(IsEnable);
     }
 }

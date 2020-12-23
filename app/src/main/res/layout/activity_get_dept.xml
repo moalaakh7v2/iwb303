@@ -7,34 +7,84 @@
     tools:context=".ui.dept.GetDeptActivity">
 
 
+    <EditText
+        android:id="@+id/txtEditSectionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblEditSectionName" />
+
     <TextView
-        android:id="@+id/lblEditDept"
+        android:id="@+id/lblEditSectionName"
         android:layout_width="187dp"
         android:layout_height="27dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="36dp"
         android:text="Dept Name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGetDeptById" />
+
+    <Button
+        android:id="@+id/btnApplyEditSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:onClick="btnApplyEditSection_Click"
+        android:text="Applay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEditSectionName" />
+
+    <TextView
+        android:id="@+id/lblEnterDeptId"
+        android:layout_width="80dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="48dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txtDeptId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblEditDept" />
+        app:layout_constraintTop_toBottomOf="@+id/lblEnterDeptId" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnGetDeptById"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:text="Applay"
+        android:layout_marginTop="20dp"
+        android:onClick="btnGetDeptById_Click"
+        android:text="Get Dept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDeptId" />
+
+    <Button
+        android:id="@+id/btnApplyDeleteSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:enabled="false"
+        android:onClick="btnApplyDeleteSection_Click"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnApplyEditSection" />
 </androidx.constraintlayout.widget.ConstraintLayout>

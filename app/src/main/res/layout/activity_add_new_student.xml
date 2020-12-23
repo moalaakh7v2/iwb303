@@ -1,177 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.student.AddNewStudentActivity">
 
-    <EditText
-        android:id="@+id/txtAddPhone"
-        android:layout_width="176dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAddPhone" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.student.AddNewStudentActivity">
 
-    <TextView
-        android:id="@+id/lblAddPhone"
-        android:layout_width="157dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
-        android:text="Phone"
-        app:layout_constraintEnd_toStartOf="@+id/lblAddGender"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddFName" />
+        <TextView
+            android:id="@+id/lblAddFName"
+            android:layout_width="138dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="36dp"
+            android:text="First Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/lblAddAddress"
-        android:layout_width="285dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="108dp"
-        android:text="Address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddUName" />
+        <TextView
+            android:id="@+id/lblAddLName"
+            android:layout_width="159dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="13dp"
+            android:text="Last Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddFName" />
 
-    <EditText
-        android:id="@+id/txtAddUName"
-        android:layout_width="176dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="26dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/txtAddPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAddUName" />
+        <EditText
+            android:id="@+id/txtAddFName"
+            android:layout_width="256dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="7dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblAddFName" />
 
-    <EditText
-        android:id="@+id/txtAddPassword"
-        android:layout_width="173dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAddPassword" />
+        <EditText
+            android:id="@+id/txtAddLName"
+            android:layout_width="257dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="11dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblAddLName" />
 
-    <TextView
-        android:id="@+id/lblAddUName"
-        android:layout_width="136dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="17dp"
-        android:text="UserName"
-        app:layout_constraintEnd_toStartOf="@+id/lblAddGender"
-        app:layout_constraintHorizontal_bias="0.037"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddPhone" />
+        <TextView
+            android:id="@+id/lblAddUName"
+            android:layout_width="136dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="32dp"
+            android:text="UserName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.465"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddPhone" />
 
-    <TextView
-        android:id="@+id/lblAddPassword"
-        android:layout_width="161dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="36dp"
-        android:text="Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drpStudentGender" />
+        <TextView
+            android:id="@+id/lblAddPhone"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="23dp"
+            android:text="Phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddLName" />
 
-    <TextView
-        android:id="@+id/lblAddFName"
-        android:layout_width="138dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="First Name"
-        app:layout_constraintEnd_toStartOf="@+id/lblAddLName"
-        app:layout_constraintHorizontal_bias="0.146"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Spinner
+            android:id="@+id/drpStudentGender"
+            android:layout_width="231dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblAddGender" />
 
-    <TextView
-        android:id="@+id/lblAddLName"
-        android:layout_width="159dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:text="Last Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/txtAddPhone"
+            android:layout_width="251dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblAddPhone" />
 
-    <EditText
-        android:id="@+id/txtAddFName"
-        android:layout_width="176dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAddFName" />
+        <Button
+            android:id="@+id/btnApplyAddStudent"
+            android:layout_width="123dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="51dp"
+            android:onClick="btnAddStudent"
+            android:text="Applay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddAddress" />
 
-    <EditText
-        android:id="@+id/txtAddLName"
-        android:layout_width="178dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAddLName" />
+        <EditText
+            android:id="@+id/txtAddUName"
+            android:layout_width="249dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblAddUName" />
 
-    <TextView
-        android:id="@+id/lblAddGender"
-        android:layout_width="161dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
-        android:text="Gender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddLName" />
+        <TextView
+            android:id="@+id/lblAddAddress"
+            android:layout_width="150dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="24dp"
+            android:text="Address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddPassword" />
 
-    <Spinner
-        android:id="@+id/drpStudentGender"
-        android:layout_width="182dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAddGender" />
+        <EditText
+            android:id="@+id/txtAddAddress"
+            android:layout_width="271dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="36dp"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.528"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblAddAddress" />
 
-    <Button
-        android:id="@+id/btnApplyAddStudent"
-        android:layout_width="123dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="42dp"
-        android:onClick="btnAddStudent"
-        android:text="Applay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddAddress" />
+        <TextView
+            android:id="@+id/lblAddPassword"
+            android:layout_width="161dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:text="Password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/drpStudentGender" />
 
-    <EditText
-        android:id="@+id/txtAddAddress"
-        android:layout_width="367dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPostalAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAddAddress" />
+        <EditText
+            android:id="@+id/txtAddPassword"
+            android:layout_width="264dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblAddPassword" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/lblAddGender"
+            android:layout_width="161dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="49dp"
+            android:layout_marginTop="28dp"
+            android:text="Gender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.343"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddUName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

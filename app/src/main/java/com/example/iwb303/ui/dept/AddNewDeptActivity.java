@@ -4,8 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.iwb303.R;
+import com.example.iwb303.ui.student.AddNewStudentActivity;
+
+import java.util.Calendar;
+
+import Controller.DBContext;
+import Controller.SectionsController;
+import Controller.StudentsController;
+import Models.LoginInfo;
+import Models.Section;
+import Models.Student;
 
 public class AddNewDeptActivity extends AppCompatActivity {
 
@@ -32,5 +45,14 @@ public class AddNewDeptActivity extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_add_new_dept);
+    }
+    public void btnAddDept(View view){
+        EditText txtAddDeptName = findViewById(R.id.txtAddDeptName);
+        Section section = new Section();
+        section.setSectionName(txtAddDeptName.getText().toString());
+        SectionsController.AddSection(new DBContext(AddNewDeptActivity.this),section);
+        Toast.makeText(AddNewDeptActivity.this, "Added Successfully", Toast.LENGTH_LONG).show();
+        finish();
+
     }
 }

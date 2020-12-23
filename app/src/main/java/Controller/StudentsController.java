@@ -78,7 +78,7 @@ public class StudentsController {
     public static List<StudentInfoVM> getStudents(DBContext context) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<StudentInfoVM> StudentsList = new ArrayList<>();
-        String getAll = "Select Students.* , Username From Students,LoginInfos " +
+        String getAll = "Select Students.* , Username  , Password From Students,LoginInfos " +
                 " Where Students.Id = StudentId  ";
 
         Cursor cursor = database.rawQuery(getAll ,null );
@@ -121,11 +121,11 @@ public class StudentsController {
     public static void UpdateStudent(DBContext context , Student user, LoginInfo userInfo)
     {
         SQLiteDatabase database = context.getWritableDatabase();
-        String Query = "Update Students set Firstname = '"+user.getFirstname()+"' , Lastname ='"+user.getLastname()+"' , Address = '"+user.getAddress()+"' ,Gender ='"+user.getGender()+"',RegYeer ="+user.getRegYeer()+",MobileNo='"+user.getMobileNo()+"'" +
+        String Query = "Update Students set Firstname = '"+user.getFirstname()+"' , Lastname ='"+user.getLastname()+"' , Address = '"+user.getAddress()+"' ,MobileNo='"+user.getMobileNo()+"'" +
                 " Where Id = "+user.getId()+" ;";
         database.execSQL(Query);
         Query = "Update LoginInfos set Username = '"+userInfo.getUsername()+"' , Password ='"+userInfo.getPassword()+"'" +
-                " Where Id = "+userInfo.getId()+" ;";
+                " Where StudentId = "+userInfo.getStudentId()+" ;";
         database.execSQL(Query);
     }
     public static boolean deleteStudent(DBContext context ,int Id)

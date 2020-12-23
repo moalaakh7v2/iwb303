@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,10 +13,11 @@
     tools:context=".ui.dept.AddNewDeptActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnApplayAddDept"
         android:layout_width="126dp"
         android:layout_height="44dp"
         android:layout_marginTop="56dp"
+        android:onClick="btnAddDept"
         android:text="Add Dept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -21,7 +28,7 @@
         android:id="@+id/lblAddNewDept"
         android:layout_width="163dp"
         android:layout_height="22dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="148dp"
         android:text="Dept Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.403"
@@ -40,3 +47,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblAddNewDept" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
