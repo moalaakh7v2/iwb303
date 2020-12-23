@@ -75,15 +75,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 spinnerCources.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                         Course = (CourseInfoVM) parent.getSelectedItem();
+                         course = (CourseInfoVM) parent.getSelectedItem();
                         ArrayAdapter<CourseInfoVM> adapter = new ArrayAdapter<CourseInfoVM>(getActivity(),
-                                android.R.layout.simple_spinner_item, CoursesinSectionsController.GetInstructorsinCoursesinSections(context,Course.getSectionNo(), Course.getCourseId()));
+                                android.R.layout.simple_spinner_item, CoursesinSectionsController.GetInstructorsinCoursesinSections(context,course.getSectionNo(), course.getCourseId()));
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinnerInstructors.setAdapter(adapter);
                         spinnerInstructors.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
-                                Instructors = (CourseInfoVM) parent.getSelectedItem();
+                                instructor = (CourseInfoVM) parent.getSelectedItem();
                             }
                             @Override
                             public void onNothingSelected(AdapterView<?> parent) {
