@@ -122,8 +122,9 @@
             android:layout_marginTop="21dp"
             android:onClick="btnApplyDeleteStudent_Click"
             android:text="Delete"
-            app:layout_constraintTop_toBottomOf="@+id/btnApplyEditStudent"
-            tools:layout_editor_absoluteX="173dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnApplyEditStudent" />
 
         <Button
             android:id="@+id/btnApplyEditStudent"

@@ -60,13 +60,17 @@ public class GetStudentActivity extends AppCompatActivity {
     }
 
     public void btnGetStudentById_Click(View view){
-        if (TextUtils.isEmpty(txtStudentId.getText().toString())){
-            //write Error
+        if (TextUtils.isEmpty(txtStudentId.getText().toString())) {
+            Toast.makeText(this, "Please enter Student Id !", Toast.LENGTH_LONG).show();
         }
         else{
             DBContext context = new DBContext(GetStudentActivity.this);
             Integer studetId =Integer.parseInt(txtStudentId.getText().toString());
             StudentInfoVM studentInfoVM = StudentsController.GetStudentInfo(context,studetId);
+            if (studentInfoVM == null){
+                Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
+                return;
+            }
             EnableButton(true);
             txtEditFName.setText(studentInfoVM.getFirstname());
             txtEditPhone.setText(studentInfoVM.getMobileNo());
@@ -74,12 +78,20 @@ public class GetStudentActivity extends AppCompatActivity {
             txtEditPass.setText(studentInfoVM.getPassword());
             txtEditLName.setText(studentInfoVM.getLastname());
             txtEditAddress.setText(studentInfoVM.getAddress());
-            txtEditFName.setText(studentInfoVM.getFirstname());
         }
 
     }
 
     public void btnApplyEditStudent_Click(View view){
+        if (TextUtils.isEmpty(txtEditFName.getText().toString()) ||
+                TextUtils.isEmpty(txtEditPhone.getText().toString())||
+                TextUtils.isEmpty(txtEditUName.getText().toString())||
+                TextUtils.isEmpty(txtEditPass.getText().toString())||
+                TextUtils.isEmpty(txtEditLName.getText().toString() )||
+                TextUtils.isEmpty(txtEditAddress.getText().toString())) {
+            Toast.makeText(this, "Please enter all data !", Toast.LENGTH_LONG).show();
+            return;
+        }
         DBContext context = new DBContext(GetStudentActivity.this);
         Integer studetId =Integer.parseInt(txtStudentId.getText().toString());
         Student student = new Student();
@@ -98,6 +110,9 @@ public class GetStudentActivity extends AppCompatActivity {
     }
 
     public void btnApplyDeleteStudent_Click(View view){
+        if (TextUtils.isEmpty(txtStudentId.getText().toString())){
+            Toast.makeText(this, "Please enter Student Id !", Toast.LENGTH_LONG).show();
+        }
         DBContext context = new DBContext(GetStudentActivity.this);
         Integer studetId =Integer.parseInt(txtStudentId.getText().toString());
         StudentsController.deleteStudent(context,studetId);

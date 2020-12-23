@@ -44,7 +44,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         {
             buffer.append("Id: "+ u.getId() +"\n");
             buffer.append("UserName: "+ u.getUsername() +"\n");
-            buffer.append("RegYear: "+ u.getMobileNo() +"\n");
+            buffer.append("RegYear: "+ u.getRegYeer() +"\n");
             buffer.append("Mobile: "+ u.getMobileNo() +"\n\n");
             buffer.append("---------------------------\n");
         }

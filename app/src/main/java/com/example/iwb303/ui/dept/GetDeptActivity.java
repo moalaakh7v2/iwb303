@@ -58,18 +58,26 @@ public class GetDeptActivity extends AppCompatActivity {
     }
     public void btnGetDeptById_Click(View view){
         if (TextUtils.isEmpty(txtDeptId.getText().toString())){
-            //write Error
+            Toast.makeText(this, "Please enter Dept Id", Toast.LENGTH_LONG).show();
         }
         else{
             DBContext context = new DBContext(GetDeptActivity.this);
             Integer sectionId =Integer.parseInt(txtDeptId.getText().toString());
             Section section = SectionsController.GetSection(context,sectionId);
+            if (section == null){
+                Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
+                return;
+            }
             EnableButton(true);
             txtEditSectionName.setText(section.getSectionName());
         }
 
     }
     public void btnApplyEditSection_Click(View view){
+        if (TextUtils.isEmpty(txtEditSectionName.getText().toString())){
+            Toast.makeText(this, "Please enter Dept Name", Toast.LENGTH_LONG).show();
+            return;
+        }
         DBContext context = new DBContext(GetDeptActivity.this);
         Integer sectionId =Integer.parseInt(txtDeptId.getText().toString());
         Section section = new Section();
@@ -80,6 +88,10 @@ public class GetDeptActivity extends AppCompatActivity {
         finish();
     }
     public void btnApplyDeleteSection_Click(View view){
+        if (TextUtils.isEmpty(txtDeptId.getText().toString())){
+            Toast.makeText(this, "Please enter Dept Id", Toast.LENGTH_LONG).show();
+            return;
+        }
         DBContext context = new DBContext(GetDeptActivity.this);
         Integer sectionId =Integer.parseInt(txtDeptId.getText().toString());
         SectionsController.deleteSection(context,sectionId);
@@ -88,7 +100,7 @@ public class GetDeptActivity extends AppCompatActivity {
     }
     void EnableButton(boolean IsEnable){
         txtEditSectionName.setEnabled(IsEnable);
-        btnApplyDeleteSection.setEnabled(IsEnable);
+        btnApplyEditSection.setEnabled(IsEnable);
         btnApplyDeleteSection.setEnabled(IsEnable);
     }
 }
