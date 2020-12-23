@@ -131,9 +131,10 @@ public class StudentsController {
     public static boolean deleteStudent(DBContext context ,int Id)
     {
         SQLiteDatabase database = context.getWritableDatabase();
+        Boolean IsEDeleted = database.delete("Enrollments", " StudentId =?", new String[]{String.valueOf(Id)}) > 0;
         Boolean IsLDeleted = database.delete("LoginInfos", " StudentId =?", new String[]{String.valueOf(Id)}) > 0;
         Boolean  IsSDeleted = database.delete("Students", " Id =?", new String[]{String.valueOf(Id)}) > 0;
-        if(IsLDeleted & IsSDeleted)
+        if(IsSDeleted)
             return true;
         else
             return false;
