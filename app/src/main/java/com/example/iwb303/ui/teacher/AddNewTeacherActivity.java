@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.iwb303.R;
+import com.example.iwb303.ui.dept.AddNewDeptActivity;
 import com.example.iwb303.ui.student.AddNewStudentActivity;
 
 import java.util.Calendar;
@@ -54,11 +56,18 @@ public class AddNewTeacherActivity extends AppCompatActivity {
         drpTeacherGender.setAdapter(new ArrayAdapter<Gender>(this,R.layout.support_simple_spinner_dropdown_item,Gender.values()));
     }
 
-    public void btnAddStudent(View view){
+    public void btnAddTeacher(View view){
         EditText txtAddTeacherFName = findViewById(R.id.txtAddTeacherFName);
         EditText txtAddTeacherLName = findViewById(R.id.txtAddTeacherLName);
         EditText txtAddTeacherPhone = findViewById(R.id.txtAddTeacherPhone);
         EditText txtAddTeacherAddress = findViewById(R.id.txtAddTeacherAddress);
+        if (TextUtils.isEmpty(txtAddTeacherFName.getText().toString())||
+        TextUtils.isEmpty(txtAddTeacherLName.getText().toString())||
+        TextUtils.isEmpty(txtAddTeacherPhone.getText().toString())||
+        TextUtils.isEmpty(txtAddTeacherAddress.getText().toString())){
+            Toast.makeText(this, "Please enter all data", Toast.LENGTH_LONG).show();
+            return;
+        }
         Instructor teacher = new Instructor();
         teacher.setFirstname(txtAddTeacherFName.getText().toString());
         teacher.setLastname(txtAddTeacherLName.getText().toString());

@@ -60,21 +60,32 @@ public class GetTeacherActivity extends AppCompatActivity {
     }
     public void btnGetTeacherById_Click(View view){
         if (TextUtils.isEmpty(txtTeacherId.getText().toString())){
-            //write Error
+            Toast.makeText(this, "Please enter Teacher Id", Toast.LENGTH_LONG).show();
         }
         else{
             DBContext context = new DBContext(GetTeacherActivity.this);
             Integer teacherId =Integer.parseInt(txtTeacherId.getText().toString());
             Instructor teacher = InstructorsController.GetInstructor(context,teacherId);
+            if (teacher == null){
+                Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
+                return;
+            }
             EnableButton(true);
             txtEditTeacherFName.setText(teacher.getFirstname());
             txtEditTeacherLName.setText(teacher.getLastname());
             txtEditTeacherPhone.setText(teacher.getMobileNo());
             txtEditTeacherAddress.setText(teacher.getAddress());
         }
-
     }
     public void btnApplyEditTeacher_Click(View view){
+        if (TextUtils.isEmpty(txtEditTeacherFName.getText().toString())||
+                TextUtils.isEmpty(txtEditTeacherLName.getText().toString())||
+                TextUtils.isEmpty(txtEditTeacherPhone.getText().toString())||
+                TextUtils.isEmpty(txtEditTeacherAddress.getText().toString())||
+                TextUtils.isEmpty(txtTeacherId.getText().toString())){
+            Toast.makeText(this, "Please enter Dept Name", Toast.LENGTH_LONG).show();
+            return;
+        }
         DBContext context = new DBContext(GetTeacherActivity.this);
         Integer teacherId =Integer.parseInt(txtTeacherId.getText().toString());
         Instructor teahcer = new Instructor();
@@ -88,6 +99,10 @@ public class GetTeacherActivity extends AppCompatActivity {
         finish();
     }
     public void btnApplyDeleteTeacher_Click(View view){
+        if (TextUtils.isEmpty(txtTeacherId.getText().toString())){
+            Toast.makeText(this, "Please enter Dept Id", Toast.LENGTH_LONG).show();
+            return;
+        }
         DBContext context = new DBContext(GetTeacherActivity.this);
         Integer teacherId =Integer.parseInt(txtTeacherId.getText().toString());
         InstructorsController.deleteInstructor(context,teacherId);

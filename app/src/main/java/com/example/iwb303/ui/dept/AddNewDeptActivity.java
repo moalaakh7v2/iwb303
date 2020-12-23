@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,6 +49,10 @@ public class AddNewDeptActivity extends AppCompatActivity {
     }
     public void btnAddDept(View view){
         EditText txtAddDeptName = findViewById(R.id.txtAddDeptName);
+        if (TextUtils.isEmpty(txtAddDeptName.getText().toString())) {
+            Toast.makeText(AddNewDeptActivity.this, "Please enter all data", Toast.LENGTH_LONG).show();
+            return;
+        }
         Section section = new Section();
         section.setSectionName(txtAddDeptName.getText().toString());
         SectionsController.AddSection(new DBContext(AddNewDeptActivity.this),section);
