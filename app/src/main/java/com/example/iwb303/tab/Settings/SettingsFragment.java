@@ -10,10 +10,8 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.iwb303.ChooseTheme;
-import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
@@ -26,11 +24,11 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
-        btnDisplayTheme = root.findViewById(R.id.btnDisplayTheme);
+        btnDisplayTheme = root.findViewById(R.id.btnDisplayAdminTheme);
         btnDisplayTheme.setOnClickListener(this);
-        btnSoundMode = root.findViewById(R.id.btnSoundMode);
+        btnSoundMode = root.findViewById(R.id.btnSoundAdminMode);
         btnSoundMode.setOnClickListener(this);
-        btnLogOut = root.findViewById(R.id.btnLogOut);
+        btnLogOut = root.findViewById(R.id.btnAdminLogOut);
         btnLogOut.setOnClickListener(this);
         return root;
     }
@@ -38,16 +36,16 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnDisplayTheme:
+            case R.id.btnDisplayAdminTheme:
                 md = MediaPlayer.create(getContext(), R.raw.tab_move);
                 md.start();
                 startActivity(new Intent(getActivity(), ChooseTheme.class));
                 break;
-            case R.id.btnSoundMode:
+            case R.id.btnSoundAdminMode:
                 md = MediaPlayer.create(getContext(), R.raw.tab_move);
                 md.start();
                 break;
-            case R.id.btnLogOut:
+            case R.id.btnAdminLogOut:
                 md = MediaPlayer.create(getContext(), R.raw.tab_move);
                 md.start();
                 break;
