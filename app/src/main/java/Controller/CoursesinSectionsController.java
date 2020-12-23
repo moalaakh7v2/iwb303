@@ -9,6 +9,7 @@ import java.util.List;
 
 import Models.CourseinSection;
 import Models.Section;
+import Models.Student;
 
 public class CoursesinSectionsController {
     public static CourseinSection CourseinSection(DBContext context, Integer sectionNo,Integer courseId )
@@ -28,7 +29,7 @@ public class CoursesinSectionsController {
         return null;
     }
 
-    public static List<CourseinSection> GetCourseinSection(DBContext context) {
+    public static List<CourseinSection> GetAllCourseinSection(DBContext context) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<CourseinSection> coursesinSectionsList = new ArrayList<>();
         String getAll = "Select * From CoursesinSections; ";
@@ -44,7 +45,24 @@ public class CoursesinSectionsController {
             }while (cursor.moveToNext());
         return  coursesinSectionsList;
     }
-
+    public static List<CourseinSection> GetCourseinSection(DBContext context, Student StudentId) {
+        SQLiteDatabase database = context.getReadableDatabase() ;
+        List<CourseinSection> coursesinSectionsList = new ArrayList<>();
+        String getAll = "Select * From CoursesinSections c " +
+                " where  CourseId not in (Select CourseId From Enrollments" +
+                " where StudentId = "+StudentId+" And SectionNo = c.SectionNo ); ";
+        Cursor cursor = database.rawQuery(getAll ,null );
+        if (cursor.moveToFirst())
+            do{
+                CourseinSection courseinSection = new CourseinSection();
+                courseinSection.setSectionNo(cursor.getInt(0));
+                courseinSection.setCourseId(cursor.getInt(1));
+                courseinSection.setInstructorId(cursor.getInt(2));
+                courseinSection.setRoomNo(cursor.getString(3));
+                coursesinSectionsList.add(courseinSection);
+            }while (cursor.moveToNext());
+        return  coursesinSectionsList;
+    }
     public static void AddCourseinSection(DBContext context , CourseinSection courseinSection)
     {
         SQLiteDatabase database = context.getWritableDatabase();
