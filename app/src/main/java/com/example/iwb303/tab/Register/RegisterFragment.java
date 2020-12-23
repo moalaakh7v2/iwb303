@@ -23,11 +23,14 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 
+import Controller.CoursesinSectionsController;
 import Controller.DBContext;
 import Controller.SectionsController;
 import Controller.StudentsController;
+import Models.Course;
 import Models.LoginInfo;
 import Models.Section;
+import Models.ViewModels.CourseInfoVM;
 import Models.ViewModels.StudentInfoVM;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
@@ -35,23 +38,41 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     Button btnRegister;
     TextView lblSubjects;
     MediaPlayer md;
-    private Spinner spinner;
+    private Spinner spinnerSections;
+    private Spinner spinnerCources;
+    private Spinner spinnerInstructors;
+    private DBContext context;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_register, container, false);
+        context = new DBContext(getActivity());
         btnRegister = root.findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);
-        spinner = root.findViewById(R.id.spinner);
+        spinnerSections = root.findViewById(R.id.spinnerSections);
+        spinnerCources = root.findViewById(R.id.spinnerCourses);
+        spinnerInstructors = root.findViewById(R.id.spinnerInstructor);
         ArrayAdapter<Section> adapter = new ArrayAdapter<Section>(getActivity(),
-                android.R.layout.simple_spinner_item, SectionsController.GetSections(new DBContext(getActivity())));
+                android.R.layout.simple_spinner_item, SectionsController.GetSections(context));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerSections.setAdapter(adapter);
+        spinnerSections.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Section section = (Section) parent.getSelectedItem();
-                Toast.makeText(getActivity() ,section.getSectionNo() + " - " + section.getSectionName() , Toast.LENGTH_LONG).show();
+                ArrayAdapter<CourseInfoVM> adapter = new ArrayAdapter<CourseInfoVM>(getActivity(),
+                        android.R.layout.simple_spinner_item, CoursesinSectionsController.GetCoursesinSections(context,0, section.getSectionNo()));
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerCources.setAdapter(adapter);
+                spinnerCources.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

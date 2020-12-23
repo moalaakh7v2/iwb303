@@ -44,7 +44,6 @@ public class SectionsController {
     {
         SQLiteDatabase database = context.getWritableDatabase();
         ContentValues SectionValues = new ContentValues();
-        SectionValues.put("SectionNo", section.getSectionNo());
         SectionValues.put("SectionName", section.getSectionName());
         database.insert("Sections",null,SectionValues);
         database.close();

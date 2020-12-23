@@ -51,7 +51,6 @@ public class InstructorsController {
     {
         SQLiteDatabase database = context.getWritableDatabase();
         ContentValues instructorValues = new ContentValues();
-        instructorValues.put("Id", instructor.getId());
         instructorValues.put("Firstname", instructor.getFirstname());
         instructorValues.put("Lastname", instructor.getLastname());
         instructorValues.put("Gender", instructor.getGender());

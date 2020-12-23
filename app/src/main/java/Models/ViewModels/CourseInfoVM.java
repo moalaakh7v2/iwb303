@@ -47,4 +47,9 @@ public class CourseInfoVM {
     public void setRoomNo(String roomNo) {
         RoomNo = roomNo;
     }
+
+    @Override
+    public String toString() {
+        return  CourseTitle;
+    }
 }

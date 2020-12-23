@@ -72,9 +72,9 @@ public class DBContext extends SQLiteOpenHelper {
         String Enrollments =
                 "Create Table Enrollments (" +
                 "Id INTEGER Primary Key AUTOINCREMENT NOT NULL," +
-                "StudentId int not null," +
                 "SectionNo int not null," +
                 "CourseId int not null," +
+                "StudentId int not null," +
                 "Grade float," +
                 "FOREIGN KEY(SectionNo) REFERENCES Sections(SectionNo)," +
                 "FOREIGN KEY(CourseId) REFERENCES Courses(Id)," +

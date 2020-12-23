@@ -46,20 +46,23 @@ public class CoursesinSectionsController {
             }while (cursor.moveToNext());
         return  coursesinSectionsList;
     }
-    public static List<CourseinSection> GetCoursesinSections(DBContext context, Integer StudentId) {
+    public static List<CourseInfoVM> GetCoursesinSections(DBContext context, Integer StudentId,Integer SectionNo) {
         SQLiteDatabase database = context.getReadableDatabase() ;
-        List<CourseinSection> coursesinSectionsList = new ArrayList<>();
-        String getAll = "Select * From CoursesinSections c " +
-                " where  CourseId not in (Select CourseId From Enrollments" +
-                " where StudentId = "+StudentId+" And SectionNo = c.SectionNo ); ";
+        List<CourseInfoVM> coursesinSectionsList = new ArrayList<>();
+        String getAll = "Select SectionName ,Title ,FristName ,LastName ,RoomNo" +
+                " From Courses c,Sections s,Instructors i,CoursesinSections cs  " +
+                " where cs.CourseId = c.CourseId And cs.SectionNo = s.SectionNo And cs.InstructorId = i.InstructorId" +
+                " And SectionNo = "+SectionNo+" And CourseId not in (Select CourseId From Enrollments" +
+                " where StudentId = "+StudentId+" And SectionNo = cs.SectionNo ); ";
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())
             do{
-                CourseinSection courseinSection = new CourseinSection();
-                courseinSection.setSectionNo(cursor.getInt(0));
-                courseinSection.setCourseId(cursor.getInt(1));
-                courseinSection.setInstructorId(cursor.getInt(2));
-                courseinSection.setRoomNo(cursor.getString(3));
+                CourseInfoVM courseinSection = new CourseInfoVM();
+                CourseInfoVM courseInfoVM = new CourseInfoVM();
+                courseInfoVM.setSectionName(cursor.getString(0));
+                courseInfoVM.setCourseTitle(cursor.getString(1));
+                courseInfoVM.setInstructorName(cursor.getString(2) + " " + cursor.getString(3));
+                courseInfoVM.setRoomNo(cursor.getString(4));
                 coursesinSectionsList.add(courseinSection);
             }while (cursor.moveToNext());
         return  coursesinSectionsList;
