@@ -89,8 +89,8 @@
             android:layout_height="37dp"
             android:layout_marginTop="28dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:phoneNumber="false"
+            android:inputType="phone"
+            android:phoneNumber="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblAddPhone" />
