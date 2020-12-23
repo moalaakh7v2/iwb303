@@ -4,20 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.GridView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 import com.example.iwb303.databinding.FragmentStudentBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Controller.DBContext;
@@ -41,7 +36,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         btnEditStudent.setOnClickListener(this);
         btnAddNewStudent = (Button) root.findViewById(R.id.btnAddNewStudent);
         btnAddNewStudent.setOnClickListener(this);
-        lblAllStudents = root.findViewById(R.id.lblAllStudents);
+        lblAllStudents = root.findViewById(R.id.lblAllTeachers);
         StringBuffer buffer=new StringBuffer();
         DBContext context = new DBContext(getActivity());
         List<StudentInfoVM> studentInfoVMS = StudentsController.getStudents(context);
