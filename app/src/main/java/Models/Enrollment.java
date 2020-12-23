@@ -2,51 +2,62 @@ package Models;
 
 //التسجيل
 public class Enrollment {
-    int Id;
-    int StudentId;
-    int SectionNo;
-    int CourseId;
-    float Grade ;
+    Integer Id;
+    Integer StudentId;
+    Integer SectionNo;
+    Integer CourseId;
+    Integer InstructorId;
+    float Grade;
 
     public Enrollment() {
+        Grade =0;
     }
 
-    public Enrollment(int studentId, int sectionNo, int courseId, float grade) {
+    public Enrollment(Integer studentId, Integer sectionNo,Integer instructorId, Integer courseId, float grade) {
         StudentId = studentId;
         SectionNo = sectionNo;
         CourseId = courseId;
+        InstructorId = instructorId;
         Grade = grade;
     }
 
-    public int getId() {
+    public Integer getInstructorId() {
+        return InstructorId;
+    }
+
+    public void setInstructorId(Integer instructorId) {
+        InstructorId = instructorId;
+    }
+
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         Id = id;
     }
 
-    public int getStudentId() {
+    public Integer getStudentId() {
         return StudentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(Integer studentId) {
         StudentId = studentId;
     }
 
-    public int getSectionNo() {
+    public Integer getSectionNo() {
         return SectionNo;
     }
 
-    public void setSectionNo(int sectionNo) {
+    public void setSectionNo(Integer sectionNo) {
         SectionNo = sectionNo;
     }
 
-    public int getCourseId() {
+    public Integer getCourseId() {
         return CourseId;
     }
 
-    public void setCourseId(int courseId) {
+    public void setCourseId(Integer courseId) {
         CourseId = courseId;
     }
 

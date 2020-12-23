@@ -74,11 +74,13 @@ public class DBContext extends SQLiteOpenHelper {
                 "Id INTEGER Primary Key AUTOINCREMENT NOT NULL," +
                 "SectionNo int not null," +
                 "CourseId int not null," +
+                "InstructorId int not null," +
                 "StudentId int not null," +
                 "Grade float," +
                 "FOREIGN KEY(SectionNo) REFERENCES Sections(SectionNo)," +
                 "FOREIGN KEY(CourseId) REFERENCES Courses(Id)," +
-                "FOREIGN KEY(StudentId) REFERENCES Students(Id)" +
+                "FOREIGN KEY(StudentId) REFERENCES Students(Id)," +
+                "FOREIGN KEY(InstructorId) REFERENCES Instructors(Id)" +
                 ")" ;
         db.execSQL(Enrollments);
     }

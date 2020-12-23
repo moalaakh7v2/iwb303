@@ -1,6 +1,9 @@
 package Models.ViewModels;
 
 public class CourseInfoVM {
+    Integer SectionNo;
+    Integer CourseId;
+    Integer InstructorId;
     String SectionName;
     String CourseTitle;
     String InstructorName;
@@ -14,6 +17,30 @@ public class CourseInfoVM {
         CourseTitle = courseTitle;
         InstructorName = instructorName;
         RoomNo = roomNo;
+    }
+
+    public Integer getSectionNo() {
+        return SectionNo;
+    }
+
+    public void setSectionNo(Integer sectionNo) {
+        SectionNo = sectionNo;
+    }
+
+    public Integer getCourseId() {
+        return CourseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        CourseId = courseId;
+    }
+
+    public Integer getInstructorId() {
+        return InstructorId;
+    }
+
+    public void setInstructorId(Integer instructorId) {
+        InstructorId = instructorId;
     }
 
     public String getSectionName() {
@@ -50,6 +77,8 @@ public class CourseInfoVM {
 
     @Override
     public String toString() {
-        return  CourseTitle;
+        if(CourseTitle != null)
+             return  CourseTitle;
+        return InstructorName;
     }
 }
