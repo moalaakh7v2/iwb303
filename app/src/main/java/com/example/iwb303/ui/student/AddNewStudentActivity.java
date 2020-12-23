@@ -3,6 +3,7 @@ package com.example.iwb303.ui.student;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 
 import java.time.LocalDate;
@@ -61,6 +63,15 @@ public class AddNewStudentActivity extends AppCompatActivity {
         EditText txtAddUName = findViewById(R.id.txtAddUName);
         EditText txtAddPassword = findViewById(R.id.txtAddPassword);
         EditText txtAddAddress = findViewById(R.id.txtAddAddress);
+        if (TextUtils.isEmpty(txtAddFName.getText().toString()) ||
+                TextUtils.isEmpty(txtAddLName.getText().toString())||
+                 TextUtils.isEmpty(txtAddPhone.getText().toString())||
+                 TextUtils.isEmpty(txtAddUName.getText().toString())||
+                  TextUtils.isEmpty(txtAddPassword.getText().toString() )||
+                  TextUtils.isEmpty(txtAddAddress.getText().toString())) {
+            Toast.makeText(this, "Please enter all data !", Toast.LENGTH_LONG).show();
+            return;
+        }
         Student student = new Student();
         student.setFirstname(txtAddFName.getText().toString());
         student.setLastname(txtAddLName.getText().toString());

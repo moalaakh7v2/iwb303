@@ -103,7 +103,8 @@ public class StudentsController {
     {
         SQLiteDatabase database = context.getWritableDatabase();
         ContentValues UserValues = new ContentValues();
-        UserValues.put("Id", user.getId());
+        int studentId =GetMaxId(context) + 1;
+        UserValues.put("Id", studentId);
         UserValues.put("Firstname", user.getFirstname());
         UserValues.put("Lastname", user.getLastname());
         UserValues.put("Gender", user.getGender());
@@ -114,7 +115,7 @@ public class StudentsController {
         ContentValues userInfoValues = new ContentValues();
         userInfoValues.put("Username", loginInfo.getUsername());
         userInfoValues.put("Password", loginInfo.getPassword());
-        userInfoValues.put("StudentId", user.getId());
+        userInfoValues.put("StudentId", studentId);
         database.insert("LoginInfos",null,userInfoValues);
         database.close();
     }
@@ -138,5 +139,17 @@ public class StudentsController {
             return true;
         else
             return false;
+    }
+
+    public static int GetMaxId(DBContext context)
+    {
+        int maxId = 0;
+        String Query = "Select Max(Id) From Students;";
+        SQLiteDatabase database = context.getReadableDatabase();
+        Cursor cursor = database.rawQuery(Query,null);
+        if(cursor.moveToFirst()) {
+            maxId = cursor.getInt(0);
+        }
+        return maxId;
     }
 }

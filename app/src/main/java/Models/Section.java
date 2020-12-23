@@ -27,4 +27,9 @@ public class Section {
     public void setSectionName(String sectionName) {
         SectionName = sectionName;
     }
+
+    @Override
+    public String toString() {
+        return SectionName;
+    }
 }
