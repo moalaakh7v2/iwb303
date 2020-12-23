@@ -48,6 +48,7 @@ public class GetResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Integer Id = intent.getExtras().getInt("Id");
         String type = intent.getExtras().getString("type");
+        lblresult = findViewById(R.id.lblresult);
         switch (type){
             case "teacher":
                 Instructor teacher = InstructorsController.GetInstructor(context,Id);

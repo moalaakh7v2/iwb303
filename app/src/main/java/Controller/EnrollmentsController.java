@@ -21,9 +21,9 @@ public class EnrollmentsController {
         String getAll = "Select Students.Id ,Students.FirstName || ' ' || Students.LastName ,Sections.SectionName" +
                 " ,Courses.Title,Instructors.FirstName || ' ' || Instructors.LastName" +
                 " From Students,Enrollments,Instructors,Sections ,Courses,CoursesinSections " +
-                " where CoursesinSections.CourseId = Courses.CourseId And CoursesinSections.SectionNo = Sections.SectionNo" +
-                " And CoursesinSections.InstructorId = Instructors.InstructorId " +
-                " And Enrollments.StudentId = Students.Id And Enrollments.CourseId = Courses.CourseId " +
+                " where CoursesinSections.CourseId = Courses.Id And CoursesinSections.SectionNo = Sections.SectionNo" +
+                " And CoursesinSections.InstructorId = Instructors.Id " +
+                " And Enrollments.StudentId = Students.Id And Enrollments.Id = Courses.CourseId " +
                 " And Enrollments.SectionNo = Sections.SectionNo And Students.Id = " + StudentId + " ; ";
 
         Cursor cursor = database.rawQuery(getAll ,null );
@@ -62,9 +62,9 @@ public class EnrollmentsController {
         String getAll = "Select Students.Id ,Students.FirstName || ' ' || Students.LastName ,Sections.SectionName" +
                 " ,Courses.Title,Instructors.FirstName || ' ' || Instructors.LastName" +
                 " From Students,Enrollments,Instructors,Sections ,Courses,CoursesinSections " +
-                " where CoursesinSections.CourseId = Courses.CourseId And CoursesinSections.SectionNo = Sections.SectionNo" +
-                " And CoursesinSections.InstructorId = Instructors.InstructorId " +
-                " And Enrollments.StudentId = Students.Id And Enrollments.CourseId = Courses.CourseId " +
+                " where CoursesinSections.CourseId = Courses.Id And CoursesinSections.SectionNo = Sections.SectionNo" +
+                " And CoursesinSections.InstructorId = Instructors.Id " +
+                " And Enrollments.StudentId = Students.Id And Enrollments.CourseId = Courses.Id " +
                 " And Enrollments.SectionNo = Sections.SectionNo; ";
 
         Cursor cursor = database.rawQuery(getAll ,null );
