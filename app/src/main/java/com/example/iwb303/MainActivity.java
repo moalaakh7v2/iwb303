@@ -86,12 +86,14 @@ public class MainActivity extends AppCompatActivity {
                 {
                     editor.putString("Status","Student");
                     editor.commit();
+                    finish();
                     startActivity(new Intent(MainActivity.this, ManageStudent.class));
                 }
                 else
                 {
                     editor.putString("Status","Admin");
                     editor.commit();
+                    finish();
                     startActivity(new Intent(MainActivity.this, ManageAdminActivity.class));
                 }
             } else {

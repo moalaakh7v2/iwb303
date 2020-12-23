@@ -69,6 +69,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 md.start();
                 SharedPreferences settings = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
                 settings.edit().clear().commit();
+                finish();
                 startActivity(new Intent(this, MainActivity.class));
                 break;
         }

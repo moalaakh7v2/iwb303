@@ -49,15 +49,14 @@ public class CoursesinSectionsController {
     public static List<CourseInfoVM> GetCoursesinSections(DBContext context, Integer StudentId,Integer SectionNo) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<CourseInfoVM> coursesinSectionsList = new ArrayList<>();
-        String getAll = "Select SectionName ,Title ,FristName ,LastName ,RoomNo ,CourseId ,InstructorId" +
+        String getAll = "Select SectionName ,Title ,FirstName ,LastName ,RoomNo ,CourseId ,InstructorId" +
                 " From Courses c,Sections s,Instructors i,CoursesinSections cs  " +
                 " where cs.CourseId = c.Id And cs.SectionNo = s.SectionNo And cs.InstructorId = i.Id" +
-                " And SectionNo = "+SectionNo+" And CourseId not in (Select CourseId From Enrollments" +
+                " And cs.SectionNo = "+SectionNo+" And CourseId not in (Select CourseId From Enrollments" +
                 " where StudentId = "+StudentId+" And SectionNo = cs.SectionNo ); ";
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())
             do{
-                CourseInfoVM courseinSection = new CourseInfoVM();
                 CourseInfoVM courseInfoVM = new CourseInfoVM();
                 courseInfoVM.setSectionName(cursor.getString(0));
                 courseInfoVM.setCourseTitle(cursor.getString(1));
@@ -66,34 +65,33 @@ public class CoursesinSectionsController {
                 courseInfoVM.setSectionNo(SectionNo);
                 courseInfoVM.setCourseId(cursor.getInt(5));
                 courseInfoVM.setInstructorId(cursor.getInt(6));
-                coursesinSectionsList.add(courseinSection);
+                coursesinSectionsList.add(courseInfoVM);
             }while (cursor.moveToNext());
         return  coursesinSectionsList;
     }
     public static List<CourseInfoVM> GetInstructorsinCoursesinSections(DBContext context, Integer SectionNo,Integer CourseId) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<CourseInfoVM> InstructorsinCoursesinSectionsList = new ArrayList<>();
-        String getAll = "Select FristName ,LastName ,InstructorId" +
+        String getAll = "Select FirstName ,LastName ,InstructorId" +
                 " From Courses c,Sections s,Instructors i,CoursesinSections cs  " +
                 " where cs.CourseId = c.Id And cs.SectionNo = s.SectionNo And cs.InstructorId = i.Id" +
-                " And SectionNo = "+SectionNo+" And CourseId = "+CourseId+" ; ";
+                " And cs.SectionNo = "+SectionNo+" And cs.CourseId = "+CourseId+" ; ";
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())
             do{
-                CourseInfoVM courseinSection = new CourseInfoVM();
                 CourseInfoVM courseInfoVM = new CourseInfoVM();
                 courseInfoVM.setInstructorName(cursor.getString(0) + " " + cursor.getString(1));
                 courseInfoVM.setInstructorId(cursor.getInt(2));
-                InstructorsinCoursesinSectionsList.add(courseinSection);
+                InstructorsinCoursesinSectionsList.add(courseInfoVM);
             }while (cursor.moveToNext());
         return  InstructorsinCoursesinSectionsList;
     }
     public static List<CourseInfoVM> GetCoursesinSectionsInfo(DBContext context, Integer courseId,Integer sectionNo,Integer instructorId) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<CourseInfoVM> coursesinSectionsList = new ArrayList<>();
-        String getAll = "Select SectionName ,Title ,FristName ,LastName ,RoomNo From Courses c,Sections s,Instructors i,CoursesinSections cs " +
+        String getAll = "Select SectionName ,Title ,FirstName ,LastName ,RoomNo From Courses c,Sections s,Instructors i,CoursesinSections cs " +
                 " where cs.CourseId = c.Id And cs.SectionNo = s.SectionNo And cs.InstructorId = i.Id" +
-                " And CourseId = "+courseId+" And SectionNo = "+sectionNo+" And InstructorId = "+instructorId+" ;";
+                " And cs.CourseId = "+courseId+" And cs.SectionNo = "+sectionNo+" And cs.InstructorId = "+instructorId+" ;";
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())
             do{

@@ -54,6 +54,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 md.start();
                 SharedPreferences settings = getContext().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
                 settings.edit().clear().commit();
+                getActivity().finish();
                 startActivity(new Intent(getActivity(), MainActivity.class));
                 break;
         }

@@ -29,24 +29,26 @@ import Models.ViewModels.StudentsEnrollmentInfoVM;
 
 public class MySubjectsFragment extends Fragment {
 
-    TextView lblUname;
+    TextView lblUname,lblSubjects;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_my_subjects, container, false);
-        lblUname = root.findViewById(R.id.lblSubjects);
+        lblUname = root.findViewById(R.id.lblUname);
+        lblSubjects = root.findViewById(R.id.lblSubjects);
         SharedPreferences settings = getActivity().getSharedPreferences("UserInfo", 0);
-        lblUname.setText(settings.getString("Username", ""));
+        lblUname.setText("Welcome " + settings.getString("Username", ""));
         Integer studentId = settings.getInt("Id",0);
         StringBuffer buffer=new StringBuffer();
         DBContext context = new DBContext(getActivity());
         List<StudentsEnrollmentInfoVM> studentsEnrollmentInfoVM = EnrollmentsController.GetStudentEnrollments(context,studentId);
         for (StudentsEnrollmentInfoVM u: studentsEnrollmentInfoVM)
         {
-            buffer.append("Id: "+ u.getSectionName() +"\n");
-            buffer.append("UserName: "+ u.getCourseTitle() +"\n");
-            buffer.append("RegYear: "+ u.getInstructorName() +"\n");
+            buffer.append("Section Name: "+ u.getSectionName() +"\n");
+            buffer.append("Course Title: "+ u.getCourseTitle() +"\n");
+            buffer.append("Teacher Name: "+ u.getInstructorName() +"\n");
             buffer.append("---------------------------\n");
         }
+        lblSubjects.setText(buffer);
         return root;
     }
 

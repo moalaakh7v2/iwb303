@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,6 +49,13 @@ public class AddNewCourseInSectionActivity extends AppCompatActivity {
         EditText txtAddCourseId = findViewById(R.id.txtAddCourseId);
         EditText txtAddTeacherId = findViewById(R.id.txtAddTeacherId);
         EditText txtAddRoomId = findViewById(R.id.txtAddRoomId);
+        if (TextUtils.isEmpty(txtAddSectionId.getText().toString())||
+                TextUtils.isEmpty(txtAddCourseId.getText().toString())||
+                TextUtils.isEmpty(txtAddTeacherId.getText().toString())||
+                TextUtils.isEmpty(txtAddRoomId.getText().toString())){
+            Toast.makeText(this, "Please Enter All Data", Toast.LENGTH_LONG).show();
+            return;
+        }
         CourseinSection courseinSection = new CourseinSection();
         courseinSection.setCourseId(Integer.parseInt(txtAddCourseId.getText().toString()));
         courseinSection.setInstructorId(Integer.parseInt(txtAddTeacherId.getText().toString()));
