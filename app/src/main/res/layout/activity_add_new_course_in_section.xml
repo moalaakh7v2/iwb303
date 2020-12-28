@@ -10,6 +10,36 @@
     android:layout_height="match_parent"
     tools:context=".ui.subject.AddNewCourseInSectionActivity">
 
+    <Spinner
+        android:id="@+id/SectionsSp"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Spinner
+        android:id="@+id/CoursesSp"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Spinner
+        android:id="@+id/InstructorsSp"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
     <EditText
         android:id="@+id/txtAddRoomId"
         android:layout_width="wrap_content"
@@ -26,89 +56,59 @@
         android:id="@+id/textView14"
         android:layout_width="98dp"
         android:layout_height="21dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
         android:text="Room Number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddTeacherId" />
-
-    <EditText
-        android:id="@+id/txtAddTeacherId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/InstructorsSp" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="98dp"
         android:layout_height="21dp"
-        android:layout_marginTop="50dp"
-        android:text="Instructor Id"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="Instructor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddCourseId" />
-
-    <EditText
-        android:id="@+id/txtAddCourseId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/CoursesSp" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="98dp"
         android:layout_height="21dp"
-        android:layout_marginTop="48dp"
-        android:text="Course Id"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="Course"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddSectionId" />
+        app:layout_constraintTop_toBottomOf="@+id/SectionsSp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="98dp"
         android:layout_height="21dp"
         android:layout_marginTop="52dp"
-        android:text="Section Id"
+        android:gravity="center"
+        android:text="Section"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtAddSectionId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
     <Button
         android:id="@+id/btnApplayAddSectionInCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:onClick="btnAddCourseInSoction"
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAddRoomId" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,4 +36,9 @@ public class Course {
     public void setHours(int hours) {
         Hours = hours;
     }
+
+    @Override
+    public String toString() {
+        return Title;
+    }
 }

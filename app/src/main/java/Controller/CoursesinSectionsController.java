@@ -13,21 +13,18 @@ import Models.Student;
 import Models.ViewModels.CourseInfoVM;
 
 public class CoursesinSectionsController {
-    public static CourseinSection GetCourseinSection(DBContext context, Integer sectionNo,Integer courseId )
+
+    public static int GetCountCourseinSection(DBContext context,CourseinSection courseinSection)
     {
-        String Query="Select *  From CoursesinSections " +
-                "Where CourseId = "+courseId +" And SectionNo = "+sectionNo+";";
+        String Query="Select Count(*) From coursesinsections " +
+                "Where CourseId = "+courseinSection.getCourseId() +" And SectionNo = "+courseinSection.getSectionNo()+
+                " And InstructorId = " + courseinSection.getInstructorId() + " And RoomNo = '"+courseinSection.getRoomNo()+"' ;";
         SQLiteDatabase database = context.getReadableDatabase();
         Cursor cursor = database.rawQuery(Query,null);
         if(cursor.moveToFirst()) {
-            CourseinSection courseinSection = new CourseinSection();
-            courseinSection.setSectionNo(cursor.getInt(0));
-            courseinSection.setCourseId(cursor.getInt(1));
-            courseinSection.setInstructorId(cursor.getInt(2));
-            courseinSection.setRoomNo(cursor.getString(3));
-            return courseinSection;
+            return cursor.getInt(0);
         }
-        return null;
+        return 0;
     }
 
     public static List<CourseinSection> GetAllCoursesinSections(DBContext context) {

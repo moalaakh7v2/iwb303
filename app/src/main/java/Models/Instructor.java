@@ -66,4 +66,9 @@ public class Instructor {
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
+
+    @Override
+    public String toString() {
+        return  Firstname  + " " + Lastname ;
+    }
 }

@@ -3,45 +3,38 @@ package com.example.iwb303.tab.Register;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
-import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import Controller.CoursesinSectionsController;
 import Controller.DBContext;
 import Controller.EnrollmentsController;
 import Controller.SectionsController;
-import Controller.StudentsController;
-import Models.Course;
+import Controller.FillSpinner;
 import Models.Enrollment;
-import Models.LoginInfo;
 import Models.Section;
 import Models.ViewModels.CourseInfoVM;
-import Models.ViewModels.StudentInfoVM;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     Button btnRegister;
-    TextView lblSubjects;
     MediaPlayer md;
     private Spinner spinnerSections;
-    private Spinner spinnerCources;
+    private Spinner spinnerCourses;
     private Spinner spinnerInstructors;
     private DBContext context;
     Section section ;
@@ -49,7 +42,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     CourseInfoVM instructor;
     Integer studentId;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
+
+    public View onCreateView(@NonNull final LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_register, container, false);
         context = new DBContext(getActivity());
@@ -58,28 +52,29 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         btnRegister = root.findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);
         spinnerSections = root.findViewById(R.id.spinnerSections);
-        spinnerCources = root.findViewById(R.id.spinnerCourses);
+        spinnerCourses = root.findViewById(R.id.spinnerCourses);
         spinnerInstructors = root.findViewById(R.id.spinnerInstructor);
-        ArrayAdapter<Section> adapter = new ArrayAdapter<Section>(getActivity(),
-                android.R.layout.simple_spinner_item, SectionsController.GetSections(context));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSections.setAdapter(adapter);
+        FillSpinner<Section> fillSpinnerSections =new FillSpinner<>(getActivity(),spinnerSections,SectionsController.GetSections(context));
         spinnerSections.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 section = (Section) parent.getSelectedItem();
-                ArrayAdapter<CourseInfoVM> adapter = new ArrayAdapter<CourseInfoVM>(getActivity(),
-                        android.R.layout.simple_spinner_item, CoursesinSectionsController.GetCoursesinSections(context,studentId, section.getSectionNo()));
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerCources.setAdapter(adapter);
-                spinnerCources.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                List<CourseInfoVM> CSVM =CoursesinSectionsController.GetCoursesinSections(context,studentId, section.getSectionNo());
+                if(CSVM.isEmpty())
+                {
+                    FillSpinner<CourseInfoVM> fillSpinnerInstructors = new FillSpinner<>(getActivity(), spinnerInstructors, new ArrayList<CourseInfoVM>());
+                    course = null;
+                    instructor=null;
+                }
+                FillSpinner<CourseInfoVM> fillSpinnerCourses = new FillSpinner<>(getActivity(), spinnerCourses,CSVM);
+                spinnerCourses.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                          course = (CourseInfoVM) parent.getSelectedItem();
-                        ArrayAdapter<CourseInfoVM> adapter = new ArrayAdapter<CourseInfoVM>(getActivity(),
-                                android.R.layout.simple_spinner_item, CoursesinSectionsController.GetInstructorsinCoursesinSections(context,course.getSectionNo(), course.getCourseId()));
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        spinnerInstructors.setAdapter(adapter);
+                        List<CourseInfoVM> CSVM =CoursesinSectionsController.GetInstructorsinCoursesinSections(context,course.getSectionNo(), course.getCourseId());
+                       if(CSVM.isEmpty())
+                           instructor = null;
+                        FillSpinner<CourseInfoVM> fillSpinnerInstructors = new FillSpinner<>(getActivity(),spinnerInstructors,CSVM);
                         spinnerInstructors.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
@@ -92,6 +87,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                     }
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
+
                     }
                 });
             }
@@ -109,6 +105,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 case R.id.btnRegister:
                     md = MediaPlayer.create(getContext(), R.raw.tab_move);
                     md.start();
+                    if(EnrollmentsController.IsEnrollmentExist(context,enrollment))
+                        Toast.makeText(getActivity(), " You are already registered in this  ", Toast.LENGTH_LONG).show();
+                    else
                     EnrollmentsController.AddEnrollment(context, enrollment);
                     break;
 

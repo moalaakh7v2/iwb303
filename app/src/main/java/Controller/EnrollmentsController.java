@@ -50,8 +50,9 @@ public class EnrollmentsController {
                 Enrollment enrollment = new Enrollment();
                 enrollment.setSectionNo(cursor.getInt(0));
                 enrollment.setCourseId(cursor.getInt(1));
-                enrollment.setStudentId(cursor.getInt(2));
-                enrollment.setGrade(cursor.getFloat(3));
+                enrollment.setInstructorId(cursor.getInt(2));
+                enrollment.setStudentId(cursor.getInt(3));
+                enrollment.setGrade(cursor.getFloat(4));
                 EnrollmentsList.add(enrollment);
             }while (cursor.moveToNext());
         return  EnrollmentsList;
@@ -86,9 +87,21 @@ public class EnrollmentsController {
         ContentValues enrollmentValues = new ContentValues();
         enrollmentValues.put("SectionNo", enrollment.getSectionNo());
         enrollmentValues.put("CourseId", enrollment.getCourseId());
+        enrollmentValues.put("InstructorId", enrollment.getInstructorId());
         enrollmentValues.put("StudentId", enrollment.getStudentId());
         enrollmentValues.put("Grade", enrollment.getGrade());
         database.insert("Enrollments",null,enrollmentValues);
         database.close();
+    }
+    public static Boolean IsEnrollmentExist(DBContext context,Enrollment enrollment)
+    {
+        SQLiteDatabase database = context.getReadableDatabase() ;
+        String getAll = "Select * From Enrollments " +
+                " Where SectionNo = "+enrollment.getSectionNo()+" And CourseId = "+enrollment.getCourseId() +
+                " And InstructorId = "+enrollment.getInstructorId()+" And StudentId = "+enrollment.getStudentId()+" ; ";
+        Cursor cursor = database.rawQuery(getAll ,null );
+        if (cursor.moveToFirst())
+              return  true;
+        return  false;
     }
 }
