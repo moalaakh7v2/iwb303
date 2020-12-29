@@ -107,8 +107,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                     md.start();
                     if(EnrollmentsController.IsEnrollmentExist(context,enrollment))
                         Toast.makeText(getActivity(), " You are already registered in this  ", Toast.LENGTH_LONG).show();
-                    else
-                    EnrollmentsController.AddEnrollment(context, enrollment);
+                    else {
+                        EnrollmentsController.AddEnrollment(context, enrollment);
+                        Toast.makeText(getActivity(), " Done  ", Toast.LENGTH_LONG).show();
+                    }
                     break;
 
             }
