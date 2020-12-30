@@ -3,6 +3,7 @@ package Models;
 import java.sql.Time;
 
 public class CourseinSection {
+   Integer Id;
    Integer SectionNo;
    Integer CourseId;
    Integer InstructorId;
@@ -17,6 +18,10 @@ public class CourseinSection {
         InstructorId = instructorId;
         RoomNo = roomNo;
     }
+
+    public Integer getId() { return Id; }
+
+    public void setId(Integer id) { Id = id; }
 
     public int getSectionNo() {
         return SectionNo;

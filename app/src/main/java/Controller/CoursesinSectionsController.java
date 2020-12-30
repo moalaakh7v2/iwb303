@@ -35,10 +35,11 @@ public class CoursesinSectionsController {
         if (cursor.moveToFirst())
             do{
                 CourseinSection courseinSection = new CourseinSection();
-                courseinSection.setSectionNo(cursor.getInt(0));
-                courseinSection.setCourseId(cursor.getInt(1));
-                courseinSection.setInstructorId(cursor.getInt(2));
-                courseinSection.setRoomNo(cursor.getString(3));
+                courseinSection.setId(cursor.getInt(0));
+                courseinSection.setSectionNo(cursor.getInt(1));
+                courseinSection.setCourseId(cursor.getInt(2));
+                courseinSection.setInstructorId(cursor.getInt(3));
+                courseinSection.setRoomNo(cursor.getString(4));
                 coursesinSectionsList.add(courseinSection);
             }while (cursor.moveToNext());
         return  coursesinSectionsList;

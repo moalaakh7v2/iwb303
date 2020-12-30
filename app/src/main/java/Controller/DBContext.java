@@ -59,14 +59,15 @@ public class DBContext extends SQLiteOpenHelper {
         db.execSQL(Courses);
         String CoursesinSections =
                 "Create Table CoursesinSections(" +
+                "Id INTEGER Primary Key AUTOINCREMENT NOT NULL," +
                 "SectionNo int not null," +
                 "CourseId int not null," +
                 "InstructorId int not null," +
                 "RoomNo int not null," +
-                "PRIMARY KEY (SectionNo, CourseId)," +
                 "FOREIGN KEY(SectionNo) REFERENCES Sections(SectionNo)," +
                 "FOREIGN KEY(CourseId) REFERENCES Courses(Id)," +
-                "FOREIGN KEY(InstructorId) REFERENCES Instructors(Id)" +
+                "FOREIGN KEY(InstructorId) REFERENCES Instructors(Id)," +
+                "CONSTRAINT UQ_CinS UNIQUE (SectionNo,CourseId,InstructorId,RoomNo)" +
                 ")" ;
         db.execSQL(CoursesinSections);
         String Enrollments =
