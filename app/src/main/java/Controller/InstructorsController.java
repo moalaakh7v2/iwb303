@@ -62,7 +62,7 @@ public class InstructorsController {
     public static void UpdateInstructor(DBContext context , Instructor instructor)
     {
         SQLiteDatabase database = context.getWritableDatabase();
-        String Query = "Update Instructors set Firstname = '"+instructor.getFirstname()+"' , Lastname ='"+instructor.getLastname()+"' , Address = '"+instructor.getAddress()+"' ,Gender ='"+instructor.getGender()+"', MobileNo=' "+instructor.getMobileNo()+"'" +
+        String Query = "Update Instructors set Firstname = '"+instructor.getFirstname()+"' , Lastname ='"+instructor.getLastname()+"' , Address = '"+instructor.getAddress()+"' , MobileNo=' "+instructor.getMobileNo()+"'" +
                 " Where Id = "+instructor.getId()+" ;";
         database.execSQL(Query);
     }
