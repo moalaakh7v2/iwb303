@@ -84,20 +84,16 @@ public class CoursesinSectionsController {
             }while (cursor.moveToNext());
         return  InstructorsinCoursesinSectionsList;
     }
-    public static List<CourseInfoVM> GetCoursesinSectionsInfo(DBContext context, Integer courseId,Integer sectionNo,Integer instructorId) {
+    public static List<CourseInfoVM> GetRoomsNo(DBContext context, Integer courseId,Integer sectionNo,Integer instructorId) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<CourseInfoVM> coursesinSectionsList = new ArrayList<>();
-        String getAll = "Select SectionName ,Title ,FirstName ,LastName ,RoomNo From Courses c,Sections s,Instructors i,CoursesinSections cs " +
-                " where cs.CourseId = c.Id And cs.SectionNo = s.SectionNo And cs.InstructorId = i.Id" +
-                " And cs.CourseId = "+courseId+" And cs.SectionNo = "+sectionNo+" And cs.InstructorId = "+instructorId+" ;";
+        String getAll = "Select RoomNo From CoursesinSections " +
+                " where CourseId = "+courseId+" And SectionNo = "+sectionNo+" And InstructorId = "+instructorId+" ;";
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())
             do{
                 CourseInfoVM courseInfoVM = new CourseInfoVM();
-                courseInfoVM.setSectionName(cursor.getString(0));
-                courseInfoVM.setCourseTitle(cursor.getString(1));
-                courseInfoVM.setInstructorName(cursor.getString(2) + " " + cursor.getString(3));
-                courseInfoVM.setRoomNo(cursor.getString(4));
+                courseInfoVM.setRoomNo(cursor.getString(0));
                 coursesinSectionsList.add(courseInfoVM);
             }while (cursor.moveToNext());
         return  coursesinSectionsList;

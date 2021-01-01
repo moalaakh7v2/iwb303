@@ -43,6 +43,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     Integer studentId;
 
 
+
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_register, container, false);
@@ -79,6 +80,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
                                 instructor = (CourseInfoVM) parent.getSelectedItem();
+                                List<CourseInfoVM> CSVM =CoursesinSectionsController.GetRoomsNo(context,course.getSectionNo(), course.getCourseId(),instructor.getInstructorId());
+                                if(CSVM.isEmpty())
+                                {
+                                    FillSpinner<CourseInfoVM> fillSpinnerInstructors = new FillSpinner<>(getActivity(), spinnerInstructors, new ArrayList<CourseInfoVM>());
+                                    instructor=null;
+                                }
+                                FillSpinner<CourseInfoVM> fillSpinnerInstructors = new FillSpinner<>(getActivity(),spinnerInstructors,CSVM);
+
                             }
                             @Override
                             public void onNothingSelected(AdapterView<?> parent) {

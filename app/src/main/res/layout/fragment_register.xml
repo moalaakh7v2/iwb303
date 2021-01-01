@@ -24,10 +24,20 @@
             app:layout_constraintTop_toBottomOf="@+id/spinnerCourses" />
 
         <Spinner
+            android:id="@+id/spinnerRoomNo"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="52dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerInstructor" />
+
+        <Spinner
             android:id="@+id/spinnerCourses"
             android:layout_width="300dp"
             android:layout_height="53dp"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="52dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +52,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerInstructor"
-            app:layout_constraintVertical_bias="0.196" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerRoomNo"
+            app:layout_constraintVertical_bias="0.283" />
 
         <TextView
             android:id="@+id/textView19"

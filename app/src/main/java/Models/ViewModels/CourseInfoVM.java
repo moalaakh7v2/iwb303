@@ -79,6 +79,8 @@ public class CourseInfoVM {
     public String toString() {
         if(CourseTitle != null)
              return  CourseTitle;
-        return InstructorName;
+        else if(getInstructorName() != null)
+             return InstructorName;
+        return getRoomNo();
     }
 }
