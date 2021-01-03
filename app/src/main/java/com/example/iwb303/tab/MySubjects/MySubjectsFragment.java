@@ -37,7 +37,7 @@ public class MySubjectsFragment extends Fragment {
         lblSubjects = root.findViewById(R.id.lblSubjects);
         SharedPreferences settings = getActivity().getSharedPreferences("UserInfo", 0);
         lblUname.setText("Welcome " + settings.getString("Username", ""));
-        Integer studentId = settings.getInt("Id",0);
+        Integer studentId = settings.getInt("StudentId",0);
         StringBuffer buffer=new StringBuffer();
         DBContext context = new DBContext(getActivity());
         List<StudentsEnrollmentInfoVM> studentsEnrollmentInfoVM = EnrollmentsController.GetStudentEnrollments(context,studentId);

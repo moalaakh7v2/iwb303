@@ -52,7 +52,7 @@ public class SectionsController {
     {
         SQLiteDatabase database = context.getWritableDatabase();
         String Query = "Update Sections set  SectionName ='"+section.getSectionName()+"' "+
-                "Where Id = "+section.getSectionNo()+" ;";
+                "Where SectionNo = "+section.getSectionNo()+" ;";
         database.execSQL(Query);
     }
     public static boolean deleteSection(DBContext context ,int sectionNo)

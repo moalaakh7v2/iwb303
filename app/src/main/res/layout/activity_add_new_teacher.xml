@@ -12,20 +12,21 @@
 
     <TextView
         android:id="@+id/lblAddTeacherFName"
-        android:layout_width="126dp"
+        android:layout_width="138dp"
         android:layout_height="27dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
         android:text="First Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtAddTeacherFName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="256dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,9 +36,10 @@
 
     <TextView
         android:id="@+id/lblAddTeacherLName"
-        android:layout_width="125dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="138dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
         android:text="Last Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,9 +47,9 @@
 
     <EditText
         android:id="@+id/txtAddTeacherLName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="256dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,16 +61,15 @@
         android:id="@+id/drpTeacherGender"
         android:layout_width="205dp"
         android:layout_height="47dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddTeacherPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/lblAddTeacherGender" />
 
     <EditText
         android:id="@+id/txtAddTeacherPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="256dp"
+        android:layout_height="44dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="phone"
@@ -79,19 +80,32 @@
 
     <TextView
         android:id="@+id/lblAddTeacherPhone"
-        android:layout_width="121dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="138dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
         android:text="Phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAddTeacherLName" />
 
+    <TextView
+        android:id="@+id/lblAddTeacherGender"
+        android:layout_width="138dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="Gender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddTeacherPhone" />
+
     <EditText
         android:id="@+id/txtAddTeacherAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="256dp"
+        android:layout_height="44dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPostalAddress"
@@ -102,9 +116,10 @@
 
     <TextView
         android:id="@+id/lblAddTeacherAddress"
-        android:layout_width="108dp"
-        android:layout_height="29dp"
+        android:layout_width="138dp"
+        android:layout_height="27dp"
         android:layout_marginTop="44dp"
+        android:gravity="center"
         android:text="Address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

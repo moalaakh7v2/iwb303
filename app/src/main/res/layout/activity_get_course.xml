@@ -12,26 +12,25 @@
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="126dp"
-        android:layout_height="33dp"
+        android:layout_width="144dp"
+        android:layout_height="26dp"
         android:layout_marginTop="40dp"
-        android:text="Enter Course Id"
+        android:gravity="center"
+        android:text="Chose Course"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtCourseId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="number"
+    <Spinner
+        android:id="@+id/spCourses"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
     <Button
         android:id="@+id/btnGetCourseById"
         android:layout_width="wrap_content"
@@ -41,7 +40,7 @@
         android:text="Get Course"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCourseId" />
+        app:layout_constraintTop_toBottomOf="@+id/spCourses" />
 
     <Button
         android:id="@+id/btnApplyEditCourse"
@@ -67,9 +66,10 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
+        android:layout_width="144dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
         android:text="Course Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,9 +77,9 @@
 
     <EditText
         android:id="@+id/txtEditCourseTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,9 +88,10 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_width="144dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
         android:text="Hours"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,9 +99,9 @@
 
     <EditText
         android:id="@+id/txtEditCourseHours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"

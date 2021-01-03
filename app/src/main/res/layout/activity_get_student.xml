@@ -11,201 +11,213 @@
         android:layout_height="match_parent"
         tools:context=".ui.student.GetStudentActivity">
 
-        <EditText
-            android:id="@+id/txtEditPhone"
-            android:layout_width="314dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:enabled="?android:attr/windowNoTitle"
-            android:inputType="phone"
+        <Spinner
+            android:id="@+id/spinnerStudents"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblEditPhone" />
-
-        <TextView
-            android:id="@+id/lblEditLName"
-            android:layout_width="159dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="26dp"
-            android:text="Last Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEditFName" />
-
-        <TextView
-            android:id="@+id/lblEditFName"
-            android:layout_width="138dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="32dp"
-            android:text="First Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnGetStudentById" />
-
-        <TextView
-            android:id="@+id/lblEditPhone"
-            android:layout_width="157dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="20dp"
-            android:text="Phone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEditLName" />
-
-        <EditText
-            android:id="@+id/txtEditFName"
-            android:layout_width="298dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:enabled="?android:attr/windowNoTitle"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblEditFName" />
-
-        <TextView
-            android:id="@+id/lblEditAddress"
-            android:layout_width="164dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="29dp"
-            android:text="Address"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEditPass" />
-
-        <EditText
-            android:id="@+id/txtEditUName"
-            android:layout_width="314dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:enabled="?android:attr/windowNoTitle"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.526"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblEditUName" />
-
-        <TextView
-            android:id="@+id/lblEditUName"
-            android:layout_width="136dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="16dp"
-            android:text="UserName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.461"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEditPhone" />
-
-        <EditText
-            android:id="@+id/txtEditLName"
-            android:layout_width="301dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:enabled="?android:attr/windowNoTitle"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblEditLName" />
-
-        <Button
-            android:id="@+id/btnApplyDeleteStudent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:onClick="btnApplyDeleteStudent_Click"
-            android:text="Delete"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnApplyEditStudent" />
-
-        <Button
-            android:id="@+id/btnApplyEditStudent"
-            android:layout_width="123dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="40dp"
-            android:enabled="?android:attr/windowNoTitle"
-            android:onClick="btnApplyEditStudent_Click"
-            android:text="Applay"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEditAddress" />
-
-        <EditText
-            android:id="@+id/txtEditAddress"
-            android:layout_width="326dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:enabled="?android:attr/windowNoTitle"
-            android:inputType="textPostalAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.477"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblEditAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/lblEnterStudentId" />
 
         <TextView
             android:id="@+id/lblEnterStudentId"
             android:layout_width="144dp"
             android:layout_height="26dp"
             android:layout_marginTop="40dp"
-            android:text="Enter Student Id"
+            android:gravity="center"
+            android:text="Chose Student"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/txtStudentId"
-            android:layout_width="209dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblEnterStudentId" />
-
         <Button
             android:id="@+id/btnGetStudentById"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:onClick="btnGetStudentById_Click"
             android:text="Get Student"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtStudentId" />
-
-        <TextView
-            android:id="@+id/lblEditPass"
-            android:layout_width="135dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="24dp"
-            android:text="Password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.423"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEditUName" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerStudents" />
 
         <EditText
             android:id="@+id/txtEditPass"
-            android:layout_width="312dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="23dp"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="12dp"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.595"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblEditPass" />
+
+        <EditText
+            android:id="@+id/txtEditPhone"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:enabled="?android:attr/windowNoTitle"
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.587"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblEditPhone" />
+
+        <TextView
+            android:id="@+id/lblEditPhone"
+            android:layout_width="157dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.523"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditLName" />
+
+        <EditText
+            android:id="@+id/txtEditFName"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:enabled="?android:attr/windowNoTitle"
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblEditFName" />
+
+        <TextView
+            android:id="@+id/lblEditFName"
+            android:layout_width="138dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="44dp"
+            android:gravity="center"
+            android:text="First Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnGetStudentById" />
+
+        <EditText
+            android:id="@+id/txtEditLName"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:enabled="?android:attr/windowNoTitle"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblEditLName" />
+
+        <Button
+            android:id="@+id/btnApplyEditStudent"
+            android:layout_width="123dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="48dp"
+            android:enabled="?android:attr/windowNoTitle"
+            android:onClick="btnApplyEditStudent_Click"
+            android:text="Applay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.534"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditAddress" />
+
+        <Button
+            android:id="@+id/btnApplyDeleteStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="btnApplyDeleteStudent_Click"
+            android:text="Delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.532"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnApplyEditStudent" />
+
+        <TextView
+            android:id="@+id/lblEditUName"
+            android:layout_width="136dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="UserName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditPhone" />
+
+        <TextView
+            android:id="@+id/lblEditAddress"
+            android:layout_width="136dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditPass" />
+
+        <EditText
+            android:id="@+id/txtEditAddress"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:enabled="?android:attr/windowNoTitle"
+            android:inputType="textPostalAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.597"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblEditAddress" />
+
+        <TextView
+            android:id="@+id/lblEditLName"
+            android:layout_width="159dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Last Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.535"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditFName" />
+
+        <EditText
+            android:id="@+id/txtEditUName"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:enabled="?android:attr/windowNoTitle"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.587"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblEditUName" />
+
+        <TextView
+            android:id="@+id/lblEditPass"
+            android:layout_width="157dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="48dp"
+            android:gravity="center"
+            android:text="Password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.531"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditUName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

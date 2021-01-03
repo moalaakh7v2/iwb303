@@ -6,13 +6,18 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.iwb303.R;
 
+import java.util.List;
+
 import Controller.DBContext;
+import Controller.FillSpinner;
 import Controller.StudentsController;
 import Models.LoginInfo;
 import Models.Student;
@@ -20,12 +25,13 @@ import Models.ViewModels.StudentInfoVM;
 
 public class GetStudentActivity extends AppCompatActivity {
 
-    EditText txtStudentId ,txtEditFName,txtEditLName,txtEditPhone,txtEditUName,txtEditPass,txtEditAddress;
+    EditText txtEditFName,txtEditLName,txtEditPhone,txtEditUName,txtEditPass,txtEditAddress;
+    Spinner studentsSpinner;
     Button btnApplyEditStudent , btnApplyDeleteStudent;
+    StudentInfoVM studentVM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         SharedPreferences prefs = getSharedPreferences("themeFile", MODE_PRIVATE);
         String themeName = prefs.getString("themeName", "Blue");
         switch (themeName) {
@@ -46,7 +52,7 @@ public class GetStudentActivity extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_get_student);
-        txtStudentId = findViewById(R.id.txtStudentId);
+        studentsSpinner = findViewById(R.id.spinnerStudents);
         txtEditFName = findViewById(R.id.txtEditFName);
         txtEditPhone = findViewById(R.id.txtEditPhone);
         txtEditUName = findViewById(R.id.txtEditUName);
@@ -56,30 +62,33 @@ public class GetStudentActivity extends AppCompatActivity {
         btnApplyEditStudent = findViewById(R.id.btnApplyEditStudent);
         btnApplyDeleteStudent = findViewById(R.id.btnApplyDeleteStudent);
         EnableButton(false);
+        List<StudentInfoVM> students = StudentsController.getStudents(new DBContext(GetStudentActivity.this));
+        FillSpinner<StudentInfoVM> fillSpinnerInstructors = new FillSpinner<>(GetStudentActivity.this,studentsSpinner,students);
+        studentsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
+                studentVM = (StudentInfoVM) parent.getSelectedItem();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
     }
 
     public void btnGetStudentById_Click(View view){
-        if (TextUtils.isEmpty(txtStudentId.getText().toString())) {
-            Toast.makeText(this, "Please enter Student Id !", Toast.LENGTH_LONG).show();
-        }
-        else{
-            DBContext context = new DBContext(GetStudentActivity.this);
-            Integer studetId =Integer.parseInt(txtStudentId.getText().toString());
-            StudentInfoVM studentInfoVM = StudentsController.GetStudentInfo(context,studetId);
-            if (studentInfoVM == null){
-                Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
-                return;
-            }
-            EnableButton(true);
-            txtEditFName.setText(studentInfoVM.getFirstname());
-            txtEditPhone.setText(studentInfoVM.getMobileNo());
-            txtEditUName.setText(studentInfoVM.getUsername());
-            txtEditPass.setText(studentInfoVM.getPassword());
-            txtEditLName.setText(studentInfoVM.getLastname());
-            txtEditAddress.setText(studentInfoVM.getAddress());
-        }
 
+        if (studentVM == null){
+            Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
+            return;
+        }
+        EnableButton(true);
+        txtEditFName.setText(studentVM.getFirstname());
+        txtEditPhone.setText(studentVM.getMobileNo());
+        txtEditUName.setText(studentVM.getUsername());
+        txtEditPass.setText(studentVM.getPassword());
+        txtEditLName.setText(studentVM.getLastname());
+        txtEditAddress.setText(studentVM.getAddress());
     }
 
     public void btnApplyEditStudent_Click(View view){
@@ -93,9 +102,8 @@ public class GetStudentActivity extends AppCompatActivity {
             return;
         }
         DBContext context = new DBContext(GetStudentActivity.this);
-        Integer studetId =Integer.parseInt(txtStudentId.getText().toString());
         Student student = new Student();
-        student.setId(studetId);
+        student.setId(studentVM.getId());
         student.setFirstname(txtEditFName.getText().toString());
         student.setLastname(txtEditLName.getText().toString());
         student.setMobileNo(txtEditPhone.getText().toString());
@@ -103,19 +111,19 @@ public class GetStudentActivity extends AppCompatActivity {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setUsername(txtEditUName.getText().toString());
         loginInfo.setPassword(txtEditPass.getText().toString());
-        loginInfo.setStudentId(studetId);
+        loginInfo.setStudentId(studentVM.getId());
         StudentsController.UpdateStudent(context,student,loginInfo);
         Toast.makeText(GetStudentActivity.this, "Edit Successfully", Toast.LENGTH_LONG).show();
         finish();
     }
 
     public void btnApplyDeleteStudent_Click(View view){
-        if (TextUtils.isEmpty(txtStudentId.getText().toString())){
-            Toast.makeText(this, "Please enter Student Id !", Toast.LENGTH_LONG).show();
+        if (studentVM == null){
+            Toast.makeText(this, "Please select Student !", Toast.LENGTH_LONG).show();
+            return;
         }
         DBContext context = new DBContext(GetStudentActivity.this);
-        Integer studetId =Integer.parseInt(txtStudentId.getText().toString());
-        StudentsController.deleteStudent(context,studetId);
+        StudentsController.deleteStudent(context,studentVM.getId());
         Toast.makeText(GetStudentActivity.this, "Deleted Successfully", Toast.LENGTH_LONG).show();
         finish();
     }

@@ -67,9 +67,8 @@ public class ManageStudent extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
-        moveTaskToBack(false);
+        finishAffinity();
+        System.exit(0);
     }
-
 
 }

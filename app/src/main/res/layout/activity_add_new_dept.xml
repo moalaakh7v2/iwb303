@@ -26,10 +26,10 @@
         android:id="@+id/lblAddNewDept"
         android:layout_width="163dp"
         android:layout_height="22dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="204dp"
+        android:gravity="center"
         android:text="Dept Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +37,7 @@
         android:id="@+id/txtAddDeptName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"

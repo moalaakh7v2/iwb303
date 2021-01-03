@@ -13,9 +13,9 @@
 
     <EditText
         android:id="@+id/txtEditSectionName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:enabled="false"
         android:inputType="textPersonName"
@@ -26,9 +26,10 @@
 
     <TextView
         android:id="@+id/lblEditSectionName"
-        android:layout_width="187dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="144dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
         android:text="Dept Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,23 +50,23 @@
 
     <TextView
         android:id="@+id/lblEnterDeptId"
-        android:layout_width="110dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="48dp"
-        android:text="Enter Dept Id"
+        android:layout_width="144dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="Chose Dept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtDeptId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="number"
+    <Spinner
+        android:id="@+id/spDepts"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblEnterDeptId" />
 
@@ -78,7 +79,7 @@
         android:text="Get Dept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDeptId" />
+        app:layout_constraintTop_toBottomOf="@+id/spDepts" />
 
     <Button
         android:id="@+id/btnApplyDeleteSection"

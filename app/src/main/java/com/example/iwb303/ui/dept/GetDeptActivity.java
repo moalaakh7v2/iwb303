@@ -6,15 +6,21 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.iwb303.R;
 import com.example.iwb303.ui.student.GetStudentActivity;
+import com.example.iwb303.ui.subject.GetCourseActivity;
+
+import java.util.List;
 
 import Controller.CoursesController;
 import Controller.DBContext;
+import Controller.FillSpinner;
 import Controller.SectionsController;
 import Controller.StudentsController;
 import Models.Course;
@@ -25,8 +31,10 @@ import Models.ViewModels.StudentInfoVM;
 
 public class GetDeptActivity extends AppCompatActivity {
 
-    EditText txtDeptId ,txtEditSectionName;
+    EditText txtEditSectionName;
     Button btnApplyEditSection , btnApplyDeleteSection;
+    Spinner spDepts;
+    Section dept;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,28 +58,30 @@ public class GetDeptActivity extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_get_dept);
-        txtDeptId = findViewById(R.id.txtDeptId);
+        spDepts = findViewById(R.id.spDepts);
         txtEditSectionName = findViewById(R.id.txtEditSectionName);
         btnApplyEditSection = findViewById(R.id.btnApplyEditSection);
         btnApplyDeleteSection = findViewById(R.id.btnApplyDeleteSection);
         EnableButton(false);
+        List<Section> sections = SectionsController.GetSections(new DBContext(GetDeptActivity.this));
+        FillSpinner<Section> fillSpinnerSections = new FillSpinner<>(GetDeptActivity.this,spDepts,sections);
+        spDepts.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
+                dept = (Section) parent.getSelectedItem();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
     public void btnGetDeptById_Click(View view){
-        if (TextUtils.isEmpty(txtDeptId.getText().toString())){
-            Toast.makeText(this, "Please enter Dept Id", Toast.LENGTH_LONG).show();
+        if (dept == null){
+            Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
+            return;
         }
-        else{
-            DBContext context = new DBContext(GetDeptActivity.this);
-            Integer sectionId =Integer.parseInt(txtDeptId.getText().toString());
-            Section section = SectionsController.GetSection(context,sectionId);
-            if (section == null){
-                Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
-                return;
-            }
-            EnableButton(true);
-            txtEditSectionName.setText(section.getSectionName());
-        }
-
+        EnableButton(true);
+        txtEditSectionName.setText(dept.getSectionName());
     }
     public void btnApplyEditSection_Click(View view){
         if (TextUtils.isEmpty(txtEditSectionName.getText().toString())){
@@ -79,22 +89,20 @@ public class GetDeptActivity extends AppCompatActivity {
             return;
         }
         DBContext context = new DBContext(GetDeptActivity.this);
-        Integer sectionId =Integer.parseInt(txtDeptId.getText().toString());
         Section section = new Section();
-        section.setSectionNo(sectionId);
+        section.setSectionNo(dept.getSectionNo());
         section.setSectionName(txtEditSectionName.getText().toString());
         SectionsController.UpdateSection(context,section);
         Toast.makeText(GetDeptActivity.this, "Edit Successfully", Toast.LENGTH_LONG).show();
         finish();
     }
     public void btnApplyDeleteSection_Click(View view){
-        if (TextUtils.isEmpty(txtDeptId.getText().toString())){
-            Toast.makeText(this, "Please enter Dept Id", Toast.LENGTH_LONG).show();
+        if (dept == null){
+            Toast.makeText(this, "Please Select Dept ", Toast.LENGTH_LONG).show();
             return;
         }
         DBContext context = new DBContext(GetDeptActivity.this);
-        Integer sectionId =Integer.parseInt(txtDeptId.getText().toString());
-        SectionsController.deleteSection(context,sectionId);
+        SectionsController.deleteSection(context,dept.getSectionNo());
         Toast.makeText(GetDeptActivity.this, "Deleted Successfully", Toast.LENGTH_LONG).show();
         finish();
     }

@@ -16,6 +16,7 @@
             android:layout_width="138dp"
             android:layout_height="27dp"
             android:layout_marginTop="36dp"
+            android:gravity="center"
             android:text="First Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,9 +24,10 @@
 
         <TextView
             android:id="@+id/lblAddLName"
-            android:layout_width="159dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="13dp"
+            android:layout_width="138dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
             android:text="Last Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,18 +37,19 @@
             android:id="@+id/txtAddFName"
             android:layout_width="256dp"
             android:layout_height="44dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblAddFName" />
 
         <EditText
             android:id="@+id/txtAddLName"
-            android:layout_width="257dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="11dp"
+            android:layout_width="256dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,9 +58,10 @@
 
         <TextView
             android:id="@+id/lblAddUName"
-            android:layout_width="136dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="138dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
             android:text="UserName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.465"
@@ -66,9 +70,10 @@
 
         <TextView
             android:id="@+id/lblAddPhone"
-            android:layout_width="160dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="23dp"
+            android:layout_width="138dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
             android:text="Phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,9 +90,9 @@
 
         <EditText
             android:id="@+id/txtAddPhone"
-            android:layout_width="251dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="256dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="phone"
             android:phoneNumber="true"
@@ -108,9 +113,9 @@
 
         <EditText
             android:id="@+id/txtAddUName"
-            android:layout_width="249dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="256dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -119,9 +124,10 @@
 
         <TextView
             android:id="@+id/lblAddAddress"
-            android:layout_width="150dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="138dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
             android:text="Address"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,9 +135,9 @@
 
         <EditText
             android:id="@+id/txtAddAddress"
-            android:layout_width="271dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="36dp"
+            android:layout_width="256dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPostalAddress"
             app:layout_constraintEnd_toEndOf="parent"
@@ -141,9 +147,10 @@
 
         <TextView
             android:id="@+id/lblAddPassword"
-            android:layout_width="161dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="138dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
             android:text="Password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -151,8 +158,8 @@
 
         <EditText
             android:id="@+id/txtAddPassword"
-            android:layout_width="264dp"
-            android:layout_height="51dp"
+            android:layout_width="256dp"
+            android:layout_height="44dp"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPassword"
@@ -162,10 +169,11 @@
 
         <TextView
             android:id="@+id/lblAddGender"
-            android:layout_width="161dp"
-            android:layout_height="35dp"
+            android:layout_width="138dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="36dp"
             android:layout_marginStart="49dp"
-            android:layout_marginTop="28dp"
+            android:gravity="center"
             android:text="Gender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.343"

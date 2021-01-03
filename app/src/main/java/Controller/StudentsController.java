@@ -54,23 +54,23 @@ public class StudentsController {
         }
         return null;
     }
-    public static StudentInfoVM GetStudentInfo(DBContext context, int Id)
+    public static List<StudentInfoVM> GetStudentInfo(DBContext context)
     {
-        String Query="Select Students.* , Username,Password From Students,LoginInfos" +
-                " Where Students.Id = StudentId And Students.Id = "+Id+";";
+        String Query="Select Students.Id , Username ,Firstname ,Lastname From Students,LoginInfos" +
+                "  Where Students.Id = StudentId ;";
+        List<StudentInfoVM> StudentsList = new ArrayList<>();
         SQLiteDatabase database = context.getReadableDatabase();
         Cursor cursor = database.rawQuery(Query,null);
         if(cursor.moveToFirst()) {
-            StudentInfoVM studentInfo = new StudentInfoVM();
-            studentInfo.setId(cursor.getInt(0));
-            studentInfo.setFirstname(cursor.getString(1));
-            studentInfo.setLastname(cursor.getString(2));
-            studentInfo.setRegYeer(cursor.getInt(3));
-            studentInfo.setAddress(cursor.getString(5));
-            studentInfo.setMobileNo(cursor.getString(6));
-            studentInfo.setUsername(cursor.getString(7));
-            studentInfo.setPassword(cursor.getString(8));
-            return studentInfo;
+            do{
+                StudentInfoVM studentInfo = new StudentInfoVM();
+                studentInfo.setId(cursor.getInt(0));
+                studentInfo.setUsername(cursor.getString(1));
+                studentInfo.setFirstname(cursor.getString(2));
+                studentInfo.setLastname(cursor.getString(3));
+                StudentsList.add(studentInfo);
+            }while (cursor.moveToNext());
+            return  StudentsList;
         }
         return null;
     }
@@ -78,7 +78,7 @@ public class StudentsController {
     public static List<StudentInfoVM> getStudents(DBContext context) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<StudentInfoVM> StudentsList = new ArrayList<>();
-        String getAll = "Select Students.* , Username  , Password From Students,LoginInfos " +
+        String getAll = "Select Students.* , Username , Password From Students,LoginInfos " +
                 " Where Students.Id = StudentId  ";
 
         Cursor cursor = database.rawQuery(getAll ,null );

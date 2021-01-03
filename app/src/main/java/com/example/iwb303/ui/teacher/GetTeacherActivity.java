@@ -6,14 +6,19 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.iwb303.R;
 import com.example.iwb303.ui.student.GetStudentActivity;
 
+import java.util.List;
+
 import Controller.DBContext;
+import Controller.FillSpinner;
 import Controller.InstructorsController;
 import Controller.StudentsController;
 import Models.Instructor;
@@ -23,8 +28,10 @@ import Models.ViewModels.StudentInfoVM;
 
 public class GetTeacherActivity extends AppCompatActivity {
 
-    EditText txtTeacherId ,txtEditTeacherFName,txtEditTeacherLName,txtEditTeacherPhone,txtEditTeacherAddress;
+    EditText txtEditTeacherFName,txtEditTeacherLName,txtEditTeacherPhone,txtEditTeacherAddress;
+    Spinner teacherSpinner;
     Button btnGetTeacherById , btnApplyEditTeacher ,btnApplyDeleteTeacher;
+    Instructor instructor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +55,7 @@ public class GetTeacherActivity extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_get_teacher);
-        txtTeacherId = findViewById(R.id.txtTeacherId);
+        teacherSpinner = findViewById(R.id.spinnerTeachers);
         txtEditTeacherFName = findViewById(R.id.txtEditTeacherFName);
         txtEditTeacherLName = findViewById(R.id.txtEditTeacherLName);
         txtEditTeacherPhone = findViewById(R.id.txtEditTeacherPhone);
@@ -57,39 +64,41 @@ public class GetTeacherActivity extends AppCompatActivity {
         btnApplyEditTeacher = findViewById(R.id.btnApplyEditTeacher);
         btnApplyDeleteTeacher = findViewById(R.id.btnApplyDeleteTeacher);
         EnableButton(false);
+        List<Instructor> teachers = InstructorsController.GetInstructors(new DBContext(GetTeacherActivity.this));
+        FillSpinner<Instructor> fillSpinnerInstructors = new FillSpinner<>(GetTeacherActivity.this,teacherSpinner,teachers);
+        teacherSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
+                instructor = (Instructor) parent.getSelectedItem();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
     }
     public void btnGetTeacherById_Click(View view){
-        if (TextUtils.isEmpty(txtTeacherId.getText().toString())){
-            Toast.makeText(this, "Please enter Teacher Id", Toast.LENGTH_LONG).show();
+        if (instructor == null){
+            Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
+            return;
         }
-        else{
-            DBContext context = new DBContext(GetTeacherActivity.this);
-            Integer teacherId =Integer.parseInt(txtTeacherId.getText().toString());
-            Instructor teacher = InstructorsController.GetInstructor(context,teacherId);
-            if (teacher == null){
-                Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
-                return;
-            }
-            EnableButton(true);
-            txtEditTeacherFName.setText(teacher.getFirstname());
-            txtEditTeacherLName.setText(teacher.getLastname());
-            txtEditTeacherPhone.setText(teacher.getMobileNo());
-            txtEditTeacherAddress.setText(teacher.getAddress());
-        }
+        EnableButton(true);
+        txtEditTeacherFName.setText(instructor.getFirstname());
+        txtEditTeacherLName.setText(instructor.getLastname());
+        txtEditTeacherPhone.setText(instructor.getMobileNo());
+        txtEditTeacherAddress.setText(instructor.getAddress());
     }
     public void btnApplyEditTeacher_Click(View view){
         if (TextUtils.isEmpty(txtEditTeacherFName.getText().toString())||
                 TextUtils.isEmpty(txtEditTeacherLName.getText().toString())||
                 TextUtils.isEmpty(txtEditTeacherPhone.getText().toString())||
-                TextUtils.isEmpty(txtEditTeacherAddress.getText().toString())||
-                TextUtils.isEmpty(txtTeacherId.getText().toString())){
-            Toast.makeText(this, "Please enter Dept Name", Toast.LENGTH_LONG).show();
+                TextUtils.isEmpty(txtEditTeacherAddress.getText().toString())){
+            Toast.makeText(this, "Please enter all data ", Toast.LENGTH_LONG).show();
             return;
         }
         DBContext context = new DBContext(GetTeacherActivity.this);
-        Integer teacherId =Integer.parseInt(txtTeacherId.getText().toString());
         Instructor teahcer = new Instructor();
-        teahcer.setId(teacherId);
+        teahcer.setId(instructor.getId());
         teahcer.setFirstname(txtEditTeacherFName.getText().toString());
         teahcer.setLastname(txtEditTeacherLName.getText().toString());
         teahcer.setMobileNo(txtEditTeacherPhone.getText().toString());
@@ -99,13 +108,12 @@ public class GetTeacherActivity extends AppCompatActivity {
         finish();
     }
     public void btnApplyDeleteTeacher_Click(View view){
-        if (TextUtils.isEmpty(txtTeacherId.getText().toString())){
-            Toast.makeText(this, "Please enter Dept Id", Toast.LENGTH_LONG).show();
+        if (instructor == null){
+            Toast.makeText(this, "Please select teacher !", Toast.LENGTH_LONG).show();
             return;
         }
         DBContext context = new DBContext(GetTeacherActivity.this);
-        Integer teacherId =Integer.parseInt(txtTeacherId.getText().toString());
-        InstructorsController.deleteInstructor(context,teacherId);
+        InstructorsController.deleteInstructor(context,instructor.getId());
         Toast.makeText(GetTeacherActivity.this, "Deleted Successfully", Toast.LENGTH_LONG).show();
         finish();
     }

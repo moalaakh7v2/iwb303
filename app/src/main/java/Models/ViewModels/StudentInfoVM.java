@@ -84,4 +84,9 @@ public class StudentInfoVM {
     public void setMobileNo(String mobileNo) {
         MobileNo = mobileNo;
     }
+
+    @Override
+    public String toString() {
+        return Username ;
+    }
 }

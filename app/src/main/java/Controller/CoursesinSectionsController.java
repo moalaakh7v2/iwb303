@@ -51,7 +51,8 @@ public class CoursesinSectionsController {
                 " From Courses c,Sections s,Instructors i,CoursesinSections cs  " +
                 " where cs.CourseId = c.Id And cs.SectionNo = s.SectionNo And cs.InstructorId = i.Id" +
                 " And cs.SectionNo = "+SectionNo+" And CourseId not in (Select CourseId From Enrollments" +
-                " where StudentId = "+StudentId+" And SectionNo = cs.SectionNo ); ";
+                " where StudentId = "+StudentId+" And SectionNo = cs.SectionNo ) " +
+                "  group by Title; ";
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())
             do{
@@ -84,19 +85,17 @@ public class CoursesinSectionsController {
             }while (cursor.moveToNext());
         return  InstructorsinCoursesinSectionsList;
     }
-    public static List<CourseInfoVM> GetRoomsNo(DBContext context, Integer courseId,Integer sectionNo,Integer instructorId) {
+    public static List<String> GetRoomsNo(DBContext context,Integer sectionNo, Integer courseId,Integer instructorId) {
         SQLiteDatabase database = context.getReadableDatabase() ;
-        List<CourseInfoVM> coursesinSectionsList = new ArrayList<>();
+        List<String> RoomsNoList = new ArrayList<>();
         String getAll = "Select RoomNo From CoursesinSections " +
                 " where CourseId = "+courseId+" And SectionNo = "+sectionNo+" And InstructorId = "+instructorId+" ;";
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())
             do{
-                CourseInfoVM courseInfoVM = new CourseInfoVM();
-                courseInfoVM.setRoomNo(cursor.getString(0));
-                coursesinSectionsList.add(courseInfoVM);
+                RoomsNoList.add(cursor.getString(0));
             }while (cursor.moveToNext());
-        return  coursesinSectionsList;
+        return  RoomsNoList;
     }
     public static void AddCourseinSection(DBContext context , CourseinSection courseinSection)
     {

@@ -7,17 +7,19 @@ public class Enrollment {
     Integer SectionNo;
     Integer CourseId;
     Integer InstructorId;
+    String RoomNo;
     float Grade;
 
     public Enrollment() {
         Grade =0;
     }
 
-    public Enrollment(Integer studentId, Integer sectionNo,Integer instructorId, Integer courseId, float grade) {
+    public Enrollment(Integer studentId, Integer sectionNo,Integer instructorId, Integer courseId,String roomNo, float grade) {
         StudentId = studentId;
         SectionNo = sectionNo;
         CourseId = courseId;
         InstructorId = instructorId;
+        RoomNo = roomNo;
         Grade = grade;
     }
 

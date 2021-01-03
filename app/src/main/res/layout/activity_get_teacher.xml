@@ -5,160 +5,163 @@
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/lblEnterTeacherId"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.teacher.GetTeacherActivity">
 
-    <Button
-        android:id="@+id/btnApplyEditTeacher"
-        android:layout_width="126dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="40dp"
-        android:onClick="btnApplyEditTeacher_Click"
-        android:text="Applay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEditTeacherAddress" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lblEnterTeacherId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.teacher.GetTeacherActivity">
 
-    <EditText
-        android:id="@+id/txtEditTeacherPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblEditTeacherPhone" />
+        <Spinner
+            android:id="@+id/spinnerTeachers"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <TextView
-        android:id="@+id/lblEditTeacherPhone"
-        android:layout_width="121dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="28dp"
-        android:text="Phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEditTeacherLName" />
+        <Button
+            android:id="@+id/btnApplyEditTeacher"
+            android:layout_width="126dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="40dp"
+            android:onClick="btnApplyEditTeacher_Click"
+            android:text="Applay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.479"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditTeacherAddress" />
 
-    <EditText
-        android:id="@+id/txtEditTeacherLName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblEditTeacherLName" />
+        <EditText
+            android:id="@+id/txtEditTeacherPhone"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblEditTeacherPhone" />
 
-    <EditText
-        android:id="@+id/txtTeacherId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        <TextView
+            android:id="@+id/lblEditTeacherPhone"
+            android:layout_width="144dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditTeacherLName" />
 
-    <TextView
-        android:id="@+id/lblEditTeacherFName"
-        android:layout_width="126dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="40dp"
-        android:text="First Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGetTeacherById" />
+        <EditText
+            android:id="@+id/txtEditTeacherLName"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblEditTeacherLName" />
 
-    <TextView
-        android:id="@+id/lblEditTeacherLName"
-        android:layout_width="125dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="8dp"
-        android:text="Last Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEditTeacherFName" />
+        <TextView
+            android:id="@+id/lblEditTeacherFName"
+            android:layout_width="144dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="First Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnGetTeacherById" />
 
-    <Button
-        android:id="@+id/btnGetTeacherById"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:onClick="btnGetTeacherById_Click"
-        android:text="Get Teacher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTeacherId" />
+        <TextView
+            android:id="@+id/lblEditTeacherLName"
+            android:layout_width="144dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Last Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditTeacherFName" />
 
-    <EditText
-        android:id="@+id/txtEditTeacherFName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblEditTeacherFName" />
+        <Button
+            android:id="@+id/btnGetTeacherById"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="btnGetTeacherById_Click"
+            android:text="Get Teacher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerTeachers" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Enter Teacher Id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/txtEditTeacherFName"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblEditTeacherFName" />
 
-    <TextView
-        android:id="@+id/lblEditTeacherAddress"
-        android:layout_width="108dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="33dp"
-        android:text="Address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEditTeacherPhone" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="144dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Chose Teacher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtEditTeacherAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPostalAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblEditTeacherAddress" />
+        <TextView
+            android:id="@+id/lblEditTeacherAddress"
+            android:layout_width="144dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.471"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditTeacherPhone" />
 
-    <Button
-        android:id="@+id/btnApplyDeleteTeacher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:onClick="btnApplyDeleteTeacher_Click"
-        android:text="Delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnApplyEditTeacher" />
+        <EditText
+            android:id="@+id/txtEditTeacherAddress"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblEditTeacherAddress" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnApplyDeleteTeacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:onClick="btnApplyDeleteTeacher_Click"
+            android:text="Delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnApplyEditTeacher" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

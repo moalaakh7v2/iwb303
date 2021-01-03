@@ -13,7 +13,9 @@ import java.util.List;
 import Controller.DBContext;
 import Controller.EnrollmentsController;
 import Controller.SectionsController;
+import Controller.StudentsController;
 import Models.Section;
+import Models.ViewModels.StudentInfoVM;
 import Models.ViewModels.StudentsEnrollmentInfoVM;
 
 public class RaviewAllStudentsActivity extends AppCompatActivity {
@@ -45,15 +47,19 @@ public class RaviewAllStudentsActivity extends AppCompatActivity {
         lblReviewAllStudents = findViewById(R.id.lblReviewAllStudents);
         StringBuffer buffer=new StringBuffer();
         DBContext context = new DBContext(this);
-        List<StudentsEnrollmentInfoVM> studentsEnrollmentInfoVMS = EnrollmentsController.getEnrollmentsStudentsInfo(context);
-        for (StudentsEnrollmentInfoVM u: studentsEnrollmentInfoVMS)
+        List<StudentInfoVM> studentsEnrollmentInfoVMS = StudentsController.GetStudentInfo(context);
+        for (StudentInfoVM u: studentsEnrollmentInfoVMS)
         {
-            buffer.append("StudentId: "+ u.getStudentId() +"\n");
-            buffer.append("StudentName: "+ u.getStudentName() +"\n");
-            buffer.append("SectionName: "+ u.getSectionName() +"\n");
-            buffer.append("CourseTitle: "+ u.getCourseTitle() +"\n");
-            buffer.append("InstructorName: "+ u.getSectionName() +"\n\n");
-            buffer.append("---------------------------\n");
+            List<StudentsEnrollmentInfoVM> SVM = EnrollmentsController.GetStudentEnrollments(context,u.getId());
+            buffer.append("Id : "+ u.getId() +"\n");
+            buffer.append("UserName"+ u.getUsername() +"\n");
+            buffer.append("Full Name"+ u.getFirstname() +" "+u.getLastname() +"\n");
+            for (StudentsEnrollmentInfoVM i: SVM)
+            {
+                String info = " - "+ i.getSectionName() +" -> " + i.getCourseTitle()+ " -> " +i.getInstructorName();
+            buffer.append(info +"\n");
+            }
+            buffer.append("\n ---------------------------\n");
         }
         lblReviewAllStudents.setText(buffer.toString());
     }

@@ -18,13 +18,14 @@ public class EnrollmentsController {
     {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<StudentsEnrollmentInfoVM> studentsEnrollmentsList = new ArrayList<>();
-        String getAll = "Select Students.Id ,Students.FirstName || ' ' || Students.LastName ,Sections.SectionName" +
-                " ,Courses.Title,Instructors.FirstName || ' ' || Instructors.LastName" +
+        String getAll = "Select Students.Id ,Students.FirstName || ' ' || Students.LastName studentName,Sections.SectionName" +
+                " ,Courses.Title,Instructors.FirstName || ' ' || Instructors.LastName TeacherName " +
                 " From Students,Enrollments,Instructors,Sections ,Courses,CoursesinSections " +
                 " where CoursesinSections.CourseId = Courses.Id And CoursesinSections.SectionNo = Sections.SectionNo" +
                 " And CoursesinSections.InstructorId = Instructors.Id " +
                 " And Enrollments.StudentId = Students.Id And Enrollments.CourseId = Courses.Id " +
-                " And Enrollments.SectionNo = Sections.SectionNo And Students.Id = "+StudentId+"; ";
+                " And Enrollments.SectionNo = Sections.SectionNo And Students.Id = "+StudentId+"" +
+                " group by studentName,TeacherName,Title,SectionName; ";
 
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())
@@ -60,13 +61,14 @@ public class EnrollmentsController {
     public static List<StudentsEnrollmentInfoVM> getEnrollmentsStudentsInfo(DBContext context) {
         SQLiteDatabase database = context.getReadableDatabase() ;
         List<StudentsEnrollmentInfoVM> studentsEnrollmentsList = new ArrayList<>();
-        String getAll = "Select Students.Id ,Students.FirstName || ' ' || Students.LastName ,Sections.SectionName" +
-                " ,Courses.Title,Instructors.FirstName || ' ' || Instructors.LastName" +
+        String getAll = "Select Students.Id ,Students.FirstName || ' ' || Students.LastName studentName,Sections.SectionName" +
+                " ,Courses.Title,Instructors.FirstName || ' ' || Instructors.LastName TeacherName" +
                 " From Students,Enrollments,Instructors,Sections ,Courses,CoursesinSections " +
                 " where CoursesinSections.CourseId = Courses.Id And CoursesinSections.SectionNo = Sections.SectionNo" +
                 " And CoursesinSections.InstructorId = Instructors.Id " +
                 " And Enrollments.StudentId = Students.Id And Enrollments.CourseId = Courses.Id " +
-                " And Enrollments.SectionNo = Sections.SectionNo; ";
+                " And Enrollments.SectionNo = Sections.SectionNo" +
+                " group by studentName,TeacherName,Title,SectionName; ";
 
         Cursor cursor = database.rawQuery(getAll ,null );
         if (cursor.moveToFirst())

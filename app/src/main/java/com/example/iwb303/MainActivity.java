@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(MainActivity.this, ManageAdminActivity.class));
                 }
+                finish();
+                moveTaskToBack(false);
             } else {
                 Toast.makeText(MainActivity.this, "UserName Or password Worng !", Toast.LENGTH_LONG).show();
             }
@@ -103,5 +105,11 @@ public class MainActivity extends AppCompatActivity {
         else {
             Toast.makeText(MainActivity.this, "UserName Or password is Empty !", Toast.LENGTH_LONG).show();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+        System.exit(0);
     }
 }
