@@ -52,8 +52,8 @@ public class RaviewAllStudentsActivity extends AppCompatActivity {
         {
             List<StudentsEnrollmentInfoVM> SVM = EnrollmentsController.GetStudentEnrollments(context,u.getId());
             buffer.append("Id : "+ u.getId() +"\n");
-            buffer.append("UserName"+ u.getUsername() +"\n");
-            buffer.append("Full Name"+ u.getFirstname() +" "+u.getLastname() +"\n");
+            buffer.append("UserName : "+ u.getUsername() +"\n");
+            buffer.append("Full Name : "+ u.getFirstname() +" "+u.getLastname() +"\n");
             for (StudentsEnrollmentInfoVM i: SVM)
             {
                 String info = " - "+ i.getSectionName() +" -> " + i.getCourseTitle()+ " -> " +i.getInstructorName();
