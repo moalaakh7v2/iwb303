@@ -21,6 +21,7 @@ import java.util.Calendar;
 
 import Controller.DBContext;
 import Controller.StudentsController;
+import Controller.btnSounds;
 import Models.Enums.Gender;
 import Models.LoginInfo;
 import Models.Student;
@@ -28,6 +29,7 @@ import Models.Student;
 public class AddNewStudentActivity extends AppCompatActivity {
 
     Spinner drpStudentGender;
+    Boolean isMute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +55,13 @@ public class AddNewStudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_student);
         drpStudentGender = findViewById(R.id.drpStudentGender);
         drpStudentGender.setAdapter(new ArrayAdapter<Gender>(this,R.layout.support_simple_spinner_dropdown_item,Gender.values()));
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute = Sounds.getBoolean("Status", false);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void btnAddStudent(View view){
+        btnSounds.SetSounds(AddNewStudentActivity.this,isMute, R.raw.tab_move);
         EditText txtAddFName = findViewById(R.id.txtAddFName);
         EditText txtAddLName = findViewById(R.id.txtAddLName);
         EditText txtAddPhone = findViewById(R.id.txtAddPhone);

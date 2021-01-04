@@ -20,6 +20,7 @@ import com.example.iwb303.tab.MySubjects.MySubjectsFragment;
 
 import Controller.DBContext;
 import Controller.StudentsController;
+import Controller.btnSounds;
 import Models.LoginInfo;
 
 import java.time.Instant;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnLogin;
     EditText txtUserName;
     MediaPlayer md;
+    Boolean isMute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,12 +65,13 @@ public class MainActivity extends AppCompatActivity {
         }
         btnLogin = findViewById(R.id.btnLogin);
         txtUserName = findViewById(R.id.txtUserName);
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void btnLogIn_Click(View view){
-        md = MediaPlayer.create(this, R.raw.btn_sound);
-        md.start();
+        btnSounds.SetSounds(MainActivity.this,isMute, R.raw.btn_sound);
         DBContext context = new DBContext(MainActivity.this);
         TextView txtUsername = findViewById(R.id.txtUserName);
         TextView txtPassword = findViewById(R.id.txtPassword);

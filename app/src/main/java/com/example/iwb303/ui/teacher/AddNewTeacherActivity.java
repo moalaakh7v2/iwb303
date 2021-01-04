@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 import com.example.iwb303.ui.dept.AddNewDeptActivity;
 import com.example.iwb303.ui.student.AddNewStudentActivity;
@@ -20,6 +21,7 @@ import java.util.Calendar;
 import Controller.DBContext;
 import Controller.InstructorsController;
 import Controller.StudentsController;
+import Controller.btnSounds;
 import Models.Enums.Gender;
 import Models.Instructor;
 import Models.LoginInfo;
@@ -28,6 +30,8 @@ import Models.Student;
 public class AddNewTeacherActivity extends AppCompatActivity {
 
     Spinner drpTeacherGender;
+    Boolean isMute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +58,12 @@ public class AddNewTeacherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_teacher);
         drpTeacherGender = findViewById(R.id.drpTeacherGender);
         drpTeacherGender.setAdapter(new ArrayAdapter<Gender>(this,R.layout.support_simple_spinner_dropdown_item,Gender.values()));
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
     }
 
     public void btnAddTeacher(View view){
+        btnSounds.SetSounds(AddNewTeacherActivity.this,isMute, R.raw.tab_move);
         EditText txtAddTeacherFName = findViewById(R.id.txtAddTeacherFName);
         EditText txtAddTeacherLName = findViewById(R.id.txtAddTeacherLName);
         EditText txtAddTeacherPhone = findViewById(R.id.txtAddTeacherPhone);

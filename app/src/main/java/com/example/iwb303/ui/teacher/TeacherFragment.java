@@ -1,6 +1,7 @@
 package com.example.iwb303.ui.teacher;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import Controller.DBContext;
 import Controller.InstructorsController;
+import Controller.btnSounds;
 import Models.Instructor;
 
 public class TeacherFragment extends Fragment implements View.OnClickListener {
@@ -27,6 +29,7 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
     Button btnEditTeacher;
     Button btnAddNewTeacher;
     TextView lblAllTeachers;
+    Boolean isMute;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +55,8 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
             buffer.append("---------------------------\n");
         }
         lblAllTeachers.setText(buffer.toString());
+        SharedPreferences Sounds = getContext().getSharedPreferences("Sounds", 0);
+        isMute = Sounds.getBoolean("Status", false);
         return root;
     }
 
@@ -65,9 +70,11 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnEditStudent:
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 startActivity(new Intent(getActivity(), GetTeacherActivity.class));
                 break;
             case R.id.btnAddNewStudent:
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 startActivity(new Intent(getActivity(), AddNewTeacherActivity.class));
                 break;
         }

@@ -3,6 +3,7 @@ package com.example.iwb303.tab.Settings;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,13 +18,15 @@ import com.example.iwb303.ChooseTheme;
 import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 
+import Controller.btnSounds;
+
 public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     Button btnDisplayTheme;
     Button btnSoundMode;
     Button btnLogOut;
-    MediaPlayer md;
     View root;
+    Boolean isMute;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         btnSoundMode.setOnClickListener(this);
         btnLogOut = root.findViewById(R.id.btnAdminLogOut);
         btnLogOut.setOnClickListener(this);
+        SharedPreferences Sounds = getContext().getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
         return root;
     }
 
@@ -41,17 +46,19 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnDisplayAdminTheme:
-                md = MediaPlayer.create(getContext(), R.raw.tab_move);
-                md.start();
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 startActivity(new Intent(getActivity(), ChooseTheme.class));
                 break;
             case R.id.btnSoundAdminMode:
-                md = MediaPlayer.create(getContext(), R.raw.tab_move);
-                md.start();
+                SharedPreferences Sounds = getContext().getSharedPreferences("Sounds", 0);
+                SharedPreferences.Editor editor = Sounds.edit();
+                isMute = !isMute;
+                editor.putBoolean("Status",isMute);
+                editor.commit();
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 break;
             case R.id.btnAdminLogOut:
-                md = MediaPlayer.create(getActivity(), R.raw.tab_move);
-                md.start();
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 SharedPreferences settings = getContext().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
                 settings.edit().clear().commit();
                 getActivity().finish();

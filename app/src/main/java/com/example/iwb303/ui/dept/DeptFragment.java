@@ -1,6 +1,7 @@
 package com.example.iwb303.ui.dept;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import Controller.DBContext;
 import Controller.SectionsController;
+import Controller.btnSounds;
 import Models.Section;
 
 public class DeptFragment extends Fragment implements View.OnClickListener {
@@ -27,6 +29,7 @@ public class DeptFragment extends Fragment implements View.OnClickListener {
     Button btnEditDept;
     Button btnAddDept;
     TextView lblAllDepts;
+    Boolean isMute;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,7 +50,8 @@ public class DeptFragment extends Fragment implements View.OnClickListener {
             buffer.append("---------------------------\n");
         }
         lblAllDepts.setText(buffer.toString());
-
+        SharedPreferences Sounds = getContext().getSharedPreferences("Sounds", 0);
+        isMute = Sounds.getBoolean("Status", false);
         return root;
     }
 
@@ -61,9 +65,11 @@ public class DeptFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnEditDept:
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 startActivity(new Intent(getActivity(), GetDeptActivity.class));
                 break;
             case R.id.btnAddDept:
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 startActivity(new Intent(getActivity(), AddNewDeptActivity.class));
                 break;
         }

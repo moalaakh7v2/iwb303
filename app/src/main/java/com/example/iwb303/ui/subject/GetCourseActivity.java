@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 import com.example.iwb303.ui.dept.GetDeptActivity;
 import com.example.iwb303.ui.teacher.GetTeacherActivity;
@@ -23,6 +24,7 @@ import Controller.DBContext;
 import Controller.FillSpinner;
 import Controller.InstructorsController;
 import Controller.SectionsController;
+import Controller.btnSounds;
 import Models.Course;
 import Models.Instructor;
 import Models.Section;
@@ -33,6 +35,7 @@ public class GetCourseActivity extends AppCompatActivity {
     Button btnApplyEditCourse , btnApplyDeleteCourse;
     Spinner spCourses;
     Course course;
+    Boolean isMute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,8 @@ public class GetCourseActivity extends AppCompatActivity {
         btnApplyEditCourse = findViewById(R.id.btnApplyEditCourse);
         btnApplyDeleteCourse = findViewById(R.id.btnApplyDeleteCourse);
         EnableButton(false);
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
         List<Course> Courses = CoursesController.GetِAllCourses(new DBContext(GetCourseActivity.this));
         FillSpinner<Course> fillSpinnerCourses = new FillSpinner<>(GetCourseActivity.this,spCourses,Courses);
         spCourses.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -75,7 +80,7 @@ public class GetCourseActivity extends AppCompatActivity {
         });
     }
     public void btnGetCourseById_Click(View view){
-
+        btnSounds.SetSounds(GetCourseActivity.this,isMute, R.raw.tab_move);
         if (course == null){
             Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
             return;
@@ -86,6 +91,7 @@ public class GetCourseActivity extends AppCompatActivity {
 
     }
     public void btnApplyEditCourse_Click(View view){
+        btnSounds.SetSounds(GetCourseActivity.this,isMute, R.raw.tab_move);
         if (TextUtils.isEmpty(txtEditCourseTitle.getText().toString())||
                 TextUtils.isEmpty(txtEditCourseHours.getText().toString())){
             Toast.makeText(this, "Please enter All Data", Toast.LENGTH_LONG).show();
@@ -100,6 +106,7 @@ public class GetCourseActivity extends AppCompatActivity {
         finish();
     }
     public void btnApplyDeleteCourse_Click(View view){
+        btnSounds.SetSounds(GetCourseActivity.this,isMute, R.raw.tab_move);
         if (course == null){
             Toast.makeText(this, "Please Select Course !", Toast.LENGTH_LONG).show();
             return;

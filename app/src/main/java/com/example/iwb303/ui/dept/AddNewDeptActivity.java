@@ -10,18 +10,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.iwb303.R;
-import com.example.iwb303.ui.student.AddNewStudentActivity;
 
-import java.util.Calendar;
-
+import Controller.btnSounds;
 import Controller.DBContext;
 import Controller.SectionsController;
-import Controller.StudentsController;
-import Models.LoginInfo;
 import Models.Section;
-import Models.Student;
 
 public class AddNewDeptActivity extends AppCompatActivity {
+
+    Boolean isMute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +43,11 @@ public class AddNewDeptActivity extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_add_new_dept);
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
     }
     public void btnAddDept(View view){
+        btnSounds.SetSounds(AddNewDeptActivity.this,isMute, R.raw.tab_move);
         EditText txtAddDeptName = findViewById(R.id.txtAddDeptName);
         if (TextUtils.isEmpty(txtAddDeptName.getText().toString())) {
             Toast.makeText(AddNewDeptActivity.this, "Please enter all data", Toast.LENGTH_LONG).show();
@@ -58,6 +58,5 @@ public class AddNewDeptActivity extends AppCompatActivity {
         SectionsController.AddSection(new DBContext(AddNewDeptActivity.this),section);
         Toast.makeText(AddNewDeptActivity.this, "Added Successfully", Toast.LENGTH_LONG).show();
         finish();
-
     }
 }

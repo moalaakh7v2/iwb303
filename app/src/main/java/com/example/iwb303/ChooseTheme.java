@@ -3,13 +3,19 @@ package com.example.iwb303;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 
+import com.example.iwb303.ui.dept.AddNewDeptActivity;
+
+import Controller.btnSounds;
+
 public class ChooseTheme extends AppCompatActivity {
 
     Spinner spinner;
+    Boolean isMute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +41,13 @@ public class ChooseTheme extends AppCompatActivity {
         }
         setContentView(R.layout.activity_choose_theme);
         spinner = (Spinner) findViewById(R.id.drpTeacherGender);
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
 
     }
 
     public void btnApplay(View view) {
+        btnSounds.SetSounds(ChooseTheme.this,isMute, R.raw.tab_move);
         String text = spinner.getSelectedItem().toString();
         SharedPreferences prefs = getSharedPreferences("themeFile", MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = prefs.edit();

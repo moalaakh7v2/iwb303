@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.iwb303.R;
+import com.example.iwb303.ui.dept.AddNewDeptActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ import Controller.DBContext;
 import Controller.EnrollmentsController;
 import Controller.SectionsController;
 import Controller.FillSpinner;
+import Controller.btnSounds;
 import Models.Enrollment;
 import Models.Section;
 import Models.ViewModels.CourseInfoVM;
@@ -42,7 +44,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     CourseInfoVM instructor;
     String roomNo;
     Integer studentId;
-
+    Boolean isMute;
 
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
@@ -57,6 +59,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         spinnerCourses = root.findViewById(R.id.spinnerCourses);
         spinnerInstructors = root.findViewById(R.id.spinnerInstructor);
         spinnerRoomsNo = root.findViewById(R.id.spinnerRoomNo);
+        SharedPreferences Sounds = getContext().getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
         FillSpinner<Section> fillSpinnerSections =new FillSpinner<>(getActivity(),spinnerSections,SectionsController.GetSections(context));
         spinnerSections.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -118,24 +122,25 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onClick(View v) {
-        if(section != null && course != null && instructor!= null && roomNo != null) {
-            Enrollment enrollment = new Enrollment(studentId, section.getSectionNo(), instructor.getInstructorId(), course.getCourseId(),roomNo, 0);
+
             switch (v.getId()) {
                 case R.id.btnRegister:
-                    md = MediaPlayer.create(getContext(), R.raw.tab_move);
-                    md.start();
-                    if(EnrollmentsController.IsEnrollmentExist(context,enrollment))
-                        Toast.makeText(getActivity(), " You are already registered in this  ", Toast.LENGTH_LONG).show();
+                    btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
+                    if(section != null && course != null && instructor!= null && roomNo != null)
+                    {
+                        Enrollment enrollment = new Enrollment(studentId, section.getSectionNo(), instructor.getInstructorId(), course.getCourseId(),roomNo, 0);
+                        if(EnrollmentsController.IsEnrollmentExist(context,enrollment))
+                            Toast.makeText(getActivity(), " You are already registered in this  ", Toast.LENGTH_LONG).show();
+                        else {
+                            EnrollmentsController.AddEnrollment(context, enrollment);
+                            Toast.makeText(getActivity(), " Done  ", Toast.LENGTH_LONG).show();
+                        }
+                    }
                     else {
-                        EnrollmentsController.AddEnrollment(context, enrollment);
-                        Toast.makeText(getActivity(), " Done  ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Error , Please Fill All ComboBox ", Toast.LENGTH_LONG).show();
                     }
                     break;
+        }
 
-            }
-        }
-        else {
-            Toast.makeText(getActivity(), "Error , Please Fill All ComboBox ", Toast.LENGTH_LONG).show();
-        }
     }
 }

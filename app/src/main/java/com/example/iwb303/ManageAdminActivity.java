@@ -20,10 +20,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iwb303.databinding.ActivityManageAdminBinding;
 
+import Controller.btnSounds;
+
 public class ManageAdminActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityManageAdminBinding binding;
+    Boolean isMute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,17 +63,21 @@ public class ManageAdminActivity extends AppCompatActivity {
                 setTheme(R.style.AppTheme5);
                 break;
         }
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        btnSounds.SetSounds(ManageAdminActivity.this,isMute, R.raw.tab_move);
         getMenuInflater().inflate(R.menu.manage_admin, menu);
         return true;
     }
 
     @Override
     public boolean onSupportNavigateUp() {
+        btnSounds.SetSounds(ManageAdminActivity.this,isMute, R.raw.tab_move);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_manage_admin);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
@@ -85,6 +92,7 @@ public class ManageAdminActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        btnSounds.SetSounds(ManageAdminActivity.this,isMute, R.raw.tab_move);
         switch(item.getItemId()) {
             case R.id.action_settings:
                 Intent intent = new Intent(this, SettingsActivity.class);
@@ -93,7 +101,6 @@ public class ManageAdminActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
         return true;
     }
 }

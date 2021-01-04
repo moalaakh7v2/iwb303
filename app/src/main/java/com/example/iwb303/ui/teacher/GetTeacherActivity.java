@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 import com.example.iwb303.ui.student.GetStudentActivity;
 
@@ -21,6 +22,7 @@ import Controller.DBContext;
 import Controller.FillSpinner;
 import Controller.InstructorsController;
 import Controller.StudentsController;
+import Controller.btnSounds;
 import Models.Instructor;
 import Models.LoginInfo;
 import Models.Student;
@@ -32,6 +34,7 @@ public class GetTeacherActivity extends AppCompatActivity {
     Spinner teacherSpinner;
     Button btnGetTeacherById , btnApplyEditTeacher ,btnApplyDeleteTeacher;
     Instructor instructor;
+    Boolean isMute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +67,8 @@ public class GetTeacherActivity extends AppCompatActivity {
         btnApplyEditTeacher = findViewById(R.id.btnApplyEditTeacher);
         btnApplyDeleteTeacher = findViewById(R.id.btnApplyDeleteTeacher);
         EnableButton(false);
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
         List<Instructor> teachers = InstructorsController.GetInstructors(new DBContext(GetTeacherActivity.this));
         FillSpinner<Instructor> fillSpinnerInstructors = new FillSpinner<>(GetTeacherActivity.this,teacherSpinner,teachers);
         teacherSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -78,6 +83,7 @@ public class GetTeacherActivity extends AppCompatActivity {
 
     }
     public void btnGetTeacherById_Click(View view){
+        btnSounds.SetSounds(GetTeacherActivity.this,isMute, R.raw.tab_move);
         if (instructor == null){
             Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
             return;
@@ -89,6 +95,7 @@ public class GetTeacherActivity extends AppCompatActivity {
         txtEditTeacherAddress.setText(instructor.getAddress());
     }
     public void btnApplyEditTeacher_Click(View view){
+        btnSounds.SetSounds(GetTeacherActivity.this,isMute, R.raw.tab_move);
         if (TextUtils.isEmpty(txtEditTeacherFName.getText().toString())||
                 TextUtils.isEmpty(txtEditTeacherLName.getText().toString())||
                 TextUtils.isEmpty(txtEditTeacherPhone.getText().toString())||
@@ -108,6 +115,7 @@ public class GetTeacherActivity extends AppCompatActivity {
         finish();
     }
     public void btnApplyDeleteTeacher_Click(View view){
+        btnSounds.SetSounds(GetTeacherActivity.this,isMute, R.raw.tab_move);
         if (instructor == null){
             Toast.makeText(this, "Please select teacher !", Toast.LENGTH_LONG).show();
             return;

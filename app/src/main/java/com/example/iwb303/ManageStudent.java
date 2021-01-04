@@ -24,8 +24,6 @@ import org.w3c.dom.Text;
 
 public class ManageStudent extends AppCompatActivity {
 
-    Button btnRegister;
-    MediaPlayer md;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

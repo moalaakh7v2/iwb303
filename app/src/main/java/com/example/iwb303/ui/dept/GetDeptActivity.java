@@ -23,6 +23,7 @@ import Controller.DBContext;
 import Controller.FillSpinner;
 import Controller.SectionsController;
 import Controller.StudentsController;
+import Controller.btnSounds;
 import Models.Course;
 import Models.LoginInfo;
 import Models.Section;
@@ -35,6 +36,7 @@ public class GetDeptActivity extends AppCompatActivity {
     Button btnApplyEditSection , btnApplyDeleteSection;
     Spinner spDepts;
     Section dept;
+    Boolean isMute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,8 @@ public class GetDeptActivity extends AppCompatActivity {
         btnApplyEditSection = findViewById(R.id.btnApplyEditSection);
         btnApplyDeleteSection = findViewById(R.id.btnApplyDeleteSection);
         EnableButton(false);
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
         List<Section> sections = SectionsController.GetSections(new DBContext(GetDeptActivity.this));
         FillSpinner<Section> fillSpinnerSections = new FillSpinner<>(GetDeptActivity.this,spDepts,sections);
         spDepts.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -76,6 +80,7 @@ public class GetDeptActivity extends AppCompatActivity {
         });
     }
     public void btnGetDeptById_Click(View view){
+        btnSounds.SetSounds(GetDeptActivity.this,isMute, R.raw.tab_move);
         if (dept == null){
             Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
             return;
@@ -84,6 +89,7 @@ public class GetDeptActivity extends AppCompatActivity {
         txtEditSectionName.setText(dept.getSectionName());
     }
     public void btnApplyEditSection_Click(View view){
+        btnSounds.SetSounds(GetDeptActivity.this,isMute, R.raw.tab_move);
         if (TextUtils.isEmpty(txtEditSectionName.getText().toString())){
             Toast.makeText(this, "Please enter Dept Name", Toast.LENGTH_LONG).show();
             return;
@@ -97,6 +103,7 @@ public class GetDeptActivity extends AppCompatActivity {
         finish();
     }
     public void btnApplyDeleteSection_Click(View view){
+        btnSounds.SetSounds(GetDeptActivity.this,isMute, R.raw.tab_move);
         if (dept == null){
             Toast.makeText(this, "Please Select Dept ", Toast.LENGTH_LONG).show();
             return;

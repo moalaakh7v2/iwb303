@@ -15,12 +15,14 @@ import com.example.iwb303.MainActivity;
 import com.example.iwb303.ManageAdminActivity;
 import com.example.iwb303.R;
 
+import Controller.btnSounds;
+
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnDisplayAdminTheme;
     Button btnSoundAdminMode;
     Button btnAdminLogOut;
-    MediaPlayer md;
+    Boolean isMute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,23 +52,26 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         btnSoundAdminMode.setOnClickListener(this);
         btnAdminLogOut = findViewById(R.id.btnAdminLogOut);
         btnAdminLogOut.setOnClickListener(this);
-
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnDisplayAdminTheme:
-                md = MediaPlayer.create(this, R.raw.tab_move);
-                md.start();
+                btnSounds.SetSounds(SettingsActivity.this,isMute, R.raw.tab_move);
                 startActivity(new Intent(this, ChooseTheme.class));
                 break;
             case R.id.btnSoundAdminMode:
-                md = MediaPlayer.create(this, R.raw.tab_move);
-                md.start();
+                SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+                SharedPreferences.Editor editor = Sounds.edit();
+                isMute = !isMute;
+                editor.putBoolean("Status",isMute);
+                editor.commit();
+                btnSounds.SetSounds(SettingsActivity.this,isMute, R.raw.tab_move);
                 break;
             case R.id.btnAdminLogOut:
-                md = MediaPlayer.create(this, R.raw.tab_move);
-                md.start();
+                btnSounds.SetSounds(SettingsActivity.this,isMute, R.raw.tab_move);
                 SharedPreferences settings = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
                 settings.edit().clear().commit();
                 finish();

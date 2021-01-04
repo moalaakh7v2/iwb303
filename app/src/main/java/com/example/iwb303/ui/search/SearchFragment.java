@@ -1,6 +1,7 @@
 package com.example.iwb303.ui.search;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ import Controller.CoursesinSectionsController;
 import Controller.DBContext;
 import Controller.InstructorsController;
 import Controller.SectionsController;
+import Controller.btnSounds;
 import Models.Course;
 import Models.Instructor;
 import Models.Section;
@@ -46,6 +48,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     Section section;
     Course course;
     Instructor instructor;
+    Boolean isMute;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +66,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         spinnerSections = (Spinner) root.findViewById(R.id.spinnerSection);
         spinnerTeacher = (Spinner) root.findViewById(R.id.spinnerTeacher);
         spinnerCourse = (Spinner) root.findViewById(R.id.spinnerCourse);
+        SharedPreferences Sounds = getContext().getSharedPreferences("Sounds", 0);
+        isMute = Sounds.getBoolean("Status", false);
         context = new DBContext(getActivity());
         ArrayAdapter<Section> sectionAdapter = new ArrayAdapter<Section>(getActivity(),
                 android.R.layout.simple_spinner_item, SectionsController.GetSections(context));
@@ -122,10 +127,11 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnGetStudents:
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 startActivity(new Intent(getActivity(), RaviewAllStudentsActivity.class));
                 break;
             case R.id.btnGetTeacher:
-
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 if (instructor == null){
                     Toast.makeText(getActivity(), "Chose Teacher From Combo", Toast.LENGTH_LONG).show();
                     return;
@@ -136,6 +142,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                 startActivity(i1);
                 break;
             case R.id.btnGetCourse:
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 if (course == null){
                     Toast.makeText(getActivity(), "Chose Course From Combo", Toast.LENGTH_LONG).show();
                     return;
@@ -146,6 +153,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                 startActivity(i2);
                 break;
             case R.id.btnGetSection:
+                btnSounds.SetSounds(getActivity(),isMute, R.raw.tab_move);
                 if (section == null){
                     Toast.makeText(getActivity(), "Chose Section From Combo", Toast.LENGTH_LONG).show();
                     return;

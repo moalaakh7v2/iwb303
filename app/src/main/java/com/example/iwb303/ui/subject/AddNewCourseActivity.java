@@ -15,10 +15,13 @@ import com.example.iwb303.ui.dept.AddNewDeptActivity;
 import Controller.CoursesController;
 import Controller.DBContext;
 import Controller.SectionsController;
+import Controller.btnSounds;
 import Models.Course;
 import Models.Section;
 
 public class AddNewCourseActivity extends AppCompatActivity {
+
+    Boolean isMute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +46,11 @@ public class AddNewCourseActivity extends AppCompatActivity {
                 break;
         }
         setContentView(R.layout.activity_add_new_course);
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
     }
     public void btnAddCourse(View view){
+        btnSounds.SetSounds(AddNewCourseActivity.this,isMute, R.raw.tab_move);
         EditText txtAddCourseName = findViewById(R.id.txtAddCourseName);
         EditText txtAddCourseHours = findViewById(R.id.txtAddCourseHours);
         if (TextUtils.isEmpty(txtAddCourseName.getText().toString()) ||

@@ -11,6 +11,29 @@
         android:layout_height="match_parent"
         tools:context="tab.MySubjects.MySubjectsFragment">
 
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="wrap_content"
+            android:layout_height="132dp"
+            android:layout_marginTop="68dp"
+            android:contentDescription="@string/nav_header_desc"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/svu_logo"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/lblUname"
+            android:layout_width="113dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+
         <TextView
             android:id="@+id/lblSubjects"
             android:layout_width="wrap_content"
@@ -19,19 +42,9 @@
             android:gravity="center"
             android:text="My Subjects"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblUname" />
-
-        <TextView
-            android:id="@+id/lblUname"
-            android:layout_width="113dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="56dp"
-            android:gravity="center"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline4"

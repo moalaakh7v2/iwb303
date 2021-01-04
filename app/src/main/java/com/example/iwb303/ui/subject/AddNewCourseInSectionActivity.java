@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 
 import Controller.CoursesController;
@@ -19,6 +20,7 @@ import Controller.CoursesinSectionsController;
 import Controller.DBContext;
 import Controller.InstructorsController;
 import Controller.SectionsController;
+import Controller.btnSounds;
 import Models.Course;
 import Models.CourseinSection;
 import Models.Instructor;
@@ -31,6 +33,7 @@ public class AddNewCourseInSectionActivity extends AppCompatActivity {
     Section section ;
     Course course;
     Instructor instructor;
+    Boolean isMute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,8 @@ public class AddNewCourseInSectionActivity extends AppCompatActivity {
         spinnerCourses = findViewById(R.id.CoursesSp);
         spinnerInstructors = findViewById(R.id.InstructorsSp);
         txtAddRoomId = findViewById(R.id.txtAddRoomId);
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
         context = new DBContext(AddNewCourseInSectionActivity.this);
         ArrayAdapter<Section> sectionAdapter = new ArrayAdapter<Section>(this,
                 android.R.layout.simple_spinner_item, SectionsController.GetSections(context));
@@ -107,7 +112,7 @@ public class AddNewCourseInSectionActivity extends AppCompatActivity {
     }
 
     public void btnAddCourseInSoction(View view){
-
+        btnSounds.SetSounds(AddNewCourseInSectionActivity.this,isMute, R.raw.tab_move);
         if (section == null || course == null ||
                 instructor == null || TextUtils.isEmpty(txtAddRoomId.getText().toString())){
             Toast.makeText(this, "Please Enter All Data", Toast.LENGTH_LONG).show();

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.iwb303.MainActivity;
 import com.example.iwb303.R;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 import Controller.DBContext;
 import Controller.FillSpinner;
 import Controller.StudentsController;
+import Controller.btnSounds;
 import Models.LoginInfo;
 import Models.Student;
 import Models.ViewModels.StudentInfoVM;
@@ -29,6 +31,7 @@ public class GetStudentActivity extends AppCompatActivity {
     Spinner studentsSpinner;
     Button btnApplyEditStudent , btnApplyDeleteStudent;
     StudentInfoVM studentVM;
+    Boolean isMute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,8 @@ public class GetStudentActivity extends AppCompatActivity {
         btnApplyEditStudent = findViewById(R.id.btnApplyEditStudent);
         btnApplyDeleteStudent = findViewById(R.id.btnApplyDeleteStudent);
         EnableButton(false);
+        SharedPreferences Sounds = getSharedPreferences("Sounds", 0);
+        isMute= Sounds.getBoolean("Status", false);
         List<StudentInfoVM> students = StudentsController.getStudents(new DBContext(GetStudentActivity.this));
         FillSpinner<StudentInfoVM> fillSpinnerInstructors = new FillSpinner<>(GetStudentActivity.this,studentsSpinner,students);
         studentsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -77,7 +82,7 @@ public class GetStudentActivity extends AppCompatActivity {
     }
 
     public void btnGetStudentById_Click(View view){
-
+        btnSounds.SetSounds(GetStudentActivity.this,isMute, R.raw.tab_move);
         if (studentVM == null){
             Toast.makeText(this, "Not Found", Toast.LENGTH_LONG).show();
             return;
@@ -92,6 +97,7 @@ public class GetStudentActivity extends AppCompatActivity {
     }
 
     public void btnApplyEditStudent_Click(View view){
+        btnSounds.SetSounds(GetStudentActivity.this,isMute, R.raw.tab_move);
         if (TextUtils.isEmpty(txtEditFName.getText().toString()) ||
                 TextUtils.isEmpty(txtEditPhone.getText().toString())||
                 TextUtils.isEmpty(txtEditUName.getText().toString())||
@@ -118,6 +124,7 @@ public class GetStudentActivity extends AppCompatActivity {
     }
 
     public void btnApplyDeleteStudent_Click(View view){
+        btnSounds.SetSounds(GetStudentActivity.this,isMute, R.raw.tab_move);
         if (studentVM == null){
             Toast.makeText(this, "Please select Student !", Toast.LENGTH_LONG).show();
             return;
